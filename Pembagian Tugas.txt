@@ -1,0 +1,6 @@
+Authentication (Login dan register) {Febrina}
+Dashboard (Admin) (Grafik penambahan, history pemesanan) {Stefan}
+Sparepart (CRUD untuk Admin), (Read untuk User) {Stefan}
+Pembayaran (Admin dan User) {Stefan}
+Pemesanan service dan booking (keluhan dan kategori permasalahan dari User) {Jaenal}
+Penambahan sparepart ke pemesanan service (Admin dan User) {Jaenal}
