@@ -139,9 +139,6 @@
                                                 <a href="{{ route('shop') }}">shop</a>
                                             </span>
                                             <span>
-                                                <a href="{{ route('shop-details') }}">shop details</a>
-                                            </span>
-                                            <span>
                                                 <a href="{{ route('cart') }}">shopping cart</a>
                                                 <a href="{{ route('checkout') }}">checkout</a>
                                                 <a href="{{ route('wishlist') }}">wishlist</a>
@@ -185,7 +182,6 @@
                                         <li><a href="{{ route('our-services') }}">our services</a></li>
                                         <li><a href="{{ route('contact') }}">contact us</a></li>
                                         <li><a href="{{ route('shop') }}">shop</a></li>
-                                        <li><a href="{{ route('shop-details') }}">shop details</a></li>
                                         <li><a href="{{ route('cart') }}">shopping cart</a></li>
                                         <li><a href="{{ route('checkout') }}">checkout</a></li>
                                         <li><a href="{{ route('wishlist') }}">wishlist</a></li>

@@ -30,7 +30,7 @@ Route::view('/error-500', 'error-pages/error-500')->name('error-500');
 
 // Shop
 Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
-Route::get('/shop-details', [ShopController::class, 'shopDetailsView'])->name('shop-details');
+Route::get('/shop-details{id_product}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
 
 // Product
 Route::get('/createProduct', [ProductController::class, 'createView'])->name('createProduct');

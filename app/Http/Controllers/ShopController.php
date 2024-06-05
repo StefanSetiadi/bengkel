@@ -14,8 +14,10 @@ class ShopController extends Controller
         return view('shop.shop', ['products' => $products]);
     }
 
-    public function shopDetailsView()
+    public function shopDetailsView($id_product)
     {
-        return view('shop.shop-details');
+        $product = Product::where('id_product', $id_product)->first();
+        return view('shop.shop-details', compact('product'));
     }
+
 }

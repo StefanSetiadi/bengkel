@@ -17,7 +17,7 @@
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('shop-details') }}">shop details</a></li>
+                        <li><a href="#">shop details</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -41,11 +41,11 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="single-product">
                         <div class="product-name">
-                            <a href="#">Starter Parst Car</a>
+                            <a href="#">{{ $product->name }}</a>
                         </div>
                         <div class="price-rating">
                             <div class="product-price pull-left">
-                                <p>$ 1170</p>
+                                <p>Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                             </div>
                             <!-- ratings -->
                             <div class="ratings pull-right">

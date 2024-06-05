@@ -74,7 +74,7 @@
                                 <div class="single-product hover-style text-center">
                                     <div class="product-img">
                                         <!-- product-img -->
-                                        <a href="{{ route('shop-details') }}" class="main-img">
+                                        <a href="/shop-details{{$product->id_product}}" class="main-img">
                                             <img src="{{ $product->image }}" alt="">
                                         </a>
                                         <!-- product actions -->
@@ -97,7 +97,7 @@
                                     <!-- product-info start -->
                                     <div class="product-info text-center">
                                         <div class="product-name">
-                                            <a href="{{ route('shop-details') }}">{{ $product->name }}</a>
+                                            <a href="/shop-details{{$product->id_product}}">{{ $product->name }}</a>
                                         </div>
                                         <div class="product-price">
                                             <p>Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
