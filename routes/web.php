@@ -33,6 +33,11 @@ Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
 Route::get('/shop-details{id_product}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
 
 // Product
+Route::get('/product', [ProductController::class, 'productView'])->name('product');
 Route::get('/createProduct', [ProductController::class, 'createView'])->name('createProduct');
+Route::get('/editProduct', [ProductController::class, 'createView'])->name('editProduct');
+Route::get('/searchProduct', [ProductController::class, 'createView'])->name('searchProduct');
+
+Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 
 

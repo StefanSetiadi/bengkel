@@ -12,4 +12,16 @@ class ProductController extends Controller
     {
         return view('product.create');
     }
+
+    public function productView()
+    {
+        return view('product.index');
+    }
+
+    public function addProduct(Request $request)
+    {
+        dd($request);
+        // return view('product.index');
+    }
+
 }

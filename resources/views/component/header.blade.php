@@ -125,6 +125,7 @@
                                     <!-- single menu -->
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
                                     <!-- single menu -->
+                                    <li><a href="{{ route('product') }}">Product</a></li>
                                     <li class="has-mega"><a href="#">pages<i class="icofont icofont-simple-down"></i></a>
                                         <!-- mega-menu start -->
                                         <div class="mega-menu">
@@ -187,6 +188,13 @@
                                         <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                         <li><a href="{{ route('error-404') }}">eror 404</a></li>
                                         <li><a href="{{ route('error-500') }}">eror 500</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Product</a>
+                                    <ul>
+                                        <li><a href="{{ route('createProduct') }}">Create Product</a></li>
+                                        <li><a href="{{ route('editProduct') }}">Edit Product</a></li>
+                                        <li><a href="{{ route('searchProduct') }}">Search Product</a></li>
                                     </ul>
                                 </li>
                             </ul>

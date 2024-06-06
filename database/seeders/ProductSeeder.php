@@ -18,49 +18,49 @@ class ProductSeeder extends Seeder
                 'name' => 'Starter Parts Car',
                 'quantity' => 10,
                 'price' => 320000,
-                'image' => 'img/product1.jpg',
+                'image' => 'img/product/1.jpg',
                 'description' => 'description'
             ],
             [
                 'name' => 'Three Ball Bearing',
                 'quantity' => 10,
                 'price' => 1210000,
-                'image' => 'img/product2.jpg',
+                'image' => 'img/product/2.jpg',
                 'description' => 'description'
             ],
             [
                 'name' => 'Disk Brake',
                 'quantity' => 10,
                 'price' => 900000,
-                'image' => 'img/product3.jpg',
+                'image' => 'img/product/3.jpg',
                 'description' => 'description'
             ],
             [
                 'name' => 'Car Exhaust Pipe',
                 'quantity' => 10,
                 'price' => 250000,
-                'image' => 'img/product4.jpg',
+                'image' => 'img/product/4.jpg',
                 'description' => 'description'
             ],
             [
                 'name' => 'Disk Brake Pad',
                 'quantity' => 10,
                 'price' => 320000,
-                'image' => 'img/product5.jpg',
+                'image' => 'img/product/5.jpg',
                 'description' => 'description'
             ],
             [
                 'name' => 'Wheel With Tire',
                 'quantity' => 10,
                 'price' => 320000,
-                'image' => 'img/product6.jpg',
+                'image' => 'img/product/6.jpg',
                 'description' => 'description'
             ],
             [
                 'name' => 'Car Suspension',
                 'quantity' => 10,
                 'price' => 320000,
-                'image' => 'img/product7.jpg',
+                'image' => 'img/product/7.jpg',
                 'description' => 'description'
             ]
         ];
