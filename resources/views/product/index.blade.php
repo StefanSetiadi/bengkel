@@ -13,53 +13,116 @@
                     <h2>Product</h2>
                 </div>
                 <!-- page title end -->
+                <!-- page title menu start -->
+                <div class="page-title-menu">
+                    <ul>
+                        <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
+                        <li><a href="{{ route('product') }}">Product</a></li>
+                    </ul>
+                </div>
+                <!-- page title menu end -->
             </div>
         </div>
     </div>
 </div>
 <!-- page title area end -->
-<!-- checkout area start -->
-<div class="checkout-area section-padding">
+<!-- shop area start -->
+<div class="shop-area pages section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <!-- client address start -->
-                <div class="client-address">
-                    <!-- section title start -->
-                    <div class="section-small-title">
-                        <h3>Product</h3>
+            <div class="col-md-12">
+                <!-- shop bar start -->
+                <div class="shop-bar">
+                    <!-- shop tab bar start -->
+                    <!-- shop tab bar end -->
+                    <!-- shop sort start -->
+                    <div class="sort-by width-33 pull-left text-center">
+                        <label>Sort By: </label>
+                        <select id="sortProducts" >
+                            <option value="name">Name</option>
+                            <option value="price">Price</option>
+                        </select>
                     </div>
-                    <!-- section title start -->
-                    <!-- client address form -->
-                    <div class="client-address-form">
-                        <form action="#">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Quantity">
-                            <input type="text" placeholder="price">
-                            <textarea cols="3" rows="5" placeholder="description"></textarea>
-                        </form>
+                    <!-- shop sort end -->
+                    <!-- shop show product start -->
+                    <div class="limit-product width-33 pull-left text-right">
+                        <label>Show: </label>
+                        <select name="show">
+                            <option value="#" selected>4</option>
+                            <option value="#">8</option>
+                            <option value="#">12</option>
+                            <option value="#">24</option>
+                        </select>
                     </div>
+                    <!-- shop show product end -->
                 </div>
-                <!-- client address end -->
+                <!-- shop bar end -->
             </div>
-            <div class="col-md-6">
-                <!-- total cart area start -->
-                <div class="cart-total">
-                    <!-- section title start -->
-                    <div class="section-small-title">
-                        <h3>Pictures of this Product</h3>
+        </div>
+        <div class="row">
+            <!-- shop tab content start -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="gird">
+                    <!-- gird shop start -->
+                    <div class="gird-shop" id="productList">
+                        @php
+                            $products = $products->sortBy('name');
+                        @endphp
+                        @foreach ($products as $index => $product)
+                            <div class="col-md-3 col-sm-6">
+                                <!-- single shop start -->
+                                <div class="single-product hover-style text-center">
+                                    <div class="product-img">
+                                        <!-- product-img -->
+                                        <a href="/shop-details{{$product->id_product}}" class="main-img">
+                                            <img src="{{ $product->image }}" alt="">
+                                        </a>
+                                        <!-- product actions -->
+                                        <div class="product-action">
+                                            <div class="action-btn">
+                                                <button class="text-button action-single-btn"> Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-info start -->
+                                    <div class="product-info text-center">
+                                        <div class="product-name">
+                                            <a href="/shop-details{{$product->id_product}}">{{ $product->name }}</a>
+                                        </div>
+                                        <div class="product-price">
+                                            <p>Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
+                                        </div>
+                                    </div>
+                                    <!-- product-info start -->
+                                </div>
+                                <!-- single shop end -->
+                            </div>
+                        @endforeach
                     </div>
-                    <!-- section title end -->
+                    <!-- gird shop end -->
                 </div>
-                <!-- total cart area end -->
-                <!-- shopping button start -->
-                <div class="shopping-button">
-                    <a href="#">place order</a>
+            </div>
+            <!-- shop tab content end -->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- toolbar start -->
+                <div class="toolbar-bottom">
+                    <ul>
+                        <li><a href="#"> <i class="fa fa-angle-left"></i> </a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="current"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"> <i class="fa fa-angle-right"></i> </a></li>
+                    </ul>
                 </div>
-                <!-- shopping button end -->
+                <!-- toolbar end -->
             </div>
         </div>
     </div>
 </div>
-<!-- checkout area end -->
+<!-- shop area end -->
+
 @endsection

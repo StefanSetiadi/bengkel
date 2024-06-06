@@ -15,13 +15,27 @@ class ProductController extends Controller
 
     public function productView()
     {
-        return view('product.index');
+        $products = Product::all();
+        return view('product.index', ['products' => $products]);
     }
 
     public function addProduct(Request $request)
     {
-        dd($request);
-        // return view('product.index');
+        $data = Product::create([
+            'name' => $request->name,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+            'description' => $request->description
+        ]);
+
+        if ($request->hasFile('productPhoto')) {
+            $file = $request->file('productPhoto');
+            $file->move('img/product/', $file->getClientOriginalName());
+            $data->image = $file->getClientOriginalName();
+            $data->save();
+        }
+
+        return redirect()->route('createProduct')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
 }

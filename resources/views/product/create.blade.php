@@ -21,6 +21,8 @@
 <!-- checkout area start -->
 <div class="checkout-area section-padding">
     <div class="container">
+    <form action="{{route('addProduct')}}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="row">
             <div class="col-md-6">
                 <!-- total cart area start -->
@@ -29,21 +31,18 @@
                     <div class="section-small-title">
                         <h3>Pictures of this Product</h3>
                     </div>
-                    <div class="form-group">
-                        <!-- <label>File Foto Mobil</label> -->
-                        <div class="col-md-12 text-center">
-                            <img id="previewMobil" src="img/product/1.jpg"
-                                class="rounded mx-auto d-block" width="270" height="330" alt="foto_mobil">
+                    <div class="form-group text-center">
+                        <div class="col-md-12">
+                            <img id="previewProduct" src="img/product/1.jpg"
+                                class="rounded mx-auto d-block" width="270" height="330" alt="productPhoto">
                         </div><br>
-                        <input type="file" id="foto_mobil" name="foto_mobil"
-                            class="file-upload-default foto_mobil"
-                            onchange="previewImage('previewMobil','foto_mobil')" accept="image/*" style="visibility:hidden;">
-                        <div class="input-group col-xs-12 text-center">
-                            <!-- <input type="text" class="form-control file-upload-info" disabled
-                                placeholder="Upload Image"> -->
+                        <input type="file" id="productPhoto" name="productPhoto"
+                            class="file-upload-default productPhoto"
+                            onchange="previewImage('previewProduct','productPhoto')" accept="image/*" style="visibility:hidden">
+                        <div class="input-group col-xs-12">
                             <span class="input-group-append">
                                 <button class="file-upload-browse btn btn-primary"
-                                    type="button">Upload Image</button>
+                                    type="button">Upload</button>
                             </span>
                         </div>
                     </div>
@@ -60,24 +59,22 @@
                     </div>
                     <!-- section title start -->
                     <!-- client address form -->
-                    <form action="{{route('addProduct')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="client-address-form">
-                                <input type="text" placeholder="Name" name="name">
-                                <input type="text" placeholder="Quantity" name="quantity">
-                                <input type="text" placeholder="price" name="price">
-                                <textarea cols="3" rows="5" placeholder="description" name="description"></textarea>
-                            </div>
+                    <div class="client-address-form">
+                            <input type="text" placeholder="Name" name="name" required>
+                            <input type="number" placeholder="Quantity" name="quantity" required>
+                            <input type="number" placeholder="price" name="price" required>
+                            <textarea cols="3" rows="5" placeholder="description" name="description"></textarea>
                         </div>
-                        <!-- client address end -->
-                        <!-- shopping button start -->
-                        <div class="shopping-button">
-                            <button type="submit">Create</button>
-                        </div>
-                        <!-- shopping button end -->
-                    </form>
+                    </div>
+                    <!-- client address end -->
+                    <!-- shopping button start -->
+                    <div class="shopping-button">
+                        <button type="submit">Create</button>
+                    </div>
+                    <!-- shopping button end -->
             </div>
         </div>
+    </form>
     </div>
 </div>
 
