@@ -74,13 +74,13 @@
                                 <div class="single-product hover-style text-center">
                                     <div class="product-img">
                                         <!-- product-img -->
-                                        <a href="/shop-details{{$product->id_product}}" class="main-img">
+                                        <a href="/editProduct{{ $product->id_product }}" class="main-img">
                                             <img src="{{ $product->image }}" alt="">
                                         </a>
                                         <!-- product actions -->
                                         <div class="product-action">
                                             <div class="action-btn">
-                                                <button class="text-button action-single-btn"> Edit</button>
+                                                <button onclick="location.href='/editProduct{{ $product->id_product }}'" class="text-button action-single-btn">Edit</button>
                                             </div>
                                         </div>
                                     </div>

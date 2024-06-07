@@ -19,6 +19,12 @@ class ProductController extends Controller
         return view('product.index', ['products' => $products]);
     }
 
+    public function editView($id_product)
+    {
+        $product = Product::where('id_product', $id_product)->first();
+        return view('product.edit', compact('product'));
+    }
+
     public function addProduct(Request $request)
     {
         $data = Product::create([
@@ -31,11 +37,34 @@ class ProductController extends Controller
         if ($request->hasFile('productPhoto')) {
             $file = $request->file('productPhoto');
             $file->move('img/product/', $file->getClientOriginalName());
-            $data->image = $file->getClientOriginalName();
+            $data->image = 'img/product/' . $file->getClientOriginalName();
             $data->save();
         }
 
-        return redirect()->route('createProduct')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('product')->with('success', 'Data Berhasil Di Tambahkan');
+    }
+
+    public function editDataProduct(Request $request)
+    {
+        $data = Product::find($request->id_product);
+
+        if ($data) {
+            $data->name = $request->name;
+            $data->quantity = $request->quantity;
+            $data->price = $request->price;
+            $data->description = $request->description;
+            $data->save();
+        }
+
+
+        if ($request->hasFile('productPhoto')) {
+            $file = $request->file('productPhoto');
+            $file->move('img/product/', $file->getClientOriginalName());
+            $data->image = 'img/product/' . $file->getClientOriginalName();
+            $data->save();
+        }
+
+        return redirect()->route('product')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
 }

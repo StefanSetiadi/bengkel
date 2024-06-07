@@ -75,7 +75,7 @@
                                     <div class="product-img">
                                         <!-- product-img -->
                                         <a href="/shop-details{{$product->id_product}}" class="main-img">
-                                            <img src="{{ $product->image }}" alt="">
+                                            <img src="{{ $product->image }}" alt="" width="270" height="330">
                                         </a>
                                         <!-- product actions -->
                                         <div class="product-action">

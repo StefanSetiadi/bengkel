@@ -35,9 +35,11 @@ Route::get('/shop-details{id_product}', [ShopController::class, 'shopDetailsView
 // Product
 Route::get('/product', [ProductController::class, 'productView'])->name('product');
 Route::get('/createProduct', [ProductController::class, 'createView'])->name('createProduct');
-Route::get('/editProduct', [ProductController::class, 'createView'])->name('editProduct');
+Route::get('/editProduct{id_product}', [ProductController::class, 'editView'])->name('editProduct');
 Route::get('/searchProduct', [ProductController::class, 'createView'])->name('searchProduct');
 
 Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+Route::post('/editDataProduct', [ProductController::class, 'editDataProduct'])->name('editDataProduct');
+
 
 
