@@ -75,7 +75,11 @@
                                     <div class="product-img">
                                         <!-- product-img -->
                                         <a href="/editProduct{{ $product->id_product }}" class="main-img">
-                                            <img src="{{ $product->image }}" alt="">
+                                            @if(empty($product->image))
+                                                <img src="img/product/1.jpg" alt="" width="270" height="330">
+                                            @else
+                                                <img src="{{ $product->image }}" alt="" width="270" height="330">
+                                            @endif
                                         </a>
                                         <!-- product actions -->
                                         <div class="product-action">
