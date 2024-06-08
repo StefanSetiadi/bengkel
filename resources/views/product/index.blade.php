@@ -85,9 +85,6 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="gird">
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
-                        @php
-                            $products = $products->sortBy('name');
-                        @endphp
                         @foreach ($products as $index => $product)
                             <div class="col-md-3 col-sm-6">
                                 <!-- single shop start -->
@@ -129,18 +126,10 @@
             <!-- shop tab content end -->
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-center" >
                 <!-- toolbar start -->
+                {{$products->links()}}
                 <div class="toolbar-bottom">
-                    <ul>
-                        <li><a href="#"> <i class="fa fa-angle-left"></i> </a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="current"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"> <i class="fa fa-angle-right"></i> </a></li>
-                    </ul>
                 </div>
                 <!-- toolbar end -->
             </div>
@@ -148,5 +137,19 @@
     </div>
 </div>
 <!-- shop area end -->
+
+
+<style>
+        .pagination .page-item.active .page-link {
+            background-color: #EE2050;
+            border-color: #EE2050;
+            color: white;
+        }
+
+        .pagination .page-link {
+            color: #EE2050;
+        }
+
+    </style>
 
 @endsection
