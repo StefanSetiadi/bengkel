@@ -75,10 +75,10 @@
                                     <div class="product-img">
                                         <!-- product-img -->
                                         <a href="/shop-details{{$product->id_product}}" class="main-img">
-                                        @if(empty($product->image))
-                                            <img src="img/product/1.jpg" alt="" width="270" height="330">
-                                        @else
+                                        @if(!empty($product->image) && file_exists(public_path($product->image)))
                                             <img src="{{ $product->image }}" alt="" width="270" height="330">
+                                        @else
+                                            <img src="img/product/1.jpg" alt="" width="270" height="330">
                                         @endif
                                         </a>
                                         <!-- product actions -->

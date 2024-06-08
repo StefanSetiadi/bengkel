@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -36,8 +37,9 @@ class ProductController extends Controller
 
         if ($request->hasFile('productPhoto')) {
             $file = $request->file('productPhoto');
-            $file->move('img/product/', $file->getClientOriginalName());
-            $data->image = 'img/product/' . $file->getClientOriginalName();
+            $random_filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
+            $file->move('img/product/', $random_filename);
+            $data->image = 'img/product/' . $random_filename;
             $data->save();
         }
 
@@ -59,8 +61,9 @@ class ProductController extends Controller
 
         if ($request->hasFile('productPhoto')) {
             $file = $request->file('productPhoto');
-            $file->move('img/product/', $file->getClientOriginalName());
-            $data->image = 'img/product/' . $file->getClientOriginalName();
+            $random_filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
+            $file->move('img/product/', $random_filename);
+            $data->image = 'img/product/' . $random_filename;
             $data->save();
         }
 
