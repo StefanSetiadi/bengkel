@@ -43,7 +43,7 @@ class ProductController extends Controller
             $data->save();
         }
 
-        return redirect()->route('product')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('product')->with('success', 'The product data has been successfully added.');
     }
 
     public function editDataProduct(Request $request)
@@ -67,7 +67,7 @@ class ProductController extends Controller
             $data->save();
         }
 
-        return redirect()->route('product')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('product')->with('success', 'The product data has been successfully edited.');
     }
 
 }

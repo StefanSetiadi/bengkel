@@ -59,7 +59,27 @@
                 <!-- shop bar end -->
             </div>
         </div>
+        
         <div class="row">
+            @if ($message = Session::get('success'))
+                <style>
+                    #alertMessage {
+                        transition: opacity 0.8s ease-out;
+                    }
+                </style>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <br>
+                <div id="alertMessage" class="alert alert-success" role="alert">
+                    {{ $message }}
+                </div>
+                <script>
+                    setTimeout(() => {
+                        const alertElement = document.getElementById('alertMessage');
+                        alertElement.style.opacity = '0';
+                        setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+                    }, 5000);
+                </script>
+            @endif
             <!-- shop tab content start -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="gird">
