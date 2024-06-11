@@ -33,27 +33,35 @@
             <div class="col-md-12">
                 <!-- shop bar start -->
                 <div class="shop-bar">
-                    <!-- shop tab bar start -->
-                    <!-- shop tab bar end -->
-                    <!-- shop sort start -->
-                    <div class="sort-by width-33 pull-left text-center">
-                        <label>Sort By: </label>
-                        <select id="sortProducts" >
-                            <option value="name">Name</option>
-                            <option value="price">Price</option>
-                        </select>
-                    </div>
-                    <!-- shop sort end -->
-                    <!-- shop show product start -->
-                    <div class="limit-product width-33 pull-left text-right">
-                        <label>Show: </label>
-                        <select name="show">
-                            <option value="#" selected>4</option>
-                            <option value="#">8</option>
-                            <option value="#">12</option>
-                            <option value="#">24</option>
-                        </select>
-                    </div>
+                    <form class="form-inline" id="sortForm" action="{{route('product')}}">
+                        <div class="shop-nav width-33 pull-left">
+                            <input type="text" class="form-control" name="search" placeholder="Search" size="30" value="{{ request('search') }}">
+                            <button class="btn btn-danger" type="submit">Search</button>
+                        </div>
+                        <!-- shop tab bar start -->
+                        <!-- shop tab bar end -->
+                        <!-- shop sort start -->
+                        <div class="sort-by width-33 pull-left text-center">
+                            <label>Sort By: </label>
+                            <select id="sortProducts" name="sort" onchange="document.getElementById('sortForm').submit();">
+                                <option value="nameASC" {{ request('sort') == 'nameASC' ? 'selected' : '' }}>Name (Ascending)</option>
+                                <option value="nameDESC" {{ request('sort') == 'nameDESC' ? 'selected' : '' }}>Name (Descending)</option>
+                                <option value="priceASC" {{ request('sort') == 'priceASC' ? 'selected' : '' }}>Price (Ascending)</option>
+                                <option value="priceDESC" {{ request('sort') == 'priceDESC' ? 'selected' : '' }}>Price (Descending)</option>
+                            </select>
+                        </div>
+                        <!-- shop sort end -->
+                        <!-- shop show product start -->
+                        <div class="limit-product width-33 pull-left text-right">
+                            <label>Show: </label>
+                            <select name="paginate" onchange="document.getElementById('sortForm').submit();">
+                                <option value="4" {{ request('paginate') == '4' ? 'selected' : '' }}>4</option>
+                                <option value="8" {{ request('paginate') == '8' ? 'selected' : '' }}>8</option>
+                                <option value="16" {{ request('paginate') == '16' ? 'selected' : '' }}>16</option>
+                                <option value="24" {{ request('paginate') == '24' ? 'selected' : '' }}>24</option>
+                            </select>
+                        </div>
+                    </form>
                     <!-- shop show product end -->
                 </div>
                 <!-- shop bar end -->
@@ -85,6 +93,9 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="gird">
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
+                        @if ($products->isEmpty())
+                        <h3 align="center">No products found matching your search criteria.</h3>
+                        @else
                         @foreach ($products as $index => $product)
                             <div class="col-md-3 col-sm-6">
                                 <!-- single shop start -->
@@ -119,6 +130,7 @@
                                 <!-- single shop end -->
                             </div>
                         @endforeach
+                        @endif
                     </div>
                     <!-- gird shop end -->
                 </div>

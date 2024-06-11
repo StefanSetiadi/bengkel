@@ -14,9 +14,42 @@ class ProductController extends Controller
         return view('product.create');
     }
 
-    public function productView()
+    public function productView(Request $request)
     {
-        $products = Product::paginate(2);
+        if ($request->has('search')) {
+            $products = Product::where('name', 'LIKE', '%' . $request->search . '%');
+        } else {
+            $products = Product::query();
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            switch ($sort) {
+                case 'nameASC':
+                    $products->orderBy('name', 'asc');
+                    break;
+                case 'nameDESC':
+                    $products->orderBy('name', 'desc');
+                    break;
+                case 'priceASC':
+                    $products->orderBy('price', 'asc');
+                    break;
+                case 'priceDESC':
+                    $products->orderBy('price', 'desc');
+                    break;
+            }
+        }
+        if ($request->has('paginate')) {
+            $paginate = $request->paginate;
+            $products = $products->paginate($paginate);
+        } else {
+            $products = $products->paginate(4);        
+        }
+        $products->appends([
+            'search' => $request->search,
+            'sort' => $request->sort,
+            'paginate' => $request->paginate
+        ]);
+        
         return view('product.index', ['products' => $products]);
     }
 
