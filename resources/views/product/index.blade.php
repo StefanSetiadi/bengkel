@@ -152,16 +152,16 @@
 
 
 <style>
-        .pagination .page-item.active .page-link {
-            background-color: #EE2050;
-            border-color: #EE2050;
-            color: white;
-        }
+    .pagination .page-item.active .page-link {
+        background-color: #EE2050;
+        border-color: #EE2050;
+        color: white;
+    }
 
-        .pagination .page-link {
-            color: #EE2050;
-        }
+    .pagination .page-link {
+        color: #EE2050;
+    }
 
-    </style>
+</style>
 
 @endsection
