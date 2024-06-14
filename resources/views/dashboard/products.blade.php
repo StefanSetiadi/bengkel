@@ -63,294 +63,7 @@
 		<div class="page-wrapper">
 
 			<!-- Sidebar wrapper start -->
-			<nav class="sidebar-wrapper">
-
-				<!-- Sidebar brand starts -->
-				<div class="sidebar-brand">
-					<a href="index.html" class="logo">
-						<img src="assets/images/logo.svg" alt="Admin Dashboards" />
-					</a>
-				</div>
-				<!-- Sidebar brand starts -->
-
-				<!-- Sidebar menu starts -->
-				<div class="sidebar-menu">
-					<div class="sidebarMenuScroll">
-						<ul>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-house"></i>
-									<span class="menu-text">Dashboards</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="index.html">Analytics</a>
-										</li>
-										<li>
-											<a href="reports.html">Reports</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown active">
-								<a href="#">
-									<i class="bi bi-handbag"></i>
-									<span class="menu-text">Product</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="orders.html">Order History</a>
-										</li>
-										<li>
-											<a href="products.html" class="current-page">Products</a>
-										</li>
-										<li>
-											<a href="view-cart.html">Shopping Cart</a>
-										</li>
-										<li>
-											<a href="checkout.html">Billing Details</a>
-										</li>
-										<li>
-											<a href="customers.html">Customers</a>
-										</li>
-										<li>
-											<a href="add-product.html">Add Product</a>
-										</li>
-										<li>
-											<a href="reviews.html">Reviews</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-gem"></i>
-									<span class="menu-text">Widgets</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="widgets.html">Widgets</a>
-										</li>
-										<li>
-											<a href="graph-widgets.html">Graph Widgets</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-collection"></i>
-									<span class="menu-text">UI Elements</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="accordions.html">Accordions</a>
-										</li>
-										<li>
-											<a href="alerts.html">Alerts</a>
-										</li>
-										<li>
-											<a href="buttons.html">Buttons</a>
-										</li>
-										<li>
-											<a href="badges.html">Badges</a>
-										</li>
-										<li>
-											<a href="cards.html">Cards</a>
-										</li>
-										<li>
-											<a href="carousel.html">Carousel</a>
-										</li>
-										<li>
-											<a href="dropdowns.html">Dropdowns</a>
-										</li>
-										<li>
-											<a href="icons.html">Icons</a>
-										</li>
-										<li>
-											<a href="modals.html">Modals</a>
-										</li>
-										<li>
-											<a href="offcanvas.html">Off Canvas</a>
-										</li>
-										<li>
-											<a href="progress.html">Progress Bars</a>
-										</li>
-										<li>
-											<a href="spinners.html">Spinners</a>
-										</li>
-										<li>
-											<a href="tabs.html">Tabs</a>
-										</li>
-										<li>
-											<a href="tooltips.html">Tooltips</a>
-										</li>
-										<li>
-											<a href="typography.html">Typography</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-stickies"></i>
-									<span class="menu-text">Pages</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="profile.html">Profile</a>
-										</li>
-										<li>
-											<a href="account-settings.html">Account Settings</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a href="calendar.html">
-									<i class="bi bi-calendar4"></i>
-									<span class="menu-text">Calendar</span>
-								</a>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-columns-gap"></i>
-									<span class="menu-text">Forms</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="form-inputs.html">Form Inputs</a>
-										</li>
-										<li>
-											<a href="form-checkbox-radio.html">Checkbox &amp; Radio</a>
-										</li>
-										<li>
-											<a href="form-file-input.html">File Input</a>
-										</li>
-										<li>
-											<a href="form-validations.html">Validations</a>
-										</li>
-										<li>
-											<a href="bs-select.html">Bootstrap Select</a>
-										</li>
-										<li>
-											<a href="date-time-pickers.html">Date Time Pickers</a>
-										</li>
-										<li>
-											<a href="input-mask.html">Input Masks</a>
-										</li>
-										<li>
-											<a href="editor.html">Editor</a>
-										</li>
-										<li>
-											<a href="form-layout1.html">Form Layout</a>
-										</li>
-										<li>
-											<a href="form-layout2.html">Form Layout 2</a>
-										</li>
-										<li>
-											<a href="form-layout3.html">Form Layout 3</a>
-										</li>
-										<li>
-											<a href="form-layout4.html">Form Horizontal</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-window-split"></i>
-									<span class="menu-text">Tables</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="tables.html">Tables</a>
-										</li>
-										<li>
-											<a href="data-tables.html">Data Tables</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-pie-chart"></i>
-									<span class="menu-text">Graphs &amp; Maps</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="apex.html">Apex</a>
-										</li>
-										<li>
-											<a href="morris.html">Morris</a>
-										</li>
-										<li>
-											<a href="maps.html">Maps</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-layout-sidebar"></i>
-									<span class="menu-text">Layouts</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="layout.html">Default Layout</a>
-										</li>
-										<li>
-											<a href="layout-grid.html">Grid Layout</a>
-										</li>
-										<li>
-											<a href="layout-welcome.html">Welcome Layout</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li class="sidebar-dropdown">
-								<a href="#">
-									<i class="bi bi-x-diamond"></i>
-									<span class="menu-text">Authentication</span>
-								</a>
-								<div class="sidebar-submenu">
-									<ul>
-										<li>
-											<a href="login.html">Login</a>
-										</li>
-										<li>
-											<a href="signup.html">Signup</a>
-										</li>
-										<li>
-											<a href="error.html">Error</a>
-										</li>
-										<li>
-											<a href="maintenance.html">Maintenance</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a href="starter-page.html">
-									<i class="bi bi-hand-index-thumb"></i>
-									<span class="menu-text">Link</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- Sidebar menu ends -->
-
-			</nav>
+			@include('component.sidebar')
 			<!-- Sidebar wrapper end -->
 
 			<!-- *************
@@ -463,202 +176,253 @@
 							<div class="col-sm-12 col-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Product List</div>
-										<div class="ml-auto">
-											<a href="view-cart.html" class="btn btn-dark"><span class="badge shade-red me-2">2</span>View
-												Cart</a>
-										</div>
+										<div class="card-title">Customers</div>
 									</div>
 									<div class="card-body">
 
-										<!-- Row start -->
-										<div class="row">
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img6.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Green Salad</h5>
-														<div class="product-price">
-															<span class="disount-price">$20</span>
-															<span class="actucal-price">$24</span>
-															<span class="off-price">50% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate2 rating-stars"></div>
-															<div class="total-ratings">1050</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img1.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Nicoise Salad</h5>
-														<div class="product-price">
-															<span class="disount-price">$19</span>
-															<span class="actucal-price">$27</span>
-															<span class="off-price">30% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate1 rating-stars"></div>
-															<div class="total-ratings">2750</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img8.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Augustin Salad</h5>
-														<div class="product-price">
-															<span class="disount-price">$18</span>
-															<span class="actucal-price">$22</span>
-															<span class="off-price">27% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate2 rating-stars"></div>
-															<div class="total-ratings">3629</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img9.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Bagatelle Salad</h5>
-														<div class="product-price">
-															<span class="disount-price">$15</span>
-															<span class="actucal-price">$20</span>
-															<span class="off-price">10% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate3 rating-stars"></div>
-															<div class="total-ratings">5329</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img2.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Salade Lyonnaise</h5>
-														<div class="product-price">
-															<span class="disount-price">$21</span>
-															<span class="actucal-price">$30</span>
-															<span class="off-price">15% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate4 rating-stars"></div>
-															<div class="total-ratings">240</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img3.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Cendrillon Salad</h5>
-														<div class="product-price">
-															<span class="disount-price">$9</span>
-															<span class="actucal-price">$12</span>
-															<span class="off-price">20% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate3 rating-stars"></div>
-															<div class="total-ratings">7632</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img4.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Espagnole Salad</h5>
-														<div class="product-price">
-															<span class="disount-price">$27</span>
-															<span class="actucal-price">$32</span>
-															<span class="off-price">33% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate4 rating-stars"></div>
-															<div class="total-ratings">4587</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xxl-3 col-md-4 col-sm-6 col-12">
-												<div class="product-card">
-													<img class="product-card-img-top" src="assets/images/food/img5.jpg" alt="Bootstrap Gallery">
-													<div class="product-card-body">
-														<h5 class="product-title">Grande Duchesse</h5>
-														<div class="product-price">
-															<span class="disount-price">$25</span>
-															<span class="actucal-price">$35</span>
-															<span class="off-price">33% Off</span>
-														</div>
-														<div class="product-rating">
-															<div class="rate6 rating-stars"></div>
-															<div class="total-ratings">35</div>
-														</div>
-														<div class="product-description">
-															Xuartz movement, manufactured by Zitizen watch co., ltd.
-														</div>
-														<div class="product-actions">
-															<button class="btn btn-success addToCart">Add to Cart</button>
-														</div>
-													</div>
-												</div>
-											</div>
+										<div class="table-responsive">
+											<table class="table v-middle m-0">
+												<thead>
+													<tr>
+														<th>Country</th>
+														<th>Customer</th>
+														<th>Contact</th>
+														<th>Status</th>
+														<th>Orders</th>
+														<th>Last Order</th>
+														<th>Amount</th>
+														<th>Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<img src="assets/images/flags/4x3/ca.svg" class="flag-img-lg"
+																alt="Best Admin Dashboards" />
+															Canada
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user2.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Dolly Winters</div>
+																	<p>ID: #Arise00763</p>
+																</div>
+															</div>
+														</td>
+														<td>067-676-98320</td>
+														<td>
+															<span class="badge shade-green min-70">Active</span>
+														</td>
+														<td>87</td>
+														<td>2022/01/25</td>
+														<td>$32800</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="assets/images/flags/1x1/jp.svg" class="flag-img-lg" alt="Clean Dashboards" />
+															Japan
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user5.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Cedric Kelly</div>
+																	<p>ID: #Arise00582</p>
+																</div>
+															</div>
+														</td>
+														<td>009-543-77650</td>
+														<td>
+															<span class="badge shade-green min-70">Active</span>
+														</td>
+														<td>34</td>
+														<td>2022/01/22</td>
+														<td>$65890</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="assets/images/flags/1x1/us.svg" class="flag-img-lg" alt="Clean Dashboards" />
+															United States
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Tiya Davidson</div>
+																	<p>ID: #Arise00554</p>
+																</div>
+															</div>
+														</td>
+														<td>067-676-98320</td>
+														<td>
+															<span class="badge shade-green min-70">Active</span>
+														</td>
+														<td>21</td>
+														<td>2022/01/10</td>
+														<td>$25678</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="assets/images/flags/1x1/tr.svg" class="flag-img-lg" alt="Modern Dashboards" />
+															Turkey
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user4.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Zozi Williams</div>
+																	<p>ID: #Arise00831</p>
+																</div>
+															</div>
+														</td>
+														<td>002-434-66659</td>
+														<td>
+															<span class="badge shade-green min-70">Active</span>
+														</td>
+														<td>55</td>
+														<td>2022/01/21</td>
+														<td>$24571</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="assets/images/flags/1x1/in.svg" class="flag-img-lg" alt="Google Dashboards" />
+															India
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user3.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Karan Kumar</div>
+																	<p>ID: #Arise00987</p>
+																</div>
+															</div>
+														</td>
+														<td>030-998-03437</td>
+														<td>
+															<span class="badge shade-green min-70">Active</span>
+														</td>
+														<td>61</td>
+														<td>2021/09/18</td>
+														<td>$12309</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="assets/images/flags/1x1/br.svg" class="flag-img-lg" alt="Admin Panels" />
+															Brazil
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user6.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Lilly Desmet</div>
+																	<p>ID: #Arise00987</p>
+																</div>
+															</div>
+														</td>
+														<td>030-998-03437</td>
+														<td>
+															<span class="badge shade-red min-70">Blocked</span>
+														</td>
+														<td>61</td>
+														<td>2021/09/18</td>
+														<td>$12309</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<img src="assets/images/flags/1x1/it.svg" class="flag-img-lg" alt="Google Dashboards" />
+															Italy
+														</td>
+														<td>
+															<div class="media-box">
+																<img src="assets/images/user7.png" class="media-avatar" alt="Bootstrap Themes" />
+																<div class="media-box-body">
+																	<div class="text-truncate">Tiya Nixon</div>
+																	<p>ID: #Arise00987</p>
+																</div>
+															</div>
+														</td>
+														<td>030-998-03437</td>
+														<td>
+															<span class="badge shade-red min-70">Blocked</span>
+														</td>
+														<td>61</td>
+														<td>2021/09/18</td>
+														<td>$12309</td>
+														<td>
+															<div class="actions">
+																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-list text-green"></i>
+																</a>
+																<a href="#" class="deleteRow">
+																	<i class="bi bi-trash text-red"></i>
+																</a>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
-										<!-- Row end -->
 
 									</div>
 								</div>
