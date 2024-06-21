@@ -29,7 +29,7 @@ Route::view('/error-404', 'error-pages/error-404')->name('error-404');
 Route::view('/error-500', 'error-pages/error-500')->name('error-500');
 
 // Dashboard
-Route::view('/index', 'dashboard/index')->name('index');
+Route::view('/index', 'dashboard/index')->name('indexdashboard');
 Route::view('/account-settings', 'dashboard/account-settings')->name('account-settings');
 Route::view('/add-product', 'dashboard/add-product')->name('add-product');
 Route::view('/calendar', 'dashboard/calendar')->name('calendar');

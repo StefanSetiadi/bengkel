@@ -103,8 +103,4 @@ class ProductController extends Controller
         return redirect()->route('product')->with('success', 'The product data has been successfully edited.');
     }
 
-    public function getAllProduct() {
-        
-    }
-
 }
