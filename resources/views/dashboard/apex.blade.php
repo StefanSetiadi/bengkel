@@ -1,129 +1,273 @@
-<!doctype html>
-<html lang="en">
+@extends('dashboard.component.main')
 
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@section('content')
+<div class="content-wrapper">
 
-		<!-- Meta -->
-		<meta name="description" content="Best Bootstrap Admin Dashboards">
-		<meta name="author" content="Bootstrap Gallery" />
-		<link rel="canonical" href="https://www.bootstrap.gallery/">
-		<meta property="og:url" content="https://www.bootstrap.gallery">
-		<meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
-		<meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
-		<meta property="og:type" content="Website">
-		<meta property="og:site_name" content="Bootstrap Gallery">
-		<link rel="shortcut icon" href="assets/images/favicon.svg">
+						<!-- Row start -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Stacked Area</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-area-stack-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Candlestick</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-candlestick-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Column Stack</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-column-stack-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Column Stack Full Height</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-column-stack-graph-fullheight"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Stacked Bar Full Width</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-bar-stack-graph-full-width"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Area</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-area-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Spline Area</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-area-spline-graph"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 
-		<!-- Title -->
-		<title>Bootstrap Admin Dashboards</title>
+						<!-- Row start -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Stacked Bar</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-bar-negative-values"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Bar</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-bar-graph" class="primary-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Bar Grouped</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-bar-graph-grouped"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Stacked Bar</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-bar-stack-graph"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 
+						<!-- Row start -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Column</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-column-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Column Datatables</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-column-graph-datalables"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 
-		<!-- *************
-			************ Common Css Files *************
-		************ -->
+						<!-- Row start -->
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Basic Line</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-line-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Line Datalabels</div>
+									</div>
+									<div class="card-body">
+										<div id="line-with-data-labels"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 col-xs-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Dashed Line</div>
+									</div>
+									<div class="card-body">
+										<div id="stepLineChart"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 
-		<!-- Animated css -->
-		<link rel="stylesheet" href="assets/css/animate.css">
+						<!-- Row start -->
+						<div class="row">
+							<div class="col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Donut</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-donut-graph" class="auto-align-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Pie</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-pie-graph" class="auto-align-graph"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Gradient</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-donut-graph-gradient"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Monochrome</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-donut-graph-monochrome"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Monochrome Gradient</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-donut-graph-monochrome-gradient"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Gradient</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-pie-graph-gradient"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Monochrome</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-pie-graph-monochrome"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 col-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Monochrome Gradient</div>
+									</div>
+									<div class="card-body">
+										<div id="basic-pie-graph-monochrome-gradient"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 
-		<!-- Bootstrap font icons css -->
-		<link rel="stylesheet" href="assets/fonts/bootstrap/bootstrap-icons.css">
-
-		<!-- Main css -->
-		<link rel="stylesheet" href="assets/css/main.min.css">
-
-
-		<!-- *************
-			************ Vendor Css Files *************
-		************ -->
-
-		<!-- Scrollbar CSS -->
-		<link rel="stylesheet" href="assets/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-	</head>
-
-	<body>
-
-		<!-- Loading wrapper start -->
-		<!-- <div id="loading-wrapper">
-			<div class="spinner">
-                <div class="line1"></div>
-				<div class="line2"></div>
-				<div class="line3"></div>
-				<div class="line4"></div>
-				<div class="line5"></div>
-				<div class="line6"></div>
-            </div>
-		</div> -->
-		<!-- Loading wrapper end -->
-
-		<!-- Page wrapper start -->
-		@include('component.sidebar')
-		<!-- Page wrapper end -->
-
-		<!-- *************
-			************ Required JavaScript Files *************
-		************* -->
-		<!-- Required jQuery first, then Bootstrap Bundle JS -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		<script src="assets/js/modernizr.js"></script>
-		<script src="assets/js/moment.js"></script>
-
-		<!-- *************
-			************ Vendor Js Files *************
-		************* -->
-
-		<!-- Overlay Scroll JS -->
-		<script src="assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
-		<script src="assets/vendor/overlay-scroll/custom-scrollbar.js"></script>
-
-		<!-- Apex Charts -->
-		<script src="assets/vendor/apex/apexcharts.min.js"></script>
-
-		<!-- Area Graphs -->
-		<script src="assets/vendor/apex/examples/area/basic-area-graph.js"></script>
-		<script src="assets/vendor/apex/examples/area/basic-area-graph-spline.js"></script>
-		<script src="assets/vendor/apex/examples/area/basic-area-graph-stacked.js"></script>
-
-		<!-- Bar Graphs -->
-		<script src="assets/vendor/apex/examples/bar/basic-bar-graph.js"></script>
-		<script src="assets/vendor/apex/examples/bar/basic-bar-graph-grouped.js"></script>
-		<script src="assets/vendor/apex/examples/bar/basic-bar-stack-graph.js"></script>
-		<script src="assets/vendor/apex/examples/bar/basic-bar-stack-graph-full-width.js"></script>
-		<script src="assets/vendor/apex/examples/bar/basic-bar-negative-values.js"></script>
-
-		<!-- Candlestick Graphs -->
-		<script src="assets/vendor/apex/examples/candlestick/basic-candlestick-graph.js"></script>
-
-		<!-- Column Graphs -->
-		<script src="assets/vendor/apex/examples/column/basic-column-graph.js"></script>
-		<script src="assets/vendor/apex/examples/column/basic-column-graph-datalables.js"></script>
-		<script src="assets/vendor/apex/examples/column/basic-column-stack-graph.js"></script>
-		<script src="assets/vendor/apex/examples/column/basic-column-stack-graph-fullheight.js"></script>
-
-		<!-- Line Graphs -->
-		<script src="assets/vendor/apex/examples/line/basic-line-graph.js"></script>
-		<script src="assets/vendor/apex/examples/line/line-with-data-labels.js"></script>
-		<script src="assets/vendor/apex/examples/line/stepline.js"></script>
-
-		<!-- Donut Graphs -->
-		<script src="assets/vendor/apex/examples/pie/basic-donut-graph.js"></script>
-		<script src="assets/vendor/apex/examples/pie/basic-donut-graph-gradient.js"></script>
-		<script src="assets/vendor/apex/examples/pie/basic-donut-graph-monochrome-gradient.js"></script>
-		<script src="assets/vendor/apex/examples/pie/basic-donut-graph-monochrome.js"></script>
-
-		<!-- Pie Graphs -->
-		<script src="assets/vendor/apex/examples/pie/basic-pie-graph.js"></script>
-		<script src="assets/vendor/apex/examples/pie/basic-pie-graph-gradient.js"></script>
-		<script src="assets/vendor/apex/examples/pie/basic-pie-graph-monochrome.js"></script>
-		<script src="assets/vendor/apex/examples/pie/basic-pie-graph-monochrome-gradient.js"></script>
-
-		<!-- Main Js Required -->
-		<script src="assets/js/main.js"></script>
-
-	</body>
-
-</html>
+					</div>
+@endsection
+>>>>>>> 9174c7e2b4dbd26feca16277d35d070555befa90

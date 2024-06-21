@@ -32,30 +32,35 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- shop bar start -->
-                <div class="shop-bar">
-                    <!-- shop tab bar start -->
-                    <!-- shop tab bar end -->
-                    <!-- shop sort start -->
-                    <div class="sort-by width-33 pull-left text-center">
-                        <label>Sort By: </label>
-                        <select id="sortProducts" >
-                            <option value="name">Name</option>
-                            <option value="price">Price</option>
-                        </select>
-                    </div>
-                    <!-- shop sort end -->
-                    <!-- shop show product start -->
-                    <div class="limit-product width-33 pull-left text-right">
-                        <label>Show: </label>
-                        <select name="show">
-                            <option value="#" selected>4</option>
-                            <option value="#">8</option>
-                            <option value="#">12</option>
-                            <option value="#">24</option>
-                        </select>
-                    </div>
-                    <!-- shop show product end -->
-                </div>
+                <form class="form-inline" id="sortForm" action="{{route('shop')}}">
+                        <div class="shop-nav width-33 pull-left">
+                            <input type="text" class="form-control" name="search" placeholder="Search" size="30" value="{{ request('search') }}">
+                            <button class="btn btn-danger" type="submit">Search</button>
+                        </div>
+                        <!-- shop tab bar start -->
+                        <!-- shop tab bar end -->
+                        <!-- shop sort start -->
+                        <div class="sort-by width-33 pull-left text-center">
+                            <label>Sort By: </label>
+                            <select id="sortProducts" name="sort" onchange="document.getElementById('sortForm').submit();">
+                                <option value="nameASC" {{ request('sort') == 'nameASC' ? 'selected' : '' }}>Name (Ascending)</option>
+                                <option value="nameDESC" {{ request('sort') == 'nameDESC' ? 'selected' : '' }}>Name (Descending)</option>
+                                <option value="priceASC" {{ request('sort') == 'priceASC' ? 'selected' : '' }}>Price (Ascending)</option>
+                                <option value="priceDESC" {{ request('sort') == 'priceDESC' ? 'selected' : '' }}>Price (Descending)</option>
+                            </select>
+                        </div>
+                        <!-- shop sort end -->
+                        <!-- shop show product start -->
+                        <div class="limit-product width-33 pull-left text-right">
+                            <label>Show: </label>
+                            <select name="paginate" onchange="document.getElementById('sortForm').submit();">
+                                <option value="4" {{ request('paginate') == '4' ? 'selected' : '' }}>4</option>
+                                <option value="8" {{ request('paginate') == '8' ? 'selected' : '' }}>8</option>
+                                <option value="16" {{ request('paginate') == '16' ? 'selected' : '' }}>16</option>
+                                <option value="24" {{ request('paginate') == '24' ? 'selected' : '' }}>24</option>
+                            </select>
+                        </div>
+                    </form>
                 <!-- shop bar end -->
             </div>
         </div>
@@ -65,9 +70,9 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="gird">
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
-                        @php
-                            $products = $products->sortBy('name');
-                        @endphp
+                        @if ($products->isEmpty())
+                        <h3 align="center">No products found matching your search criteria.</h3>
+                        @else
                         @foreach ($products as $index => $product)
                             <div class="col-md-3 col-sm-6">
                                 <!-- single shop start -->
@@ -112,6 +117,7 @@
                                 <!-- single shop end -->
                             </div>
                         @endforeach
+                        @endif
                     </div>
                     <!-- gird shop end -->
                 </div>
@@ -119,18 +125,10 @@
             <!-- shop tab content end -->
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-center">
                 <!-- toolbar start -->
+                {{$products->links()}}
                 <div class="toolbar-bottom">
-                    <ul>
-                        <li><a href="#"> <i class="fa fa-angle-left"></i> </a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="current"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"> <i class="fa fa-angle-right"></i> </a></li>
-                    </ul>
                 </div>
                 <!-- toolbar end -->
             </div>
@@ -138,5 +136,17 @@
     </div>
 </div>
 <!-- shop area end -->
+
+<style>
+    .pagination .page-item.active .page-link {
+        background-color: #EE2050;
+        border-color: #EE2050;
+        color: white;
+    }
+
+    .pagination .page-link {
+        color: #EE2050;
+    }
+</style>
 
 @endsection

@@ -34,9 +34,11 @@ Route::view('/account-settings', 'dashboard/account-settings')->name('account-se
 Route::view('/add-product', 'dashboard/add-product')->name('add-product');
 Route::view('/calendar', 'dashboard/calendar')->name('calendar');
 Route::view('/checkout', 'dashboard/checkout')->name('checkout');
+
 Route::view('/customers', 'dashboard/customers')->name('customers');
 Route::view('/error', 'dashboard/error')->name('error');
 Route::view('/forgot-password', 'dashboard/forgot-password')->name('forgot-password');
+
 Route::view('/login', 'dashboard/login')->name('login');
 Route::view('/maintenance', 'dashboard/maintenance')->name('maintenance');
 Route::view('/orders', 'dashboard/orders')->name('orders');
