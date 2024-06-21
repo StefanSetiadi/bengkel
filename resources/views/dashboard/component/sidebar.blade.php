@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-dropdown {{ request()->is('orders') || request()->is('products') || request()->is('view-cart') || request()->is('checkout') || request()->is('customers') || request()->is('add-product') || request()->is('reviews') ? 'active' : '' }}">
+                <li class="sidebar-dropdown {{ request()->is('orders') || request()->is('products') || request()->is('view-cart') || request()->is('checkout') || request()->is('add-product') ? 'active' : '' }}">
                     <a href="#">
                         <i class="bi bi-handbag"></i>
                         <span class="menu-text">Product</span>
@@ -49,10 +49,23 @@
                                 <a href="{{route('checkout')}}" class="{{ request()->is('checkout') ? 'current-page' : '' }}">Billing Details</a>
                             </li>
                             <li>
+                                <a href="{{route('add-product')}}" class="{{ request()->is('add-product') ? 'current-page' : '' }}">Add Product</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown {{ request()->is('bookings') || request()->is('products') || request()->is('customers') || request()->is('reviews') ? 'active' : '' }}">
+                    <a href="#">
+                        <i class="bi bi-calendar2-week"></i>
+                        <span class="menu-text">Transactions</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
                                 <a href="{{route('customers')}}" class="{{ request()->is('customers') ? 'current-page' : '' }}">Customers</a>
                             </li>
                             <li>
-                                <a href="{{route('add-product')}}" class="{{ request()->is('add-product') ? 'current-page' : '' }}">Add Product</a>
+                                <a href="{{route('bookings')}}" class="{{ request()->is('bookings') ? 'current-page' : '' }}">Booking</a>
                             </li>
                             <li>
                                 <a href="{{route('reviews')}}" class="{{ request()->is('reviews') ? 'current-page' : '' }}">Reviews</a>
