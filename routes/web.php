@@ -36,6 +36,7 @@ Route::view('/calendar', 'dashboard/calendar')->name('calendar');
 Route::view('/checkout', 'dashboard/checkout')->name('checkout');
 
 Route::view('/customers', 'dashboard/customers')->name('customers');
+Route::view('/bookings', 'dashboard/bookings')->name('bookings');
 Route::view('/error', 'dashboard/error')->name('error');
 Route::view('/forgot-password', 'dashboard/forgot-password')->name('forgot-password');
 
@@ -49,7 +50,6 @@ Route::view('/reviews', 'dashboard/reviews')->name('reviews');
 Route::view('/signup', 'dashboard/signup')->name('signup');
 Route::view('/tables', 'dashboard/tables')->name('tables');
 Route::view('/view-cart', 'dashboard/view-cart')->name('view-cart');
-
 
 // Shop
 Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
