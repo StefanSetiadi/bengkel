@@ -43,7 +43,6 @@ Route::view('/forgot-password', 'dashboard/forgot-password')->name('forgot-passw
 Route::view('/login', 'dashboard/login')->name('login');
 Route::view('/maintenance', 'dashboard/maintenance')->name('maintenance');
 Route::view('/orders', 'dashboard/orders')->name('orders');
-Route::get('/products', [ProductController::class, 'productsView'])->name('products');
 Route::view('/profile', 'dashboard/profile')->name('profile');
 Route::view('/reports', 'dashboard/reports')->name('reports');
 Route::view('/reviews', 'dashboard/reviews')->name('reviews');
@@ -56,7 +55,7 @@ Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
 Route::get('/shop-details{id_product}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
 
 // Product
-Route::get('/product', [ProductController::class, 'productView'])->name('product');
+Route::get('/products', [ProductController::class, 'productsView'])->name('products');
 Route::get('/createProduct', [ProductController::class, 'createView'])->name('createProduct');
 Route::get('/editProduct{id_product}', [ProductController::class, 'editView'])->name('editProduct');
 Route::get('/searchProduct', [ProductController::class, 'createView'])->name('searchProduct');

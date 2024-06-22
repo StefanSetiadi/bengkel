@@ -14,45 +14,6 @@ class ProductController extends Controller
         return view('product.create');
     }
 
-    public function productView(Request $request)
-    {
-        if ($request->has('search')) {
-            $products = Product::where('name', 'LIKE', '%' . $request->search . '%');
-        } else {
-            $products = Product::query();
-        }
-        if ($request->has('sort')) {
-            $sort = $request->sort;
-            switch ($sort) {
-                case 'nameASC':
-                    $products->orderBy('name', 'asc');
-                    break;
-                case 'nameDESC':
-                    $products->orderBy('name', 'desc');
-                    break;
-                case 'priceASC':
-                    $products->orderBy('price', 'asc');
-                    break;
-                case 'priceDESC':
-                    $products->orderBy('price', 'desc');
-                    break;
-            }
-        }
-        if ($request->has('paginate')) {
-            $paginate = $request->paginate;
-            $products = $products->paginate($paginate);
-        } else {
-            $products = $products->paginate(4);        
-        }
-        $products->appends([
-            'search' => $request->search,
-            'sort' => $request->sort,
-            'paginate' => $request->paginate
-        ]);
-        
-        return view('product.index', ['products' => $products]);
-    }
-
     public function productsView(Request $request)
     {
         if ($request->has('search')) {
@@ -81,7 +42,7 @@ class ProductController extends Controller
             $paginate = $request->paginate;
             $products = $products->paginate($paginate);
         } else {
-            $products = $products->paginate(4);        
+            $products = $products->paginate(10);        
         }
         $products->appends([
             'search' => $request->search,
@@ -95,7 +56,7 @@ class ProductController extends Controller
     public function editView($id_product)
     {
         $product = Product::where('id_product', $id_product)->first();
-        return view('product.edit', compact('product'));
+        return view('dashboard.edit-product', compact('product'));
     }
 
     public function addProduct(Request $request)
@@ -115,7 +76,7 @@ class ProductController extends Controller
             $data->save();
         }
 
-        return redirect()->route('product')->with('success', 'The product data has been successfully added.');
+        return redirect()->route('products')->with('success', 'The product data has been successfully added.');
     }
 
     public function editDataProduct(Request $request)
@@ -139,7 +100,7 @@ class ProductController extends Controller
             $data->save();
         }
 
-        return redirect()->route('product')->with('success', 'The product data has been successfully edited.');
+        return redirect()->route('products')->with('success', 'The product data has been successfully edited.');
     }
 
 }

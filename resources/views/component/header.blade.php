@@ -125,7 +125,6 @@
                                     <!-- single menu -->
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
                                     <!-- single menu -->
-                                    <li><a href="{{ route('product') }}">Product</a></li>
                                     <li class="has-mega"><a href="#">pages<i class="icofont icofont-simple-down"></i></a>
                                         <!-- mega-menu start -->
                                         <div class="mega-menu">

@@ -5,8 +5,9 @@
 <div class="content-wrapper">
 <!-- Row start -->
 <div class="row">
-	<form action="{{route('addProduct')}}" method="POST" enctype="multipart/form-data">
+	<form action="{{route('editDataProduct')}}" method="POST" enctype="multipart/form-data">
 		@csrf
+        <input type="text" value="{{ $product->id_product }}" name="id_product" hidden>
 		<div class="col-sm-12 col-12">
 			<div class="card">
 				<div class="card-header">
@@ -21,7 +22,7 @@
 									<div class="row">
 										<div class="form-group">
 											<div class="col-12">
-												<img id="previewProduct" src="img/product/1.jpg"
+												<img id="previewProduct" src="{{ $product->image }}"
 													class="rounded mx-auto d-block" width="270" height="330" alt="productPhoto">
 											</div>
 											<input type="file" id="productPhoto" name="productPhoto"
@@ -47,33 +48,33 @@
 										<div class="col-sm-12 col-12">
 											<div class="mb-3">
 												<label class="form-label">Name <span class="text-red">*</span></label>
-												<input type="text" class="form-control" name="name" placeholder="Enter Name of Sparepart" required>
+												<input type="text" class="form-control" name="name" value="{{ $product->name }}" placeholder="Enter Name of Sparepart" required>
 											</div>
 										</div>
 										<div class="col-sm-6 col-12">
 											<div class="mb-3">
 												<label class="form-label">Price <span class="text-red">*</span></label>
-												<input type="number" class="form-control" name="price" placeholder="Enter Price of Sparepart" required>
+												<input type="number" class="form-control" name="price" value="{{ $product->price }}" placeholder="Enter Price of Sparepart" required>
 											</div>
 										</div>
 										<div class="col-sm-6 col-12">
 											<div class="mb-3">
 												<label class="form-label">Quantity <span class="text-red">*</span></label>
-												<input type="text" class="form-control" name="quantity" placeholder="Enter Quantity of Sparepart" required>
+												<input type="text" class="form-control" name="quantity" value="{{ $product->quantity }}" placeholder="Enter Quantity of Sparepart" required>
 											</div>
 										</div>
 										<div class="col-sm-12 col-12">
 											<div class="mb-0">
 												<label class="form-label">Description</label>
 												<textarea rows="4" class="form-control" name="description"
-													placeholder="Enter Description of Sparepart"></textarea>
+													placeholder="Enter Description of Sparepart">{{ $product->description }}</textarea>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="custom-btn-group flex-end mt-5">
-									<input type="reset" class="btn btn-light" value="Cancel"></input>
-									<button type="submit" class="btn btn-success">Add Product</button>
+									<input type="reset" class="btn btn-light"></input>
+									<button type="submit" class="btn btn-success">Edit Product</button>
 								</div>
 							</div>
 						</div>
@@ -127,7 +128,7 @@
 	document.addEventListener('DOMContentLoaded', function() {
 		var form = document.querySelector('form');
 		form.addEventListener('reset', function() {
-			resetPreview('previewProduct', 'img/product/1.jpg');
+			resetPreview('previewProduct', '{{ $product->image }}');
 		});
 	});
 </script>

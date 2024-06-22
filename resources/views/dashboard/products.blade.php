@@ -5,27 +5,35 @@
 	<!-- Row start -->
 	<div class="row">
 	<div class="col-12">
-	@if ($message = Session::get('success'))
-		<style>
-			#alertMessage {
-				transition: opacity 0.8s ease-out;
-			}
-		</style>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<br>
-		<div id="alertMessage" class="alert alert-success" role="alert">
-			{{ $message }}
-		</div>
-		<script>
-			setTimeout(() => {
-				const alertElement = document.getElementById('alertMessage');
-				alertElement.style.opacity = '0';
-				setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
-			}, 5000);
-		</script>
-	@endif
 		<div class="card">
 			<div class="card-body">
+			@if ($message = Session::get('success'))
+				<style>
+					#alertMessage {
+						transition: opacity 0.8s ease-out;
+					}
+				</style>
+				<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+				<br>
+				<div id="alertMessage" class="alert alert-success" role="alert">
+					{{ $message }}
+				</div>
+				<script>
+					setTimeout(() => {
+						const alertElement = document.getElementById('alertMessage');
+						alertElement.style.opacity = '0';
+						setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+					}, 5000);
+				</script>
+			@endif
+				<form class="input-group mb-2" id="sortForm" action="{{ route('products') }}">
+					<input type="text" class="form-control" name="search" placeholder="Search anything" value="{{ request('search') }}">
+					<button class="btn" type="submit">
+						<i class="bi bi-search"></i>
+					</button>
+				</form>
+				<a type="button" class="btn btn-info mb-2" href="{{ route('add-product') }}"><i class="bi bi-plus-square"></i> Add</a>
+				<br>
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped m-0">
 						<thead>
@@ -44,12 +52,18 @@
 							@else
 							@foreach ($products as $index => $product)
 							<tr>
-								<td><img src="{{ $product->image }}" class="flag-img" ></td>
+								<td><div class="media-box">
+										<img src="{{ $product->image }}" class="media-avatar">
+										<div class="media-box-body">
+											<div class="text-truncate"></div>
+										</div>
+									</div>
+								</td>
 								<td>{{ $product->name }}</td>
 								<td>{{ $product->quantity }}</td>
 								<td>{{ $product->price }}</td>
 								<td>{{ $product->description }}</td>
-								<td><button type="button" class="btn btn-warning">Edit</button></td>
+								<td><button onclick="location.href='/editProduct{{ $product->id_product }}'" class="btn btn-warning">Edit</button></td>
 							</tr>
 							@endforeach
 							@endif
@@ -77,13 +91,19 @@
 </div>
 <style>
     .pagination .page-item.active .page-link {
-        background-color: #EE2050;
-        border-color: #EE2050;
+        background-color: #007BFF;
+        border-color: #007BFF;
         color: white;
+        font-size: 12px;
+        padding: 4px 8px;
     }
 
     .pagination .page-link {
-        color: #EE2050;
+        color: #007BFF;
+        font-size: 12px;
+        padding: 4px 8px;
+        margin: 0 2px;
     }
 </style>
+
 @endsection
