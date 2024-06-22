@@ -43,7 +43,7 @@ Route::view('/forgot-password', 'dashboard/forgot-password')->name('forgot-passw
 Route::view('/login', 'dashboard/login')->name('login');
 Route::view('/maintenance', 'dashboard/maintenance')->name('maintenance');
 Route::view('/orders', 'dashboard/orders')->name('orders');
-Route::view('/products', 'dashboard/products')->name('products');
+Route::get('/products', [ProductController::class, 'productsView'])->name('products');
 Route::view('/profile', 'dashboard/profile')->name('profile');
 Route::view('/reports', 'dashboard/reports')->name('reports');
 Route::view('/reviews', 'dashboard/reviews')->name('reviews');

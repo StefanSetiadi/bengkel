@@ -2,265 +2,88 @@
 
 @section('content')
 <div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+	<div class="col-12">
+	@if ($message = Session::get('success'))
+		<style>
+			#alertMessage {
+				transition: opacity 0.8s ease-out;
+			}
+		</style>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<br>
+		<div id="alertMessage" class="alert alert-success" role="alert">
+			{{ $message }}
+		</div>
+		<script>
+			setTimeout(() => {
+				const alertElement = document.getElementById('alertMessage');
+				alertElement.style.opacity = '0';
+				setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+			}, 5000);
+		</script>
+	@endif
+		<div class="card">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped m-0">
+						<thead>
+							<tr>
+								<th>Image</th>
+								<th>Name</th>
+								<th>Quantity</th>
+								<th>Price</th>
+								<th>Description</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if ($products->isEmpty())
+							<h3 align="center">No products found matching your search criteria.</h3>
+							@else
+							@foreach ($products as $index => $product)
+							<tr>
+								<td><img src="{{ $product->image }}" class="flag-img" ></td>
+								<td>{{ $product->name }}</td>
+								<td>{{ $product->quantity }}</td>
+								<td>{{ $product->price }}</td>
+								<td>{{ $product->description }}</td>
+								<td><button type="button" class="btn btn-warning">Edit</button></td>
+							</tr>
+							@endforeach
+							@endif
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-						<!-- Row start -->
-						<div class="row">
-							<div class="col-sm-12 col-12">
-								<div class="card">
-									<div class="card-header">
-										<div class="card-title">Customers</div>
-									</div>
-									<div class="card-body">
+	</div>
+</div>
+<!-- Row end -->
 
-										<div class="table-responsive">
-											<table class="table v-middle m-0">
-												<thead>
-													<tr>
-														<th>Country</th>
-														<th>Customer</th>
-														<th>Contact</th>
-														<th>Status</th>
-														<th>Orders</th>
-														<th>Last Order</th>
-														<th>Amount</th>
-														<th>Actions</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>
-															<img src="assets/images/flags/4x3/ca.svg" class="flag-img-lg"
-																alt="Best Admin Dashboards" />
-															Canada
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user2.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Dolly Winters</div>
-																	<p>ID: #Arise00763</p>
-																</div>
-															</div>
-														</td>
-														<td>067-676-98320</td>
-														<td>
-															<span class="badge shade-green min-70">Active</span>
-														</td>
-														<td>87</td>
-														<td>2022/01/25</td>
-														<td>$32800</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<img src="assets/images/flags/1x1/jp.svg" class="flag-img-lg" alt="Clean Dashboards" />
-															Japan
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user5.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Cedric Kelly</div>
-																	<p>ID: #Arise00582</p>
-																</div>
-															</div>
-														</td>
-														<td>009-543-77650</td>
-														<td>
-															<span class="badge shade-green min-70">Active</span>
-														</td>
-														<td>34</td>
-														<td>2022/01/22</td>
-														<td>$65890</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<img src="assets/images/flags/1x1/us.svg" class="flag-img-lg" alt="Clean Dashboards" />
-															United States
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Tiya Davidson</div>
-																	<p>ID: #Arise00554</p>
-																</div>
-															</div>
-														</td>
-														<td>067-676-98320</td>
-														<td>
-															<span class="badge shade-green min-70">Active</span>
-														</td>
-														<td>21</td>
-														<td>2022/01/10</td>
-														<td>$25678</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<img src="assets/images/flags/1x1/tr.svg" class="flag-img-lg" alt="Modern Dashboards" />
-															Turkey
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user4.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Zozi Williams</div>
-																	<p>ID: #Arise00831</p>
-																</div>
-															</div>
-														</td>
-														<td>002-434-66659</td>
-														<td>
-															<span class="badge shade-green min-70">Active</span>
-														</td>
-														<td>55</td>
-														<td>2022/01/21</td>
-														<td>$24571</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<img src="assets/images/flags/1x1/in.svg" class="flag-img-lg" alt="Google Dashboards" />
-															India
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user3.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Karan Kumar</div>
-																	<p>ID: #Arise00987</p>
-																</div>
-															</div>
-														</td>
-														<td>030-998-03437</td>
-														<td>
-															<span class="badge shade-green min-70">Active</span>
-														</td>
-														<td>61</td>
-														<td>2021/09/18</td>
-														<td>$12309</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<img src="assets/images/flags/1x1/br.svg" class="flag-img-lg" alt="Admin Panels" />
-															Brazil
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user6.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Lilly Desmet</div>
-																	<p>ID: #Arise00987</p>
-																</div>
-															</div>
-														</td>
-														<td>030-998-03437</td>
-														<td>
-															<span class="badge shade-red min-70">Blocked</span>
-														</td>
-														<td>61</td>
-														<td>2021/09/18</td>
-														<td>$12309</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<img src="assets/images/flags/1x1/it.svg" class="flag-img-lg" alt="Google Dashboards" />
-															Italy
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user7.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Tiya Nixon</div>
-																	<p>ID: #Arise00987</p>
-																</div>
-															</div>
-														</td>
-														<td>030-998-03437</td>
-														<td>
-															<span class="badge shade-red min-70">Blocked</span>
-														</td>
-														<td>61</td>
-														<td>2021/09/18</td>
-														<td>$12309</td>
-														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
-																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
-																</a>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
+<div class="row">
+	<div class="col-md-12 text-center" >
+		<!-- toolbar start -->
+		{{$products->links()}}
+		<div class="toolbar-bottom">
+		</div>
+		<!-- toolbar end -->
+	</div>
+</div>
 
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Row end -->
 
-					</div>
+</div>
+<style>
+    .pagination .page-item.active .page-link {
+        background-color: #EE2050;
+        border-color: #EE2050;
+        color: white;
+    }
+
+    .pagination .page-link {
+        color: #EE2050;
+    }
+</style>
 @endsection
