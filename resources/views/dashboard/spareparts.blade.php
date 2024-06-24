@@ -39,11 +39,11 @@
 						<thead>
 							<tr>
 								<th>Image</th>
-								<th>Name</th>
-								<th>Quantity</th>
-								<th>Price</th>
-								<th>Description</th>
-								<th>Action</th>
+								<th>Nama</th>
+								<th>Harga</th>
+								<th>Jumlah</th>
+								<th>Kategori</th>
+								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -61,8 +61,8 @@
 								</td>
 								<td>{{ $sparepart->nama }}</td>
 								<td>{{ $sparepart->harga }}</td>
+								<td>{{ $sparepart->jumlah }}</td>
 								<td>{{ $sparepart->kategori }}</td>
-								<td>{{ $sparepart->deskripsi }}</td>
 								<td><button onclick="location.href='/editSparepart{{ $sparepart->id_sparepart }}'" class="btn btn-warning">Edit</button></td>
 							</tr>
 							@endforeach

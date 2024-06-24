@@ -79,7 +79,7 @@
                                 <div class="single-product hover-style text-center">
                                     <div class="product-img">
                                         <!-- product-img -->
-                                        <a href="/shop-details{{$sparepart->id_product}}" class="main-img">
+                                        <a href="/shop-details{{$sparepart->id_sparepart}}" class="main-img">
                                         @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
                                             <img src="{{ $sparepart->image }}" alt="" width="270" height="330">
                                         @else

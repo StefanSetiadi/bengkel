@@ -52,7 +52,7 @@ Route::view('/view-cart', 'dashboard/view-cart')->name('view-cart');
 
 // Shop
 Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
-Route::get('/shop-details{id_product}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
+Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
 
 // Product
 Route::get('/spareparts', [SparepartController::class, 'sparepartsView'])->name('spareparts');

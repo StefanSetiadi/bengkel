@@ -41,11 +41,11 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="single-product">
                         <div class="product-name">
-                            <a href="#">{{ $product->name }}</a>
+                            <a href="#">{{ $sparepart->nama }}</a>
                         </div>
                         <div class="price-rating">
                             <div class="product-price pull-left">
-                                <p>Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
+                                <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
                             </div>
                             <!-- ratings -->
                             <div class="ratings pull-right">

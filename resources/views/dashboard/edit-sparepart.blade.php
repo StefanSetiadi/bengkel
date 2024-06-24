@@ -7,6 +7,7 @@
 <div class="row">
 	<form action="{{route('editDataSparepart')}}" method="POST" enctype="multipart/form-data">
 		@csrf
+		<input type="text" name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
 		<div class="col-sm-12 col-12">
 			<div class="card">
 				<div class="card-header">

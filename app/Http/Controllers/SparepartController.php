@@ -79,7 +79,6 @@ class SparepartController extends Controller
     public function editDataSparepart(Request $request)
     {
         $data = Sparepart::find($request->id_sparepart);
-
         if ($data) {
             $data->id_service = $request->id_service;
             $data->nama = $request->nama;
@@ -90,14 +89,13 @@ class SparepartController extends Controller
             $data->save();
         }
 
-
         if ($request->hasFile('productPhoto')) {
             $file = $request->file('productPhoto');
             $random_filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
             $file->move('img/sparepart/', $random_filename);
             $data->image = 'img/sparepart/' . $random_filename;
             $data->save();
-        }
+        } 
 
         return redirect()->route('spareparts')->with('success', 'The sparepart data has been successfully edited.');
     }
