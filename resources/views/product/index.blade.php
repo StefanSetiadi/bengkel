@@ -17,7 +17,7 @@
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('products') }}">Product</a></li>
+                        <li><a href="{{ route('spareparts') }}">Product</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -33,7 +33,7 @@
             <div class="col-md-12">
                 <!-- shop bar start -->
                 <div class="shop-bar">
-                    <form class="form-inline" id="sortForm" action="{{route('products')}}">
+                    <form class="form-inline" id="sortForm" action="{{route('spareparts')}}">
                         <div class="shop-nav width-33 pull-left">
                             <input type="text" class="form-control" name="search" placeholder="Search" size="30" value="{{ request('search') }}">
                             <button class="btn btn-danger" type="submit">Search</button>

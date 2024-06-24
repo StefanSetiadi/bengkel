@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('no_kendaraan');
             $table->text('deskripsi');
             $table->date('tanggal');
-            $table->boolean('status');
+            $table->integer('total_harga');
+            $table->boolean('status_pembayaran');
             $table->timestamps();
 
             $table->foreign('id_customer')->references('id_customer')->on('customers');

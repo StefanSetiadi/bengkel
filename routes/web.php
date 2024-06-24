@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SparepartController;
 
 
 /*
@@ -31,7 +31,7 @@ Route::view('/error-500', 'error-pages/error-500')->name('error-500');
 // Dashboard
 Route::view('/index', 'dashboard/index')->name('indexdashboard');
 Route::view('/account-settings', 'dashboard/account-settings')->name('account-settings');
-Route::view('/add-product', 'dashboard/add-product')->name('add-product');
+Route::view('/add-sparepart', 'dashboard/add-sparepart')->name('add-sparepart');
 Route::view('/calendar', 'dashboard/calendar')->name('calendar');
 Route::view('/checkout', 'dashboard/checkout')->name('checkout');
 
@@ -55,13 +55,13 @@ Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
 Route::get('/shop-details{id_product}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
 
 // Product
-Route::get('/products', [ProductController::class, 'productsView'])->name('products');
-Route::get('/createProduct', [ProductController::class, 'createView'])->name('createProduct');
-Route::get('/editProduct{id_product}', [ProductController::class, 'editView'])->name('editProduct');
-Route::get('/searchProduct', [ProductController::class, 'createView'])->name('searchProduct');
+Route::get('/spareparts', [SparepartController::class, 'sparepartsView'])->name('spareparts');
+Route::get('/createSparepart', [SparepartController::class, 'createView'])->name('createSparepart');
+Route::get('/editSparepart{id_sparepart}', [SparepartController::class, 'editView'])->name('editSparepart');
+Route::get('/searchSparepart', [SparepartController::class, 'createView'])->name('searchSparepart');
 
-Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
-Route::post('/editDataProduct', [ProductController::class, 'editDataProduct'])->name('editDataProduct');
+Route::post('/addSparepart', [SparepartController::class, 'addSparepart'])->name('addSparepart');
+Route::post('/editDataSparepart', [SparepartController::class, 'editDataSparepart'])->name('editDataSparepart');
 
 
 

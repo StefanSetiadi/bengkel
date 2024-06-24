@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking_service', function (Blueprint $table) {
-            $table->id('id_booking_service');
+        Schema::create('detail_booking', function (Blueprint $table) {
+            $table->id('id_detail_booking');
             $table->unsignedBigInteger('id_booking');
             $table->unsignedBigInteger('id_service');
+            $table->unsignedBigInteger('id_sparepart');
             $table->integer('jumlah');
             $table->integer('total');
             $table->timestamps();
 
             $table->foreign('id_booking')->references('id_booking')->on('booking');
             $table->foreign('id_service')->references('id_service')->on('service');
+            $table->foreign('id_sparepart')->references('id_sparepart')->on('sparepart');
         });
     }
 
@@ -35,6 +37,9 @@ return new class extends Migration
         Schema::table('service', function (Blueprint $table) {
             $table->dropForeign(['id_service']);
         });
-        Schema::dropIfExists('booking_service');
+        Schema::table('service', function (Blueprint $table) {
+            $table->dropForeign(['id_sparepart']);
+        });
+        Schema::dropIfExists('detail_booking');
     }
 };

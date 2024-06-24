@@ -26,13 +26,13 @@
 					}, 5000);
 				</script>
 			@endif
-				<form class="input-group mb-2" id="sortForm" action="{{ route('products') }}">
+				<form class="input-group mb-2" id="sortForm" action="{{ route('spareparts') }}">
 					<input type="text" class="form-control" name="search" placeholder="Search anything" value="{{ request('search') }}">
 					<button class="btn" type="submit">
 						<i class="bi bi-search"></i>
 					</button>
 				</form>
-				<a type="button" class="btn btn-info mb-2" href="{{ route('add-product') }}"><i class="bi bi-plus-square"></i> Add</a>
+				<a type="button" class="btn btn-info mb-2" href="{{ route('add-sparepart') }}"><i class="bi bi-plus-square"></i> Add</a>
 				<br>
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped m-0">
@@ -47,23 +47,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							@if ($products->isEmpty())
-							<h3 align="center">No products found matching your search criteria.</h3>
+							@if ($spareparts->isEmpty())
+							<h3 align="center">No spareparts found matching your search criteria.</h3>
 							@else
-							@foreach ($products as $index => $product)
+							@foreach ($spareparts as $index => $sparepart)
 							<tr>
 								<td><div class="media-box">
-										<img src="{{ $product->image }}" class="media-avatar">
+										<img src="{{ $sparepart->image }}" class="media-avatar">
 										<div class="media-box-body">
 											<div class="text-truncate"></div>
 										</div>
 									</div>
 								</td>
-								<td>{{ $product->name }}</td>
-								<td>{{ $product->quantity }}</td>
-								<td>{{ $product->price }}</td>
-								<td>{{ $product->description }}</td>
-								<td><button onclick="location.href='/editProduct{{ $product->id_product }}'" class="btn btn-warning">Edit</button></td>
+								<td>{{ $sparepart->nama }}</td>
+								<td>{{ $sparepart->harga }}</td>
+								<td>{{ $sparepart->kategori }}</td>
+								<td>{{ $sparepart->deskripsi }}</td>
+								<td><button onclick="location.href='/editSparepart{{ $sparepart->id_sparepart }}'" class="btn btn-warning">Edit</button></td>
 							</tr>
 							@endforeach
 							@endif
@@ -80,7 +80,7 @@
 <div class="row">
 	<div class="col-md-12 text-center" >
 		<!-- toolbar start -->
-		{{$products->links()}}
+		{{$spareparts->links()}}
 		<div class="toolbar-bottom">
 		</div>
 		<!-- toolbar end -->

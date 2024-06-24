@@ -4,53 +4,53 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Sparepart;
 
 class ShopController extends Controller
 {
     public function shopView(Request $request)
     {   
         if ($request->has('search')) {
-            $products = Product::where('name', 'LIKE', '%' . $request->search . '%');
+            $spareparts = Sparepart::where('name', 'LIKE', '%' . $request->search . '%');
         } else {
-            $products = Product::query();
+            $spareparts = Sparepart::query();
         }
         if ($request->has('sort')) {
             $sort = $request->sort;
             switch ($sort) {
                 case 'nameASC':
-                    $products->orderBy('name', 'asc');
+                    $spareparts->orderBy('name', 'asc');
                     break;
                 case 'nameDESC':
-                    $products->orderBy('name', 'desc');
+                    $spareparts->orderBy('name', 'desc');
                     break;
                 case 'priceASC':
-                    $products->orderBy('price', 'asc');
+                    $spareparts->orderBy('price', 'asc');
                     break;
                 case 'priceDESC':
-                    $products->orderBy('price', 'desc');
+                    $spareparts->orderBy('price', 'desc');
                     break;
             }
         }
         if ($request->has('paginate')) {
             $paginate = $request->paginate;
-            $products = $products->paginate($paginate);
+            $spareparts = $spareparts->paginate($paginate);
         } else {
-            $products = $products->paginate(4);        
+            $spareparts = $spareparts->paginate(4);        
         }
-        $products->appends([
+        $spareparts->appends([
             'search' => $request->search,
             'sort' => $request->sort,
             'paginate' => $request->paginate
         ]);
         
-        return view('shop.shop', ['products' => $products]);
+        return view('shop.shop', ['spareparts' => $spareparts]);
     }
 
-    public function shopDetailsView($id_product)
+    public function shopDetailsView($id_sparepart)
     {
-        $product = Product::where('id_product', $id_product)->first();
-        return view('shop.shop-details', compact('product'));
+        $sparepart = Sparepart::where('id_sparepart', $id_sparepart)->first();
+        return view('shop.shop-details', compact('sparepart'));
     }
 
 }

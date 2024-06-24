@@ -70,18 +70,18 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="gird">
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
-                        @if ($products->isEmpty())
+                        @if ($spareparts->isEmpty())
                         <h3 align="center">No products found matching your search criteria.</h3>
                         @else
-                        @foreach ($products as $index => $product)
+                        @foreach ($spareparts as $index => $sparepart)
                             <div class="col-md-3 col-sm-6">
                                 <!-- single shop start -->
                                 <div class="single-product hover-style text-center">
                                     <div class="product-img">
                                         <!-- product-img -->
-                                        <a href="/shop-details{{$product->id_product}}" class="main-img">
-                                        @if(!empty($product->image) && file_exists(public_path($product->image)))
-                                            <img src="{{ $product->image }}" alt="" width="270" height="330">
+                                        <a href="/shop-details{{$sparepart->id_product}}" class="main-img">
+                                        @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
+                                            <img src="{{ $sparepart->image }}" alt="" width="270" height="330">
                                         @else
                                             <img src="img/product/1.jpg" alt="" width="270" height="330">
                                         @endif
@@ -106,10 +106,10 @@
                                     <!-- product-info start -->
                                     <div class="product-info text-center">
                                         <div class="product-name">
-                                            <a href="/shop-details{{$product->id_product}}">{{ $product->name }}</a>
+                                            <a href="/shop-details{{$sparepart->id_sparepart}}">{{ $sparepart->nama }}</a>
                                         </div>
                                         <div class="product-price">
-                                            <p>Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
+                                            <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
                                         </div>
                                     </div>
                                     <!-- product-info start -->
@@ -127,7 +127,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <!-- toolbar start -->
-                {{$products->links()}}
+                {{$spareparts->links()}}
                 <div class="toolbar-bottom">
                 </div>
                 <!-- toolbar end -->

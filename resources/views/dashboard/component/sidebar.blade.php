@@ -29,10 +29,10 @@
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-dropdown {{ request()->is('orders') || request()->is('products') || request()->is('view-cart') || request()->is('checkout') || request()->is('add-product') ? 'active' : '' }}">
+                <li class="sidebar-dropdown {{ request()->is('orders') || request()->is('spareparts') || request()->is('view-cart') || request()->is('checkout') || request()->is('add-product') ? 'active' : '' }}">
                     <a href="#">
                         <i class="bi bi-handbag"></i>
-                        <span class="menu-text">Product</span>
+                        <span class="menu-text">Sparepart</span>
                     </a>
                     <div class="sidebar-submenu">
                         <ul>
@@ -40,7 +40,7 @@
                                 <a href="{{route('orders')}}" class="{{ request()->is('orders') ? 'current-page' : '' }}">Order History</a>
                             </li>
                             <li>
-                                <a href="{{route('products')}}" class="{{ request()->is('products') ? 'current-page' : '' }}">Products</a>
+                                <a href="{{route('spareparts')}}" class="{{ request()->is('spareparts') ? 'current-page' : '' }}">Spareparts</a>
                             </li>
                             <li>
                                 <a href="{{route('view-cart')}}" class="{{ request()->is('view-cart') ? 'current-page' : '' }}">Shopping Cart</a>
@@ -49,12 +49,12 @@
                                 <a href="{{route('checkout')}}" class="{{ request()->is('checkout') ? 'current-page' : '' }}">Billing Details</a>
                             </li>
                             <li>
-                                <a href="{{route('add-product')}}" class="{{ request()->is('add-product') ? 'current-page' : '' }}">Add Product</a>
+                                <a href="{{route('spareparts')}}" class="{{ request()->is('add-product') ? 'current-page' : '' }}">Add Product</a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-dropdown {{ request()->is('bookings') || request()->is('products') || request()->is('customers') || request()->is('reviews') ? 'active' : '' }}">
+                <li class="sidebar-dropdown {{ request()->is('bookings') || request()->is('customers') || request()->is('reviews') ? 'active' : '' }}">
                     <a href="#">
                         <i class="bi bi-calendar2-week"></i>
                         <span class="menu-text">Transactions</span>

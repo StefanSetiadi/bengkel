@@ -189,12 +189,6 @@
                                         <li><a href="{{ route('error-500') }}">eror 500</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Product</a>
-                                    <ul>
-                                        <li><a href="{{ route('createProduct') }}">Create Product</a></li>
-                                        <li><a href="{{ route('searchProduct') }}">Search Product</a></li>
-                                    </ul>
-                                </li>
                             </ul>
                         </nav>
                     </div>
