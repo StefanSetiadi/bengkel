@@ -15,47 +15,42 @@ class SparepartSeeder extends Seeder
     {
         $products = [
             [
-                'id_service' => '1',
                 'nama' => 'Oli 1',
                 'harga' => 10,
                 'jumlah' => 10,
-                'kategori' => 320000,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 'deskripsi',
                 'image' => 'img/product/1.jpg'
             ],
             [
-                'id_service' => '1',
                 'nama' => 'Oli 2',
                 'harga' => 10,
                 'jumlah' => 10,
-                'kategori' => 320000,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 'deskripsi',
                 'image' => 'img/product/1.jpg'
             ],
             [
-                'id_service' => '1',
                 'nama' => 'Oli 3',
                 'harga' => 10,
                 'jumlah' => 10,
-                'kategori' => 320000,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 'deskripsi',
                 'image' => 'img/product/1.jpg'
             ],
             [
-                'id_service' => '1',
                 'nama' => 'Oli 4',
                 'harga' => 10,
                 'jumlah' => 10,
-                'kategori' => 320000,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 'deskripsi',
                 'image' => 'img/product/1.jpg'
             ],
             [
-                'id_service' => '1',
                 'nama' => 'Oli 5',
                 'harga' => 10,
                 'jumlah' => 10,
-                'kategori' => 320000,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 'deskripsi',
                 'image' => 'img/product/1.jpg'
             ],

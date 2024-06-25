@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_service');
             $table->string('nama');
             $table->integer('harga');
+            $table->string('kategori');
             $table->text('deskripsi');
             $table->string('image');
             $table->timestamps();

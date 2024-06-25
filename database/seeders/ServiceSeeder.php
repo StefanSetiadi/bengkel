@@ -17,24 +17,28 @@ class ServiceSeeder extends Seeder
             [
                 'nama' => 'Ganti Oli',
                 'harga' => 10,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 320000,
                 'image' => 'img/product/1.jpg'
             ],
             [
                 'nama' => 'Cat Warna',
                 'harga' => 10,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 320000,
                 'image' => 'img/product/1.jpg'
             ],
             [
                 'nama' => 'Ganti Air Radiator',
                 'harga' => 10,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 320000,
                 'image' => 'img/product/1.jpg'
             ],
             [
                 'nama' => 'Ganti Ban',
                 'harga' => 10,
+                'kategori' => 'oli mesin',
                 'deskripsi' => 320000,
                 'image' => 'img/product/1.jpg'
             ],
