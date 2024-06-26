@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('sparepart', function (Blueprint $table) {
             $table->id('id_sparepart');
-            $table->unsignedBigInteger('id_kategori_sparepart');
-            $table->string('nama', 20);
+            $table->unsignedBigInteger('id_kategori_service');
+            $table->string('nama');
             $table->integer('harga');
             $table->integer('jumlah');
-            $table->string('kategori');
             $table->text('deskripsi')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_kategori_sparepart')->references('id_kategori_sparepart')->on('kategori_sparepart');
+            $table->foreign('id_kategori_service')->references('id_kategori_service')->on('kategori_service');
         });
     }
 
@@ -31,8 +30,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('kategori_sparepart', function (Blueprint $table) {
-            $table->dropForeign(['id_kategori_sparepart']);
+        Schema::table('kategori_service', function (Blueprint $table) {
+            $table->dropForeign(['id_kategori_service']);
         });
         Schema::dropIfExists('sparepart');
     }

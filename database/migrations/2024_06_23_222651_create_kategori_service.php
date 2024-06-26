@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('kategori_service', function (Blueprint $table) {
             $table->id('id_kategori_service');
             $table->string('nama');
+            $table->integer('biaya_jasa');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
