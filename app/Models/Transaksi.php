@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
+    protected $table = 'transaksi';
+    protected $guarded = ['id_transaksi'];
+    protected $primaryKey = 'id_transaksi';
+    protected $dates = ['created_at'];
 }

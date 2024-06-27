@@ -29,51 +29,36 @@
                         <!-- cart menu start -->
                         <div class="cart-menu">
                             <ul>
-                                <li><a href="#"> <i class="fa fa-shopping-cart"></i>(2)</a>
+                                <li>
+                                    @isset($carts)
+                                    <a href="#"> <i class="fa fa-shopping-cart"></i>({{ $carts->count() }})</a>
                                     <div class="cart-items">
                                         <ul>
+                                            @foreach ($carts as $index => $cart)
                                             <!-- single cart item start -->
                                             <li>
                                                 <!-- cart item img -->
                                                 <div class="cart-item-img">
                                                     <a href="#">
-                                                        <img src="img/product/1.jpg" alt="">
+                                                        <img src="{{ $cart->image }}" alt="">
                                                     </a>
                                                 </div>
                                                 <!-- cart item info -->
                                                 <div class="cart-info">
                                                     <a href="#" class="cart-item-name">
-                                                        Three Ball Bearing
+                                                        {{ $cart->nama }}
                                                     </a>
-                                                    <p class="quantity">quantity: <strong> 1</strong></p>
-                                                    <p class="price">price: <strong> $ 320</strong></p>
+                                                    <p class="quantity">quantity: <strong> {{ $cart->jumlah }}</strong></p>
+                                                    <p class="price">price: <strong>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</strong></p>
                                                     <button class="remove"><i class="fa fa-trash-o"></i></button>
                                                 </div>
                                             </li>
                                             <!-- single cart item end -->
-                                            <!-- single cart item start -->
-                                            <li>
-                                                <!-- cart item img -->
-                                                <div class="cart-item-img">
-                                                    <a href="#">
-                                                        <img src="img/product/2.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <!-- cart item info -->
-                                                <div class="cart-info">
-                                                    <a href="#" class="cart-item-name">
-                                                        Car Exhaust Pipe
-                                                    </a>
-                                                    <p class="quantity">quantity: <strong> 2</strong></p>
-                                                    <p class="price">price: <strong> $ 441</strong></p>
-                                                    <button class="remove"><i class="fa fa-trash-o"></i></button>
-                                                </div>
-                                            </li>
-                                            <!-- single cart item end -->
+                                            @endforeach
                                             <li>
                                                 <div class="subtotal">
                                                     <div class="subtotal-title">
-                                                        <h3>subtotal <span class="pull-right"> $ 661 </span> </h3>
+                                                        <h3>subtotal <span class="pull-right">Rp. {{ number_format($subtotal, 0, ',', '.') }}</span> </h3>
                                                     </div>
                                                 </div>
                                             </li>
@@ -89,6 +74,13 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    @else
+                                    <a href="#"> <i class="fa fa-shopping-cart"></i>(0)</a>
+                                    <div class="cart-items">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                    @endisset
                                 </li>
                             </ul>
                         </div>
@@ -120,13 +112,13 @@
                                     <!-- single menu -->
                                     <li class="has-sub"><a href="{{ route('index') }}">Home</a></li>
                                     <!-- single menu -->
-                                    <li><a href="{{ route('about-us') }}">About us</a></li>
-                                    <!-- single menu -->
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
                                     <!-- single menu -->
                                     <li><a href="{{ route('booking') }}">Booking</a></li>
                                     <!-- single menu -->
                                     <li><a href="{{ route('service') }}">Services</a></li>
+                                    <!-- single menu -->
+                                    <li><a href="{{ route('about-us') }}">About us</a></li>
                                     <!-- single menu -->
                                     <li class="has-mega"><a href="#">pages<i class="icofont icofont-simple-down"></i></a>
                                         <!-- mega-menu start -->

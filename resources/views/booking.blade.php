@@ -39,7 +39,7 @@
                     <!-- contact address start -->
                     <div class="contact-info">
                         <!-- title -->
-                        <h3 class="contact-title">contact address</h3>
+                        <h3 class="contact-title">Location</h3>
                         <!-- single address start -->
                         <div class="single-address">
                             <div class="icon"><i class="icofont icofont-location-pin"></i></div>

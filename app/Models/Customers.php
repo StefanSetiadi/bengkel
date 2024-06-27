@@ -12,4 +12,5 @@ class Customers extends Model
     protected $guarded = ['id_customer'];
     protected $primaryKey = 'id_customer';
     protected $dates = ['created_at'];
+    
 }

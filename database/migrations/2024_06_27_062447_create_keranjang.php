@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_keranjang');
             $table->unsignedBigInteger('id_customer');
             $table->unsignedBigInteger('id_sparepart');
+            $table->integer('jumlah');
             $table->timestamps();
 
             $table->foreign('id_customer')->references('id_customer')->on('customers');

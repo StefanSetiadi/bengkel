@@ -5,6 +5,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ViewController;
 
 
 /*
@@ -18,8 +19,6 @@ use App\Http\Controllers\BookingController;
 |
 */
 
-Route::view('/', 'index')->name('index');
-Route::view('/about-us', 'about-us')->name('about-us');
 Route::view('/blog-details', 'blog-details')->name('blog-details');
 Route::view('/blog', 'blog')->name('blog');
 Route::view('/cart', 'cart')->name('cart');
@@ -51,6 +50,10 @@ Route::view('/signup', 'dashboard/signup')->name('signup');
 Route::view('/tables', 'dashboard/tables')->name('tables');
 Route::view('/view-cart', 'dashboard/view-cart')->name('view-cart');
 
+// View
+Route::get('/', [ViewController::class, 'indexView'])->name('index');
+Route::get('/about-us', [ViewController::class, 'aboutView'])->name('about-us');
+
 // Service
 Route::get('/service', [ServiceController::class, 'serviceView'])->name('service');
 Route::get('/service-details{id_sparepart}', [ServiceController::class, 'serviceDetailsView'])->name('service-details');
@@ -59,6 +62,9 @@ Route::get('/service-details{id_sparepart}', [ServiceController::class, 'service
 // Shop
 Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
 Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
+
+Route::get('/addCart{id_sparepart}', [ShopController::class, 'addCart'])->name('addCart');
+
 
 // Booking
 Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking');

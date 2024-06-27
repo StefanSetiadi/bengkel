@@ -88,8 +88,8 @@
                                         <!-- product actions -->
                                         <div class="product-action">
                                             <div class="action-btn">
-                                                <a class="btn btn-danger"> add to cart</a>
-                                                <a class="btn btn-warning" href="/shop-details{{$sparepart->id_sparepart}}"> View</a>
+                                                <a class="btn btn-danger" href="/addCart{{ $sparepart->id_sparepart }}"> add to cart</a>
+                                                <a class="btn btn-warning" href="/shop-details{{ $sparepart->id_sparepart }}"> View</a>
                                             </div>
                                         </div>
                                     </div>
