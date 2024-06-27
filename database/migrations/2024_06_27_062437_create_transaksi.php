@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking', function (Blueprint $table) {
-            $table->id('id_booking');
+        Schema::create('transaksi', function (Blueprint $table) {
+            $table->id('id_transaksi');
             $table->unsignedBigInteger('id_customer');
-            $table->unsignedBigInteger('id_admin');
-            $table->string('no_kendaraan');
-            $table->text('deskripsi');
-            $table->datetime('waktu');
+            $table->integer('total_biaya');
+            $table->boolean('status_pembayaran');
             $table->timestamps();
 
             $table->foreign('id_customer')->references('id_customer')->on('customers');
-            $table->foreign('id_admin')->references('id_admin')->on('admin');
         });
     }
 
@@ -33,9 +30,6 @@ return new class extends Migration
         Schema::table('customers', function (Blueprint $table) {
             $table->dropForeign(['id_customer']);
         });
-        Schema::table('admin', function (Blueprint $table) {
-            $table->dropForeign(['id_admin']);
-        });
-        Schema::dropIfExists('booking');
+        Schema::dropIfExists('transaksi');
     }
 };

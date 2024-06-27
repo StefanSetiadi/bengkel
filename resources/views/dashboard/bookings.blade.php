@@ -17,36 +17,31 @@
 												<thead>
 													<tr>
 														<th>No</th>
-														<th>ID Admin</th>
 														<th>ID Customers</th>
-														<th>ID Service</th>
-														<th>Desc</th>
+														<th>Plate Number</th>
+														<th>Description</th>
 														<th>Date</th>
-														<th>Status</th>
+														<th>Time</th>
+														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
+													@if ($bookings->isEmpty())
+													<td align="center" colspan="5">No booking data found</td>
+													@else
+													@foreach ($bookings as $index => $booking)
 													<tr>
-														<td>
-															<img src="assets/images/flags/4x3/ca.svg" class="flag-img-lg"
-																alt="Best Admin Dashboards" />
-															Canada
-														</td>
-														<td>
-															<div class="media-box">
-																<img src="assets/images/user2.png" class="media-avatar" alt="Bootstrap Themes" />
-																<div class="media-box-body">
-																	<div class="text-truncate">Dolly Winters</div>
-																	<p>ID: #Arise00763</p>
-																</div>
-															</div>
-														</td>
-														<td>067-676-98320</td>
-														<td>
-															<span class="badge shade-green min-70">Active</span>
-														</td>
-														<td>87</td>
-														<td>$32800</td>
+														<td>{{ $index + 1}}</td>
+														<td>{{ $booking->id_customer }}</td>
+														<td>{{ $booking->no_kendaraan }}</td>
+														<td>{{ $booking->deskripsi }}</td>
+														@php
+															$datetime = $booking->waktu;
+															$date = \Carbon\Carbon::parse($datetime)->format('Y-m-d');
+															$time = \Carbon\Carbon::parse($datetime)->format('H:i:s');
+														@endphp
+														<td>{{ $date }}</td>
+														<td>{{ $time }}</td>
 														<td>
 															<div class="actions">
 																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
@@ -58,6 +53,8 @@
 															</div>
 														</td>
 													</tr>
+													@endforeach
+													@endif
 												</tbody>
 											</table>
 										</div>

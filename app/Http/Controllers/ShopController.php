@@ -11,7 +11,7 @@ class ShopController extends Controller
     public function shopView(Request $request)
     {   
         if ($request->has('search')) {
-            $spareparts = Sparepart::where('name', 'LIKE', '%' . $request->search . '%');
+            $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
         } else {
             $spareparts = Sparepart::query();
         }
@@ -19,16 +19,16 @@ class ShopController extends Controller
             $sort = $request->sort;
             switch ($sort) {
                 case 'nameASC':
-                    $spareparts->orderBy('name', 'asc');
+                    $spareparts->orderBy('nama', 'asc');
                     break;
                 case 'nameDESC':
-                    $spareparts->orderBy('name', 'desc');
+                    $spareparts->orderBy('nama', 'desc');
                     break;
                 case 'priceASC':
-                    $spareparts->orderBy('price', 'asc');
+                    $spareparts->orderBy('harga', 'asc');
                     break;
                 case 'priceDESC':
-                    $spareparts->orderBy('price', 'desc');
+                    $spareparts->orderBy('harga', 'desc');
                     break;
             }
         }
@@ -36,7 +36,7 @@ class ShopController extends Controller
             $paginate = $request->paginate;
             $spareparts = $spareparts->paginate($paginate);
         } else {
-            $spareparts = $spareparts->paginate(4);        
+            $spareparts = $spareparts->paginate(8);        
         }
         $spareparts->appends([
             'search' => $request->search,

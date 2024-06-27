@@ -1,6 +1,6 @@
 @extends('component.main')
 
-@section('title', 'Shop')
+@section('title', 'Sparepart')
 
 @section('content')
 <!-- page title area start -->
@@ -10,14 +10,15 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>Shop</h2>
+                    <h2>Sparepart</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('shop') }}">Shop</a></li>
+                        <li><a href="{{ route('service') }}" style="color: white;">Services</a> <span> / </span> </li>
+                        <li><a href="{{ route('spareparts') }}">Spareparts</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -30,38 +31,6 @@
 <div class="shop-area pages section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <!-- shop bar start -->
-                <form class="form-inline" id="sortForm" action="{{route('shop')}}">
-                        <div class="shop-nav width-33 pull-left">
-                            <input type="text" class="form-control" name="search" placeholder="Search" size="30" value="{{ request('search') }}">
-                            <button class="btn btn-danger" type="submit">Search</button>
-                        </div>
-                        <!-- shop tab bar start -->
-                        <!-- shop tab bar end -->
-                        <!-- shop sort start -->
-                        <div class="sort-by width-33 pull-left text-center">
-                            <label>Sort By: </label>
-                            <select id="sortProducts" name="sort" onchange="document.getElementById('sortForm').submit();">
-                                <option value="nameASC" {{ request('sort') == 'nameASC' ? 'selected' : '' }}>Name (Ascending)</option>
-                                <option value="nameDESC" {{ request('sort') == 'nameDESC' ? 'selected' : '' }}>Name (Descending)</option>
-                                <option value="priceASC" {{ request('sort') == 'priceASC' ? 'selected' : '' }}>Price (Ascending)</option>
-                                <option value="priceDESC" {{ request('sort') == 'priceDESC' ? 'selected' : '' }}>Price (Descending)</option>
-                            </select>
-                        </div>
-                        <!-- shop sort end -->
-                        <!-- shop show product start -->
-                        <div class="limit-product width-33 pull-left text-right">
-                            <label>Show: </label>
-                            <select name="paginate" onchange="document.getElementById('sortForm').submit();">
-                                <option value="8" {{ request('paginate') == '8' ? 'selected' : '' }}>8</option>
-                                <option value="16" {{ request('paginate') == '16' ? 'selected' : '' }}>16</option>
-                                <option value="24" {{ request('paginate') == '24' ? 'selected' : '' }}>24</option>
-                            </select>
-                        </div>
-                    </form>
-                <!-- shop bar end -->
-            </div>
         </div>
         <div class="row">
             <!-- shop tab content start -->
@@ -70,7 +39,7 @@
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
                         @if ($spareparts->isEmpty())
-                        <h3 align="center">No products found matching your search criteria.</h3>
+                        <h3 align="center">Spare parts are not yet available</h3>
                         @else
                         @foreach ($spareparts as $index => $sparepart)
                             <div class="col-md-3 col-sm-6">
@@ -78,25 +47,34 @@
                                 <div class="single-product hover-style text-center">
                                     <div class="product-img">
                                         <!-- product-img -->
-                                        <a href="/shop-details{{$sparepart->id_sparepart}}" class="main-img">
+                                        <a href="/shop-details{{$sparepart->id_service}}" class="main-img">
                                         @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
                                             <img src="{{ $sparepart->image }}" alt="" width="270" height="330">
                                         @else
                                             <img src="img/product/1.jpg" alt="" width="270" height="330">
                                         @endif
                                         </a>
-                                        <!-- product actions -->
-                                        <div class="product-action">
+                                    <!-- product actions -->
+                                    <div class="product-action">
                                             <div class="action-btn">
-                                                <a class="btn btn-danger"> add to cart</a>
-                                                <a class="btn btn-warning" href="/shop-details{{$sparepart->id_sparepart}}"> View</a>
+                                                <button class="icon-button action-single-btn"> <i class="fa fa-heart"></i> </button>
+                                                <button class="text-button action-single-btn"> add to cart</button>
+                                            </div>
+                                            <!-- ratings -->
+                                            <div class="ratings">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                                <span>(Based on 04 reviews)</span>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- product-info start -->
                                     <div class="product-info text-center">
                                         <div class="product-name">
-                                            <a href="/shop-details{{$sparepart->id_sparepart}}">{{ $sparepart->nama }}</a>
+                                            <a href="/shop-details{{$sparepart->id_kategori_service}}">{{ $sparepart->nama }}</a>
                                         </div>
                                         <div class="product-price">
                                             <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
@@ -117,7 +95,6 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <!-- toolbar start -->
-                {{$spareparts->links()}}
                 <div class="toolbar-bottom">
                 </div>
                 <!-- toolbar end -->

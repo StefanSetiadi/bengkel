@@ -46,40 +46,27 @@
 									<div class="row">
 										<div class="col-sm-12 col-12">
 											<div class="mb-3">
-												<label class="form-label">Nama <span class="text-red">*</span></label>
-												<input type="text" class="form-control" name="nama" placeholder="Masukkan nama sparepart" required>
+												<label class="form-label">Name <span class="text-red">*</span></label>
+												<input type="text" class="form-control" name="nama" placeholder="Enter the name of the spare part" required>
 											</div>
 										</div>
 										<div class="col-sm-6 col-12">
 											<div class="mb-3">
-												<label class="form-label">Harga <span class="text-red">*</span></label>
-												<input type="number" class="form-control" name="harga" placeholder="Masukkan harga sparepart" required>
+												<label class="form-label">Price <span class="text-red">*</span></label>
+												<input type="number" class="form-control" name="harga" placeholder="Enter the price of spare parts" required>
 											</div>
 										</div>
 										<div class="col-sm-6 col-12">
 											<div class="mb-3">
-												<label class="form-label">Jumlah <span class="text-red">*</span></label>
-												<input type="number" class="form-control" name="jumlah" placeholder="Masukkan jumlah sparepart" required>
-											</div>
-										</div>
-										<div class="col-sm-6 col-12">
-											<div class="mb-3">
-												<label class="form-label">Kategori <span class="text-red">*</span></label>
-												<input type="text" class="form-control" name="kategori" placeholder="Masukkan kategori sparepart" required>
-											</div>
-										</div>
-										<div class="col-sm-6 col-12">
-											<div class="mb-3">
-												<label class="form-label">Service <span class="text-red">*</span></label>
-												<input type="text" class="form-control" name="service" placeholder="Pilih service" required>
-												<input type="text" class="form-control" name="id_service"  value='1' hidden>
+												<label class="form-label">Stock <span class="text-red">*</span></label>
+												<input type="number" class="form-control" name="jumlah" placeholder="Enter the number of spare parts" required>
 											</div>
 										</div>
 										<div class="col-sm-12 col-12">
 											<div class="mb-0">
-												<label class="form-label">Deskripsi</label>
+												<label class="form-label">Description</label>
 												<textarea rows="4" class="form-control" name="deskripsi"
-													placeholder="Masukkan deskripsi"></textarea>
+													placeholder="Enter a description of the spare part"></textarea>
 											</div>
 										</div>
 									</div>

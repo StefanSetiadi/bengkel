@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Booking;
+
+class BookingController extends Controller
+{
+    public function bookingView()
+    {
+        return view('booking');
+    }
+
+    public function addBooking(Request $request)
+    {
+        $data = Booking::create([
+            'id_customer' => 1,
+            'id_admin' => 1,
+            'no_kendaraan' => $request->no_kendaraan,
+            'deskripsi' => $request->deskripsi,
+            'waktu' => $request->waktu,
+        ]);
+        return view('booking');
+    }
+
+    public function bookingDashboardView()
+    {
+        $bookings = Booking::all();
+        return view('dashboard.bookings', compact('bookings'));
+    }
+
+    
+}

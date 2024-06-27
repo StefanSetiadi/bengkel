@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SparepartController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\BookingController;
 
 
 /*
@@ -36,7 +38,6 @@ Route::view('/calendar', 'dashboard/calendar')->name('calendar');
 Route::view('/checkout', 'dashboard/checkout')->name('checkout');
 
 Route::view('/customers', 'dashboard/customers')->name('customers');
-Route::view('/bookings', 'dashboard/bookings')->name('bookings');
 Route::view('/error', 'dashboard/error')->name('error');
 Route::view('/forgot-password', 'dashboard/forgot-password')->name('forgot-password');
 
@@ -50,11 +51,25 @@ Route::view('/signup', 'dashboard/signup')->name('signup');
 Route::view('/tables', 'dashboard/tables')->name('tables');
 Route::view('/view-cart', 'dashboard/view-cart')->name('view-cart');
 
+// Service
+Route::get('/service', [ServiceController::class, 'serviceView'])->name('service');
+Route::get('/service-details{id_sparepart}', [ServiceController::class, 'serviceDetailsView'])->name('service-details');
+
+
 // Shop
 Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
 Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
 
-// Product
+// Booking
+Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking');
+Route::post('/addBooking', [BookingController::class, 'addBooking'])->name('addBooking');
+
+Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');
+
+
+// Sparepart
+Route::get('/spareparts{id_service}', [SparepartController::class, 'sparepartsView'])->name('spareparts');
+
 Route::get('/spareparts', [SparepartController::class, 'sparepartsView'])->name('spareparts');
 Route::get('/createSparepart', [SparepartController::class, 'createView'])->name('createSparepart');
 Route::get('/editSparepart{id_sparepart}', [SparepartController::class, 'editView'])->name('editSparepart');
@@ -62,6 +77,6 @@ Route::get('/searchSparepart', [SparepartController::class, 'createView'])->name
 
 Route::post('/addSparepart', [SparepartController::class, 'addSparepart'])->name('addSparepart');
 Route::post('/editDataSparepart', [SparepartController::class, 'editDataSparepart'])->name('editDataSparepart');
-
+Route::post('/deleteDataSparepart', [SparepartController::class, 'deleteDataSparepart'])->name('deleteDataSparepart');
 
 

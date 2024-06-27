@@ -36,24 +36,23 @@
 				<br>
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped m-0">
-						<thead>
+						<thead align="center">
 							<tr>
 								<th>Image</th>
-								<th>Nama</th>
-								<th>Harga</th>
-								<th>Jumlah</th>
-								<th>Kategori</th>
-								<th>Aksi</th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Stock</th>
+								<th>Action</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody align="center">
 							@if ($spareparts->isEmpty())
-							<h3 align="center">No spareparts found matching your search criteria.</h3>
+							<td align="center" colspan="5">No spareparts found matching your search criteria.</td>
 							@else
 							@foreach ($spareparts as $index => $sparepart)
 							<tr>
-								<td><div class="media-box">
-										<img src="{{ $sparepart->image }}" class="media-avatar">
+								<td width=200><div >
+										<img src="{{ $sparepart->image }}" class="media-avatar" style="height: 80px; display: block; margin: 0 auto;">
 										<div class="media-box-body">
 											<div class="text-truncate"></div>
 										</div>
@@ -61,9 +60,13 @@
 								</td>
 								<td>{{ $sparepart->nama }}</td>
 								<td>{{ $sparepart->harga }}</td>
-								<td>{{ $sparepart->jumlah }}</td>
-								<td>{{ $sparepart->kategori }}</td>
-								<td><button onclick="location.href='/editSparepart{{ $sparepart->id_sparepart }}'" class="btn btn-warning">Edit</button></td>
+								<td width="150">{{ $sparepart->jumlah }}</td>
+								<td width="180"><button onclick="location.href='/editSparepart{{ $sparepart->id_sparepart }}'" class="btn btn-warning">Edit</button>
+									<form action="{{ route('deleteDataSparepart') }}" method="post" style="display:inline-block;">
+										@csrf 
+										<input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
+										<input type="submit"  class="btn btn-danger" value="Delete"></input></td>
+									</form>
 							</tr>
 							@endforeach
 							@endif

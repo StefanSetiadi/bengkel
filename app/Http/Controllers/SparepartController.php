@@ -19,16 +19,16 @@ class SparepartController extends Controller
         if ($request->has('sort')) {
             $sort = $request->sort;
             switch ($sort) {
-                case 'namaASC':
+                case 'nameASC':
                     $spareparts->orderBy('nama', 'asc');
                     break;
-                case 'namaDESC':
-                    $spareparts->orderBy('name', 'desc');
+                case 'nameDESC':
+                    $spareparts->orderBy('nama', 'desc');
                     break;
-                case 'hargaASC':
+                case 'priceASC':
                     $spareparts->orderBy('harga', 'asc');
                     break;
-                case 'hargaDESC':
+                case 'priceDESC':
                     $spareparts->orderBy('harga', 'desc');
                     break;
             }
@@ -37,14 +37,14 @@ class SparepartController extends Controller
             $paginate = $request->paginate;
             $spareparts = $spareparts->paginate($paginate);
         } else {
-            $spareparts = $spareparts->paginate(10);        
+            $spareparts = $spareparts->paginate(4);        
         }
         $spareparts->appends([
             'search' => $request->search,
             'sort' => $request->sort,
             'paginate' => $request->paginate
         ]);
-        
+
         return view('dashboard.spareparts', ['spareparts' => $spareparts]);
     }
 
@@ -57,11 +57,9 @@ class SparepartController extends Controller
     public function addsparepart(Request $request)
     {
         $data = Sparepart::create([
-            'id_service' => $request->id_service,
             'nama' => $request->nama,
             'harga' => $request->harga,
             'jumlah' => $request->jumlah,
-            'kategori' => $request->kategori,
             'deskripsi' => $request->deskripsi,
         ]);
 
@@ -80,11 +78,9 @@ class SparepartController extends Controller
     {
         $data = Sparepart::find($request->id_sparepart);
         if ($data) {
-            $data->id_service = $request->id_service;
             $data->nama = $request->nama;
             $data->harga = $request->harga;
             $data->jumlah = $request->jumlah;
-            $data->kategori = $request->kategori;
             $data->deskripsi = $request->deskripsi;
             $data->save();
         }
@@ -98,6 +94,17 @@ class SparepartController extends Controller
         } 
 
         return redirect()->route('spareparts')->with('success', 'The sparepart data has been successfully edited.');
+    }
+
+    public function deleteDataSparepart(Request $request)
+    {
+        $data = Sparepart::find($request->id_sparepart);
+        if ($data) {
+            $data->jumlah = 0;
+            $data->save();
+        }
+
+        return redirect()->route('spareparts')->with('success', 'The sparepart data has been successfully deleted.');
     }
 
 }

@@ -15,12 +15,12 @@
                 <li class="sidebar-dropdown">
                     <a href="{{ route("index")}}">
                         <i class="bi bi-house"></i>
-                        <span class="menu-text">Dashboards</span>
+                        <span class="menu-text">Dashboard</span>
                     </a>
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="{{ route("reports")}}">Reports</a>
+                                <a href="{{ route("reports") }}">Reports</a>
                             </li>
                         </ul>
                     </div>

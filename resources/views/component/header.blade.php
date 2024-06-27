@@ -121,9 +121,12 @@
                                     <li class="has-sub"><a href="{{ route('index') }}">Home</a></li>
                                     <!-- single menu -->
                                     <li><a href="{{ route('about-us') }}">About us</a></li>
-                                    
                                     <!-- single menu -->
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
+                                    <!-- single menu -->
+                                    <li><a href="{{ route('booking') }}">Booking</a></li>
+                                    <!-- single menu -->
+                                    <li><a href="{{ route('service') }}">Services</a></li>
                                     <!-- single menu -->
                                     <li class="has-mega"><a href="#">pages<i class="icofont icofont-simple-down"></i></a>
                                         <!-- mega-menu start -->
@@ -136,7 +139,7 @@
                                                 <a href="{{ route('blog-details') }}">blog details</a>
                                                 <a href="{{ route('our-services') }}">our services</a>
                                                 <a href="{{ route('contact') }}">contact us</a>
-                                                <a href="{{ route('shop') }}">shop</a>
+                                                <a href="{{ route('service') }}">service</a>
                                             </span>
                                             <span>
                                                 <a href="{{ route('cart') }}">shopping cart</a>
@@ -173,7 +176,7 @@
                             <ul>
                                 <li><a href="{{ route('index') }}">Home</a></li>
                                 <li><a href="{{ route('about-us') }}">About Us</a></li>
-                                <li><a href="{{ route('shop') }}">Shop</a></li>
+                                <li><a href="{{ route('service') }}">Services</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul>
                                         <li><a href="{{ route('about-us') }}">about us</a></li>
@@ -181,7 +184,7 @@
                                         <li><a href="{{ route('blog-details') }}">blog details</a></li>
                                         <li><a href="{{ route('our-services') }}">our services</a></li>
                                         <li><a href="{{ route('contact') }}">contact us</a></li>
-                                        <li><a href="{{ route('shop') }}">shop</a></li>
+                                        <li><a href="{{ route('service') }}">services</a></li>
                                         <li><a href="{{ route('cart') }}">shopping cart</a></li>
                                         <li><a href="{{ route('checkout') }}">checkout</a></li>
                                         <li><a href="{{ route('wishlist') }}">wishlist</a></li>

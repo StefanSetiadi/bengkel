@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasFactory;
     protected $table = 'service';
-    protected $guarded = ['id_service'];
-    protected $primaryKey = 'id_service';
+    protected $guarded = ['id_kategori_service'];
+    protected $primaryKey = 'id_kategori_service';
     protected $dates = ['created_at'];
 }
