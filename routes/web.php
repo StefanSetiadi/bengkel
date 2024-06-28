@@ -21,7 +21,6 @@ use App\Http\Controllers\ViewController;
 
 Route::view('/blog-details', 'blog-details')->name('blog-details');
 Route::view('/blog', 'blog')->name('blog');
-Route::view('/cart', 'cart')->name('cart');
 Route::view('/checkout', 'checkout')->name('checkout');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/our-services', 'our-services')->name('our-services');
@@ -48,7 +47,6 @@ Route::view('/reports', 'dashboard/reports')->name('reports');
 Route::view('/reviews', 'dashboard/reviews')->name('reviews');
 Route::view('/signup', 'dashboard/signup')->name('signup');
 Route::view('/tables', 'dashboard/tables')->name('tables');
-Route::view('/view-cart', 'dashboard/view-cart')->name('view-cart');
 
 // View
 Route::get('/', [ViewController::class, 'indexView'])->name('index');
@@ -62,12 +60,14 @@ Route::get('/service-details{id_sparepart}', [ServiceController::class, 'service
 // Shop
 Route::get('/shop', [ShopController::class, 'shopView'])->name('shop');
 Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsView'])->name('shop-details');
+Route::get('/view-cart{id_customer}', [ShopController::class, 'viewCart'])->name('view-cart');
+Route::post('/removeCart', [ShopController::class, 'removeCart'])->name('removeCart');
 
-Route::get('/addCart{id_sparepart}', [ShopController::class, 'addCart'])->name('addCart');
+Route::post('/addCart', [ShopController::class, 'addCart'])->name('addCart');
 
 
 // Booking
-Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking');
+Route::post('/booking', [BookingController::class, 'bookingView'])->name('booking');
 Route::post('/addBooking', [BookingController::class, 'addBooking'])->name('addBooking');
 
 Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');

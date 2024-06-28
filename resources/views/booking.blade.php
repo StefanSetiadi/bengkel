@@ -17,7 +17,11 @@
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('booking') }}">Booking</a></li>
+                        <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="post">
+                            @csrf
+                            <input name="id_customer" value="1" hidden>
+                            <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
+                        </form>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -73,16 +77,15 @@
                             <!-- title -->
                             <h3 class="contact-title">Booking</h3>
                             <!-- input plate number -->
-                            <input name="no_kendaraan" type="text" placeholder="Plate Number" required>
+                            <input name="no_kendaraan" type="text" placeholder="Plate Number" required oninput="this.value = this.value.toUpperCase()">
                             <!-- input datetime -->
-                            <input name="waktu" type="datetime-local" requred>
+                            <input name="waktu" type="datetime-local" required>
                             <!-- description -->
                             <textarea name="deskripsi" cols="10" rows="5" placeholder="Your description"></textarea>
                             <!-- send button -->
                             <div class="shopping-button">
                                 <button type="submit">Booking</button>
                             </div>
-                            <p class="form-messege"></p>
                         </form>
                     </div>
                     <!-- contact form end -->

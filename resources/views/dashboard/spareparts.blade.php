@@ -42,6 +42,7 @@
 								<th>Name</th>
 								<th>Price</th>
 								<th>Stock</th>
+								<th>Description</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -59,8 +60,11 @@
 									</div>
 								</td>
 								<td>{{ $sparepart->nama }}</td>
-								<td>{{ $sparepart->harga }}</td>
+								<td width="150">Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</td>
 								<td width="150">{{ $sparepart->jumlah }}</td>
+								<td width="300" data-toggle="tooltip" title="{{ $sparepart->deskripsi }}">
+									{{ \Illuminate\Support\Str::limit($sparepart->deskripsi, 150) }}
+								</td>
 								<td width="180"><button onclick="location.href='/editSparepart{{ $sparepart->id_sparepart }}'" class="btn btn-warning">Edit</button>
 									<form action="{{ route('deleteDataSparepart') }}" method="post" style="display:inline-block;">
 										@csrf 

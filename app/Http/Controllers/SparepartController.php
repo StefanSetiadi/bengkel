@@ -37,7 +37,7 @@ class SparepartController extends Controller
             $paginate = $request->paginate;
             $spareparts = $spareparts->paginate($paginate);
         } else {
-            $spareparts = $spareparts->paginate(4);        
+            $spareparts = $spareparts->paginate(10);        
         }
         $spareparts->appends([
             'search' => $request->search,

@@ -55,19 +55,23 @@
                         <div class="product-text">
                             <p>{{ $sparepart->deskripsi }}</p>
                         </div>
-                        <!-- cart plus minus start -->
-                        <div class="cart-plus-minus">
-                            <label>Quantity: </label>
-                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                        </div>
-                        <!-- cart plus minus end -->
-                        <!-- product action start -->
-                        <div class="product-action">
-                            <div class="action-btn">
-                                <button class="btn btn-danger"> add to cart</button>
-                                <button class="btn btn-success"> Check Out</button>
+                        <form action="{{ route('addCart') }}" method="post" style="display:inline-block;">
+                            @csrf
+                            <input name="id_customer" value="1" hidden>
+                            <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
+                            <!-- cart plus minus start -->
+                            <div class="cart-plus-minus">
+                                <label>Quantity: </label>
+                                <input class="cart-plus-minus-box" type="text" name="jumlah" value="1">
                             </div>
-                        </div>
+                            <!-- cart plus minus end -->
+                            <!-- product action start -->
+                            <div class="product-action">
+                                <div class="action-btn">
+                                    <button type="submit" class="btn btn-danger"> add to cart</button>
+                                </div>
+                            </div>
+                        </form>
                         <!-- product action end -->
                         <!-- shop details social start -->
                         <div class="shop-details-social">

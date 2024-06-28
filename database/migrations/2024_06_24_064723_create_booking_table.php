@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_customer');
             $table->unsignedBigInteger('id_admin');
             $table->string('no_kendaraan');
+            $table->string('status_booking');
             $table->text('deskripsi');
             $table->datetime('waktu');
             $table->timestamps();

@@ -48,9 +48,23 @@
                                                     <a href="#" class="cart-item-name">
                                                         {{ $cart->nama }}
                                                     </a>
-                                                    <p class="quantity">quantity: <strong> {{ $cart->jumlah }}</strong></p>
+                                                    <p class="quantity">quantity: <strong> 
+                                                    @php
+                                                        $id_customer = 1;
+
+                                                        $quantity_cart = \App\Models\Keranjang::where('id_customer', $id_customer)
+                                                                                    ->where('id_sparepart', $cart->id_sparepart)
+                                                                                    ->value('jumlah');
+                                                    @endphp
+                                                    {{ $quantity_cart }}
+                                                    </strong></p>
                                                     <p class="price">price: <strong>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</strong></p>
-                                                    <button class="remove"><i class="fa fa-trash-o"></i></button>
+                                                    <form action="{{ route('removeCart') }}" method="post">
+                                                        @csrf
+                                                        <input name="id_customer" value="1" hidden>
+                                                        <input name="id_sparepart" value="{{ $cart->id_sparepart }}" hidden>
+                                                        <button type="submit" class="remove"><i class="fa fa-trash-o"></i></button>
+                                                    </form>
                                                 </div>
                                             </li>
                                             <!-- single cart item end -->
@@ -58,18 +72,18 @@
                                             <li>
                                                 <div class="subtotal">
                                                     <div class="subtotal-title">
-                                                        <h3>subtotal <span class="pull-right">Rp. {{ number_format($subtotal, 0, ',', '.') }}</span> </h3>
+                                                        <h3>Total <span class="pull-right">Rp. {{ number_format($total, 0, ',', '.') }}</span> </h3>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="cart-btns">
                                                     <span class="default-btn">
-                                                        <a href="cart.html">view cart</a>
+                                                        <a href="/view-cart1">view cart</a>
                                                     </span>
-                                                    <span class="default-btn pull-right">
+                                                    <!-- <span class="default-btn pull-right">
                                                         <a href="checkout.html">checkout</a>
-                                                    </span>
+                                                    </span> -->
                                                 </div>
                                             </li>
                                         </ul>
@@ -114,7 +128,11 @@
                                     <!-- single menu -->
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
                                     <!-- single menu -->
-                                    <li><a href="{{ route('booking') }}">Booking</a></li>
+                                    <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="post">
+                                        @csrf
+                                        <input name="id_customer" value="1" hidden>
+                                        <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
+                                    </form>
                                     <!-- single menu -->
                                     <li><a href="{{ route('service') }}">Services</a></li>
                                     <!-- single menu -->
@@ -134,7 +152,7 @@
                                                 <a href="{{ route('service') }}">service</a>
                                             </span>
                                             <span>
-                                                <a href="{{ route('cart') }}">shopping cart</a>
+                                                <a href="/view-cart1">shopping cart</a>
                                                 <a href="{{ route('checkout') }}">checkout</a>
                                                 <a href="{{ route('wishlist') }}">wishlist</a>
                                                 <a href="{{ route('error-404') }}">eror 404</a>
@@ -177,7 +195,7 @@
                                         <li><a href="{{ route('our-services') }}">our services</a></li>
                                         <li><a href="{{ route('contact') }}">contact us</a></li>
                                         <li><a href="{{ route('service') }}">services</a></li>
-                                        <li><a href="{{ route('cart') }}">shopping cart</a></li>
+                                        <li><a href="/view-cart1">shopping cart</a></li>
                                         <li><a href="{{ route('checkout') }}">checkout</a></li>
                                         <li><a href="{{ route('wishlist') }}">wishlist</a></li>
                                         <li><a href="{{ route('error-404') }}">eror 404</a></li>

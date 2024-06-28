@@ -10,15 +10,20 @@ use App\Models\Customers;
 
 class BookingController extends Controller
 {
-    public function bookingView()
+    public function bookingView(Request $request)
     {
         // carts
         $carts = Keranjang::all();
+        $total = 0;
+        foreach ($carts as $cart) {
+            $sparepart = Sparepart::find($cart->id_sparepart);
+            $total += $sparepart->harga * $cart->jumlah;
+        }
         $id_spareparts = Keranjang::where('id_customer', 1)->pluck('id_sparepart');
         $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-        $subtotal = $carts->sum('harga');
+        
 
-        return view('booking', compact('carts','subtotal'));
+        return view('booking', compact('carts','total'));
     }
 
     public function addBooking(Request $request)
@@ -26,7 +31,7 @@ class BookingController extends Controller
         $data = Booking::create([
             'id_customer' => 1,
             'id_admin' => 1,
-            'no_kendaraan' => $request->no_kendaraan,
+            'no_kendaraan' => strtoupper($request->no_kendaraan),
             'deskripsi' => $request->deskripsi,
             'waktu' => $request->waktu,
         ]);

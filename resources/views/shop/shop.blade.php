@@ -70,43 +70,56 @@
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
                         @if ($spareparts->isEmpty())
-                        <h3 align="center">No products found matching your search criteria.</h3>
+                            <h3 align="center">No products found matching your search criteria.</h3>
                         @else
                         @foreach ($spareparts as $index => $sparepart)
-                            <div class="col-md-3 col-sm-6">
-                                <!-- single shop start -->
-                                <div class="single-product hover-style text-center">
-                                    <div class="product-img">
-                                        <!-- product-img -->
-                                        <a href="/shop-details{{$sparepart->id_sparepart}}" class="main-img">
-                                        @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
-                                            <img src="{{ $sparepart->image }}" alt="" width="270" height="330">
-                                        @else
-                                            <img src="img/product/1.jpg" alt="" width="270" height="330">
-                                        @endif
-                                        </a>
-                                        <!-- product actions -->
-                                        <div class="product-action">
-                                            <div class="action-btn">
-                                                <a class="btn btn-danger" href="/addCart{{ $sparepart->id_sparepart }}"> add to cart</a>
-                                                <a class="btn btn-warning" href="/shop-details{{ $sparepart->id_sparepart }}"> View</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- product-info start -->
-                                    <div class="product-info text-center">
-                                        <div class="product-name">
-                                            <a href="/shop-details{{$sparepart->id_sparepart}}">{{ $sparepart->nama }}</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
-                                        </div>
-                                    </div>
-                                    <!-- product-info start -->
-                                </div>
-                                <!-- single shop end -->
-                            </div>
-                        @endforeach
+    @if ($index % 4 == 0)
+        <div class="row">
+    @endif
+    <div class="col-md-3 col-sm-6">
+        <!-- single shop start -->
+        <div class="single-product hover-style text-center">
+            <div class="product-img">
+                <!-- product-img -->
+                <a href="/shop-details{{$sparepart->id_sparepart}}" class="main-img">
+                    @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
+                        <img src="{{ $sparepart->image }}" alt="" width="270" height="330">
+                    @else
+                        <img src="img/product/1.jpg" alt="" width="270" height="330">
+                    @endif
+                </a>
+                <!-- product actions -->
+                <div class="product-action">
+                    <div class="action-btn">
+                        <form action="{{ route('addCart') }}" method="post" style="display:inline-block;">
+                            @csrf
+                            <input name="id_customer" value="1" hidden>
+                            <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
+                            <input name="jumlah" value="1" hidden>
+                            <button type="submit" class="btn btn-danger"> add to cart</button>
+                        </form>
+                        <a class="btn btn-warning" href="/shop-details{{ $sparepart->id_sparepart }}"> View</a>
+                    </div>
+                </div>
+            </div>
+            <!-- product-info start -->
+            <div class="product-info text-center">
+                <div class="product-name">
+                    <a href="/shop-details{{$sparepart->id_sparepart}}">{{ $sparepart->nama }}</a>
+                </div>
+                <div class="product-price">
+                    <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
+                </div>
+            </div>
+            <!-- product-info start -->
+        </div>
+        <!-- single shop end -->
+    </div>
+    @if (($index + 1) % 4 == 0 || $index == count($spareparts) - 1)
+        </div>
+    @endif
+@endforeach
+
                         @endif
                     </div>
                     <!-- gird shop end -->
