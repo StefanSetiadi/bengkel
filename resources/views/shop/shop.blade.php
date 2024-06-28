@@ -93,7 +93,7 @@
                     <div class="action-btn">
                         <form action="{{ route('addCart') }}" method="post" style="display:inline-block;">
                             @csrf
-                            <input name="id_customer" value="1" hidden>
+                            
                             <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
                             <input name="jumlah" value="1" hidden>
                             <button type="submit" class="btn btn-danger"> add to cart</button>

@@ -50,7 +50,7 @@
                                                     </a>
                                                     <p class="quantity">quantity: <strong> 
                                                     @php
-                                                        $id_customer = 1;
+                                                        $id_customer = Auth::user()->id_customer;
 
                                                         $quantity_cart = \App\Models\Keranjang::where('id_customer', $id_customer)
                                                                                     ->where('id_sparepart', $cart->id_sparepart)
@@ -61,7 +61,7 @@
                                                     <p class="price">price: <strong>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</strong></p>
                                                     <form action="{{ route('removeCart') }}" method="post">
                                                         @csrf
-                                                        <input name="id_customer" value="1" hidden>
+                                                        
                                                         <input name="id_sparepart" value="{{ $cart->id_sparepart }}" hidden>
                                                         <button type="submit" class="remove"><i class="fa fa-trash-o"></i></button>
                                                     </form>
@@ -79,7 +79,7 @@
                                             <li>
                                                 <div class="cart-btns">
                                                     <span class="default-btn">
-                                                        <a href="/view-cart1">view cart</a>
+                                                        <a href="{{ route('view-cart') }}">view cart</a>
                                                     </span>
                                                     <!-- <span class="default-btn pull-right">
                                                         <a href="checkout.html">checkout</a>
@@ -89,7 +89,7 @@
                                         </ul>
                                     </div>
                                     @else
-                                    <a href="#"> <i class="fa fa-shopping-cart"></i>(0)</a>
+                                    <a href="#"> <i class="fa fa-shopping-cart"></i></a>
                                     <div class="cart-items">
                                         <ul>
                                         </ul>
@@ -127,40 +127,24 @@
                                     <li class="has-sub"><a href="{{ route('index') }}">Home</a></li>
                                     <!-- single menu -->
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
-                                    <!-- single menu -->
-                                    <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="post">
-                                        @csrf
-                                        <input name="id_customer" value="1" hidden>
-                                        <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
-                                    </form>
-                                    <!-- single menu -->
-                                    <li><a href="{{ route('service') }}">Services</a></li>
+                                    @if (Auth::check())
+                                        <!-- single menu -->
+                                        <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="post">
+                                            @csrf
+                                            
+                                            <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
+                                        </form>
+                                        <!-- single menu -->
+                                        <li><a href="{{ route('service') }}">Services</a></li>
+                                    @endif
                                     <!-- single menu -->
                                     <li><a href="{{ route('about-us') }}">About us</a></li>
                                     <!-- single menu -->
-                                    <li class="has-mega"><a href="#">pages<i class="icofont icofont-simple-down"></i></a>
-                                        <!-- mega-menu start -->
-                                        <div class="mega-menu">
-                                            <span>
-                                                <a href="{{ route('about-us') }}">about us</a>
-                                                <a href="{{ route('blog') }}">blog</a>
-                                            </span>
-                                            <span>
-                                                <a href="{{ route('blog-details') }}">blog details</a>
-                                                <a href="{{ route('our-services') }}">our services</a>
-                                                <a href="{{ route('contact') }}">contact us</a>
-                                                <a href="{{ route('service') }}">service</a>
-                                            </span>
-                                            <span>
-                                                <a href="/view-cart1">shopping cart</a>
-                                                <a href="{{ route('checkout') }}">checkout</a>
-                                                <a href="{{ route('wishlist') }}">wishlist</a>
-                                                <a href="{{ route('error-404') }}">eror 404</a>
-                                                <a href="{{ route('error-500') }}">eror 500</a>
-                                            </span>
-                                        </div>
-                                        <!-- mega-menu end -->
-                                    </li>
+                                    @if (Auth::check())
+                                    <li><a href="{{ route('actionlogout') }}">Logout</a></li>
+                                    @else
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>

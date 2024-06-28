@@ -57,7 +57,7 @@
                         </div>
                         <form action="{{ route('addCart') }}" method="post" style="display:inline-block;">
                             @csrf
-                            <input name="id_customer" value="1" hidden>
+                            
                             <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
                             <!-- cart plus minus start -->
                             <div class="cart-plus-minus">

@@ -56,7 +56,7 @@
 							@foreach ($carts as $index => $cart)
                                 <tr>
                                     <td class="unit-price text-left">
-                                        <span>{{ $index }}</span>
+                                        <span>{{ $index+1 }}</span>
                                     </td>
                                     <!-- product img end -->
                                     <td class="item-img">
@@ -71,20 +71,35 @@
                                     </td>
                                     <!-- product name end -->
                                     <!-- price start -->
-                                    <td class="unit-price text-left">
+                                    <td class="unit-price text-left" width="250">
                                         <span>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</span>
                                     </td>
                                     <!-- price end -->
                                     <!-- quantity start -->
                                     <td class="quantity">
-                                            <input class="" type="text" name="qtybutton" value="1">
+                                    <form action="{{ route('editCart') }}" method="post">
+                                        @csrf
+                                        <input name="id_sparepart" value="{{ $cart->id_sparepart }}" hidden>
+                                        <div class="quantity-wrapper">
+                                            <button type="button" onclick="decreaseQuantity({{ $index+1 }})">-</button>
+                                            @php
+                                                $id_customer = Auth::user()->id_customer;
+
+                                                $quantity_cart = \App\Models\Keranjang::where('id_customer', $id_customer)
+                                                                            ->where('id_sparepart', $cart->id_sparepart)
+                                                                            ->value('jumlah');
+                                            @endphp
+                                            <input id="quantityInput{{ $index+1 }}" type="text" name="jumlah" value="{{ $quantity_cart }}">
+                                            <button type="button" onclick="increaseQuantity({{ $index+1 }})">+</button>
+                                        </div>
+                                        <button type="submit"><i class="fa fa-check"></i></button>
+                                    </form>
                                     </td>
                                     <!-- quantity end -->
                                     <!-- remove icon start -->
                                     <td class="remove-icon">
                                         <form action="{{ route('removeCart') }}" method="post">
-                                            @csrf
-                                            <input name="id_customer" value="1" hidden>
+                                            @csrf 
                                             <input name="id_sparepart" value="{{ $cart->id_sparepart }}" hidden>
                                             <button type="submit"> <i class="icofont icofont-close-line"></i> </button>
                                         </form>
@@ -118,4 +133,39 @@
     </div>
 </div>
 <!-- cart area end -->
+<script>
+    function decreaseQuantity(index) {
+        var qtyInput = document.getElementById('quantityInput' + index);
+        var currentValue = parseInt(qtyInput.value);
+        if (currentValue > 1) {
+            qtyInput.value = currentValue - 1;
+        }
+    }
+
+    function increaseQuantity(index) {
+        var qtyInput = document.getElementById('quantityInput' + index);
+        var currentValue = parseInt(qtyInput.value);
+        qtyInput.value = currentValue + 1;
+    }
+</script>
+<style>
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-wrapper button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity-wrapper input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+}
+</style>
 @endsection

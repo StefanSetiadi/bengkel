@@ -6,22 +6,13 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Models\Sparepart;
 use App\Models\Keranjang;
+use Illuminate\Support\Facades\Auth;
+
 
 class ShopController extends Controller
 {
     public function shopView(Request $request)
     {   
-        // carts
-        $carts = Keranjang::all();
-        $total = 0;
-        foreach ($carts as $cart) {
-            $sparepart = Sparepart::find($cart->id_sparepart);
-            $total += $sparepart->harga * $cart->jumlah;
-        }
-        $id_spareparts = Keranjang::where('id_customer', 1)->pluck('id_sparepart');
-        $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-        
-
         if ($request->has('search')) {
             $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
         } else {
@@ -55,34 +46,48 @@ class ShopController extends Controller
             'sort' => $request->sort,
             'paginate' => $request->paginate
         ]);
+        if(Auth::check()){
+            $id_customer = Auth::user()->id_customer;
+            // carts
+            $carts = Keranjang::all();
+            $total = 0;
+            foreach ($carts as $cart) {
+                $sparepart = Sparepart::find($cart->id_sparepart);
+                $total += $sparepart->harga * $cart->jumlah;
+            }
+            $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
+            $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
+            return view('shop.shop', compact('spareparts', 'carts', 'total'));
+        } else {
+            return view('shop.shop', compact('spareparts'));
+        }
         
-        return view('shop.shop', compact('spareparts', 'carts', 'total'));
     }
 
     public function shopDetailsView($id_sparepart)
     {
-        // carts
-        $carts = Keranjang::all();
-        $total = 0;
-        foreach ($carts as $cart) {
-            $sparepart = Sparepart::find($cart->id_sparepart);
-            $total += $sparepart->harga * $cart->jumlah;
-        }
-        $total = 0;
-        foreach ($carts as $cart) {
-            $sparepart = Sparepart::find($cart->id_sparepart);
-            $total += $sparepart->harga * $cart->jumlah;
-        }
-        $id_spareparts = Keranjang::where('id_customer', 1)->pluck('id_sparepart');
-        $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-
         $sparepart = Sparepart::where('id_sparepart', $id_sparepart)->first();
-        return view('shop.shop-details', compact('sparepart', 'carts', 'total'));
+        if(Auth::check()){
+            $id_customer = Auth::user()->id_customer;
+            // carts
+            $carts = Keranjang::all();
+            $total = 0;
+            foreach ($carts as $cart) {
+                $sparepart = Sparepart::find($cart->id_sparepart);
+                $total += $sparepart->harga * $cart->jumlah;
+            }
+            $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
+            $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
+            return view('shop.shop-details', compact('sparepart', 'carts', 'total'));
+        } else {
+            return view('shop.shop-details', compact('sparepart'));
+        }
     }
 
     public function addCart(Request $request)
     {
-        $data = Keranjang::where('id_customer', $request->id_customer)
+        $id_customer = Auth::user()->id_customer;
+        $data = Keranjang::where('id_customer', $id_customer)
                       ->where('id_sparepart', $request->id_sparepart)
                       ->first();
         if ($data) {
@@ -90,7 +95,7 @@ class ShopController extends Controller
             $data->save();
         } else {
             $data = Keranjang::create([
-                'id_customer' => $request->id_customer,
+                'id_customer' => $id_customer,
                 'id_sparepart' => $request->id_sparepart,
                 'jumlah' => $request->jumlah,
             ]);
@@ -98,16 +103,27 @@ class ShopController extends Controller
         return redirect()->back();
     }
 
-    public function viewCart($id_customer)
+    public function editCart(Request $request)
     {
-        // carts
+        $id_customer = Auth::user()->id_customer;
+        $data = Keranjang::where('id_customer', $id_customer)
+                      ->where('id_sparepart', $request->id_sparepart)
+                      ->first();
+        $data->jumlah = $request->jumlah;
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function viewCart()
+    {
+        $id_customer = Auth::user()->id_customer;
         $carts = Keranjang::all();
         $total = 0;
         foreach ($carts as $cart) {
             $sparepart = Sparepart::find($cart->id_sparepart);
             $total += $sparepart->harga * $cart->jumlah;
         }
-        $id_spareparts = Keranjang::where('id_customer', 1)->pluck('id_sparepart');
+        $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
         $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
         
 
@@ -116,7 +132,8 @@ class ShopController extends Controller
 
     public function removeCart(Request $request)
     {
-        $deletedRows = Keranjang::where('id_customer', $request->id_customer)
+        $id_customer = Auth::user()->id_customer;
+        $deletedRows = Keranjang::where('id_customer', $id_customer)
                                 ->where('id_sparepart', $request->id_sparepart)
                                 ->delete();
         return redirect()->back();

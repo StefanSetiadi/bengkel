@@ -19,7 +19,7 @@
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
                         <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="post">
                             @csrf
-                            <input name="id_customer" value="1" hidden>
+                            
                             <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
                         </form>
                     </ul>

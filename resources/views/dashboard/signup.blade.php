@@ -18,7 +18,7 @@
 		<link rel="shortcut icon" href="assets/images/favicon.svg">
 
 		<!-- Title -->
-		<title>Bootstrap Admin Dashboards</title>
+		<title>Sign Up</title>
 
 
 		<!-- *************
@@ -39,59 +39,63 @@
 
 	<body class="login-container">
 
-		<!-- Loading wrapper start -->
-		<!-- <div id="loading-wrapper">
-			<div class="spinner">
-                <div class="line1"></div>
-				<div class="line2"></div>
-				<div class="line3"></div>
-				<div class="line4"></div>
-				<div class="line5"></div>
-				<div class="line6"></div>
-            </div>
-		</div> -->
-		<!-- Loading wrapper end -->
-
 		<!-- Login box start -->
-		<form action="index.html">
+			<form action="{{ route('actionregister') }}" method="post">	
+			@csrf
 			<div class="login-box">
 				<div class="login-form">
 					<a href="index.html" class="login-logo">
 						<img src="assets/images/logo.svg" alt="Vico Admin" />
 					</a>
 					<div class="login-welcome">
-						Welcome back, <br />Please create your Arise admin account.
+						Welcome back, <br />Please create your account.
 					</div>
+					@if ($message = Session::get('message'))
+						<style>
+							#alertMessage {
+								transition: opacity 0.8s ease-out;
+							}
+						</style>
+						<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+						<br>
+						@if($message == "success")
+							<div id="alertMessage" class="alert alert-success" role="alert">
+								Successfully registered
+							</div>
+						@else
+							<div id="alertMessage" class="alert alert-danger" role="alert">
+								failed to register
+							</div>
+						@endif
+						<script>
+							setTimeout(() => {
+								const alertElement = document.getElementById('alertMessage');
+								alertElement.style.opacity = '0';
+								setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+							}, 5000);
+						</script>
+					@endif
 					<div class="mb-3">
 						<label class="form-label">Email</label>
-						<input type="email" class="form-control">
+						<input name="email" type="email" class="form-control">
 					</div>
 					<div class="mb-3">
 						<label class="form-label">Username</label>
-						<input type="text" class="form-control">
+						<input name="username" type="text" class="form-control">
 					</div>
 					<div class="mb-3">
 						<div class="d-flex justify-content-between">
 							<label class="form-label">Password</label>
-							<div class="form-check ml-auto me-0">
-								<input class="form-check-input" type="checkbox" value="" id="savePassword">
-								<label class="form-check-label" for="savePassword">Save Password</label>
-							</div>
 						</div>
-						<input type="password" class="form-control">
+						<input name="password" type="password" class="form-control">
 					</div>
 					<div class="login-form-actions">
 						<button type="submit" class="btn"> <span class="icon"> <i class="bi bi-arrow-right-circle"></i> </span>
 							Signup</button>
 					</div>
-					<div class="login-form-actions">
-						<button type="submit" class="btn"> <img src="assets/images/google.svg" class="login-icon"
-								alt="Signup using Gmail">
-							Signup using Gmail</button>
-					</div>
 					<div class="login-form-footer">
 						<div class="additional-link">
-							Already have an account? <a href="login.html"> Login</a>
+							Already have an account? <a href="{{ route('login') }}"> Login</a>
 						</div>
 					</div>
 				</div>

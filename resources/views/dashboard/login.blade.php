@@ -18,7 +18,7 @@
 		<link rel="shortcut icon" href="assets/images/favicon.svg">
 
 		<!-- Title -->
-		<title>Bootstrap Admin Dashboards</title>
+		<title>Login</title>
 
 
 		<!-- *************
@@ -39,55 +39,53 @@
 
 	<body class="login-container">
 
-		<!-- Loading wrapper start -->
-		<!-- <div id="loading-wrapper">
-			<div class="spinner">
-                <div class="line1"></div>
-				<div class="line2"></div>
-				<div class="line3"></div>
-				<div class="line4"></div>
-				<div class="line5"></div>
-				<div class="line6"></div>
-            </div>
-		</div> -->
-		<!-- Loading wrapper end -->
-
 		<!-- Login box start -->
-		<form action="index.html">
+		<form action="{{ route('actionlogin') }}" method="post">
+			@csrf
 			<div class="login-box">
 				<div class="login-form">
 					<a href="index.html" class="login-logo">
 						<img src="assets/images/logo.svg" alt="Vico Admin" />
 					</a>
 					<div class="login-welcome">
-						Welcome back, <br />Please login to your Arise admin account.
+						Welcome back, <br />Please login to your account.
 					</div>
+					@if (Session::get('message') == "failed")
+						<style>
+							#alertMessage {
+								transition: opacity 0.8s ease-out;
+							}
+						</style>
+						<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+						<br>
+						<div id="alertMessage" class="alert alert-danger" role="alert">
+							The email or password you entered is incorrect
+						</div>
+						<script>
+							setTimeout(() => {
+								const alertElement = document.getElementById('alertMessage');
+								alertElement.style.opacity = '0';
+								setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+							}, 5000);
+						</script>
+					@endif
 					<div class="mb-3">
-						<label class="form-label">Username</label>
-						<input type="text" class="form-control">
+						<label class="form-label">Email</label>
+						<input name="email" type="email" class="form-control" required>
 					</div>
 					<div class="mb-3">
 						<div class="d-flex justify-content-between">
 							<label class="form-label">Password</label>
-							<a href="forgot-password.html" class="btn-link ml-auto">Forgot password?</a>
 						</div>
-						<input type="password" class="form-control">
+						<input name="password" type="password" class="form-control" required>
 					</div>
 					<div class="login-form-actions">
 						<button type="submit" class="btn"> <span class="icon"> <i class="bi bi-arrow-right-circle"></i> </span>
 							Login</button>
 					</div>
-					<div class="login-form-actions">
-						<button type="submit" class="btn"> <img src="assets/images/google.svg" class="login-icon"
-								alt="Login with Google">
-							Login with Google</button>
-						<button type="submit" class="btn"> <img src="assets/images/facebook.svg" class="login-icon"
-								alt="Login with Facebook">
-							Login with Facebook</button>
-					</div>
 					<div class="login-form-footer">
 						<div class="additional-link">
-							Don't have an account? <a href="signup.html"> Signup</a>
+							Don't have an account? <a href="{{ route('register') }}"> Signup</a>
 						</div>
 					</div>
 				</div>
