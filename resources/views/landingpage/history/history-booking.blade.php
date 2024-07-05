@@ -57,14 +57,14 @@
                             @else
 							@foreach ($bookings as $index => $booking)
                                 <tr>
-                                    <td class="unit-price text-left" width=100>
-                                        <span>{{ $index+1 }}</span>
+                                    <td class="cart-product-name text-left" width=100>
+                                        <a>{{ $index+1 }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=200>
                                         <a>{{ $booking->no_kendaraan }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $booking->deskripsi }}</span>
+                                        <a>{{ $booking->deskripsi }}</a>
                                     </td>
                                     @php
                                         $datetime = $booking->waktu;
@@ -72,13 +72,13 @@
                                         $time = \Carbon\Carbon::parse($datetime)->format('H:i:s');
                                     @endphp
                                     <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $date }}</span>
+                                        <a>{{ $date }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $time }}</span>
+                                        <a>{{ $time }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $booking->status_booking }}</span>
+                                        <a>{{ $booking->status_booking }}</a>
                                     </td>
                                     <!-- remove icon start -->
                                     <td class="remove-icon">

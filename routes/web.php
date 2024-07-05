@@ -95,6 +95,7 @@ Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView
 // History
 Route::get('/historyBooking', [BookingController::class, 'historyBooking'])->name('historyBooking')->middleware('auth');
 Route::get('/historyTransaction', [PaymentController::class, 'historyTransaction'])->name('historyTransaction')->middleware('auth');
+Route::post('/detailHistoryTransaction', [PaymentController::class, 'detailHistoryTransaction'])->name('detailHistoryTransaction')->middleware('auth');
 Route::get('/historyServices', [ServiceController::class, 'historyServices'])->name('historyServices')->middleware('auth');
 
 
