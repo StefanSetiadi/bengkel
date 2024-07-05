@@ -15,7 +15,7 @@ class ViewController extends Controller
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
-            $carts = Keranjang::all();
+            $carts = Keranjang::where('id_customer', $id_customer)->get();
             $total = 0;
             foreach ($carts as $cart) {
                 $sparepart = Sparepart::find($cart->id_sparepart);
@@ -35,7 +35,7 @@ class ViewController extends Controller
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
-            $carts = Keranjang::all();
+            $carts = Keranjang::where('id_customer', $id_customer)->get();
             $total = 0;
             foreach ($carts as $cart) {
                 $sparepart = Sparepart::find($cart->id_sparepart);

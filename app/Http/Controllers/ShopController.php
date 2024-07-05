@@ -49,7 +49,7 @@ class ShopController extends Controller
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
-            $carts = Keranjang::all();
+            $carts = Keranjang::where('id_customer', $id_customer)->get();
             $total = 0;
             foreach ($carts as $cart) {
                 $sparepart = Sparepart::find($cart->id_sparepart);
@@ -66,11 +66,11 @@ class ShopController extends Controller
 
     public function shopDetailsView($id_sparepart)
     {
-        $sparepart = Sparepart::where('id_sparepart', $id_sparepart)->first();
+        $spareparts = Sparepart::where('id_sparepart', $id_sparepart)->first();
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
-            $carts = Keranjang::all();
+            $carts = Keranjang::where('id_customer', $id_customer)->get();
             $total = 0;
             foreach ($carts as $cart) {
                 $sparepart = Sparepart::find($cart->id_sparepart);
@@ -78,9 +78,9 @@ class ShopController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('shop.shop-details', compact('sparepart', 'carts', 'total'));
+            return view('shop.shop-details', compact('spareparts', 'carts', 'total'));
         } else {
-            return view('shop.shop-details', compact('sparepart'));
+            return view('shop.shop-details', compact('spareparts'));
         }
     }
 
@@ -117,7 +117,7 @@ class ShopController extends Controller
     public function viewCart()
     {
         $id_customer = Auth::user()->id_customer;
-        $carts = Keranjang::all();
+        $carts = Keranjang::where('id_customer', $id_customer)->get();
         $total = 0;
         foreach ($carts as $cart) {
             $sparepart = Sparepart::find($cart->id_sparepart);

@@ -77,17 +77,17 @@
 					@endif
 					<div class="mb-3">
 						<label class="form-label">Email</label>
-						<input name="email" type="email" class="form-control">
+						<input name="email" type="email" class="form-control" required>
 					</div>
 					<div class="mb-3">
 						<label class="form-label">Username</label>
-						<input name="username" type="text" class="form-control">
+						<input name="username" type="text" class="form-control" required>
 					</div>
 					<div class="mb-3">
 						<div class="d-flex justify-content-between">
 							<label class="form-label">Password</label>
 						</div>
-						<input name="password" type="password" class="form-control">
+						<input name="password" type="password" class="form-control" required>
 					</div>
 					<div class="login-form-actions">
 						<button type="submit" class="btn"> <span class="icon"> <i class="bi bi-arrow-right-circle"></i> </span>

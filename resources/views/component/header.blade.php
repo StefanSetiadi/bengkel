@@ -45,7 +45,7 @@
                                                 </div>
                                                 <!-- cart item info -->
                                                 <div class="cart-info">
-                                                    <a href="#" class="cart-item-name">
+                                                    <a href="\shop-details{{ $cart->id_sparepart }}" class="cart-item-name">
                                                         {{ $cart->nama }}
                                                     </a>
                                                     <p class="quantity">quantity: <strong> 
@@ -129,13 +129,30 @@
                                     <li><a href="{{ route('shop') }}">Shop</a></li>
                                     @if (Auth::check())
                                         <!-- single menu -->
-                                        <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="post">
+                                        <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="get">
                                             @csrf
                                             
                                             <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
                                         </form>
-                                        <!-- single menu -->
-                                        <li><a href="{{ route('service') }}">Services</a></li>
+                                        <!-- single menu
+                                        <li><a href="{{ route('service') }}">Services</a></li> -->
+                                        <!-- single menu with dropdown -->
+                                        <li class="has-mega"><a href="#">History<i class="icofont icofont-simple-down"></i></a>
+                                            <!-- mega-menu start -->
+                                            <div class="mega-menu" style="width:40%;transform: translateX(-20%); position: absolute;">
+                                                <span>
+                                                    <a href="#">Transaction</a>
+                                                </span>
+                                                <span>
+                                                    <a href="#">Services</a>
+                                                </span>
+                                                <span>
+                                                    <a href="#">Booking</a>
+                                                </span>
+                                            </div>
+                                            <!-- mega-menu end -->
+                                        </li>
+
                                     @endif
                                     <!-- single menu -->
                                     <li><a href="{{ route('about-us') }}">About us</a></li>

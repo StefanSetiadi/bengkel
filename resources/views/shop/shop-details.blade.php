@@ -34,8 +34,8 @@
                 <div class="col-md-5 col-sm-6">
                     <!-- product img start -->
                     <div class="product-img">
-                        @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
-                            <img src="{{ $sparepart->image }}" alt="" height="520">
+                        @if(!empty($spareparts->image) && file_exists(public_path($spareparts->image)))
+                            <img src="{{ $spareparts->image }}" alt="" height="520">
                         @else
                             <img src="img/product/1.jpg" alt="" height="520">
                         @endif
@@ -45,20 +45,20 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="single-product">
                         <div class="product-name">
-                            <a href="#">{{ $sparepart->nama }}</a>
+                            <a href="#">{{ $spareparts->nama }}</a>
                         </div>
                         <div class="price-rating">
                             <div class="product-price pull-left">
-                                <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
+                                <p>Rp. {{ number_format($spareparts->harga, 0, ',', '.') }}</p>
                             </div>
                         </div>
                         <div class="product-text">
-                            <p>{{ $sparepart->deskripsi }}</p>
+                            <p>{{ $spareparts->deskripsi }}</p>
                         </div>
                         <form action="{{ route('addCart') }}" method="post" style="display:inline-block;">
                             @csrf
                             
-                            <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
+                            <input name="id_sparepart" value="{{ $spareparts->id_sparepart }}" hidden>
                             <!-- cart plus minus start -->
                             <div class="cart-plus-minus">
                                 <label>Quantity: </label>

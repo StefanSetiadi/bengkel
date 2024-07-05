@@ -17,7 +17,6 @@
 												<thead>
 													<tr>
 														<th>No</th>
-														<th>ID Customers</th>
 														<th>Plate Number</th>
 														<th>Description</th>
 														<th>Date</th>
@@ -31,26 +30,47 @@
 													@else
 													@foreach ($bookings as $index => $booking)
 													<tr>
-														<td>{{ $index + 1}}</td>
-														<td>{{ $booking->id_customer }}</td>
-														<td>{{ $booking->no_kendaraan }}</td>
-														<td>{{ $booking->deskripsi }}</td>
+														<td width=100>{{ $index + 1}}</td>
+														<td width=150>{{ $booking->no_kendaraan }}</td>
+														<td width=450>{{ $booking->deskripsi }}</td>
 														@php
 															$datetime = $booking->waktu;
 															$date = \Carbon\Carbon::parse($datetime)->format('Y-m-d');
 															$time = \Carbon\Carbon::parse($datetime)->format('H:i:s');
 														@endphp
-														<td>{{ $date }}</td>
-														<td>{{ $time }}</td>
+														<td width=150>{{ $date }}</td>
+														<td width=150>{{ $time }}</td>
 														<td>
-															<div class="actions">
-																<a href="#" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-list text-green"></i>
+														@if ($booking->status_booking == 'waiting')
+														<div class="actions">
+															<form action="{{ route('rejectBooking') }}" method="post" id="rejectBookingForm">
+																@csrf
+																<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
+																<a href="#" onclick="document.getElementById('rejectBookingForm').submit(); return false;" type="submit" class="deleteRow">
+																	<i class="bi bi-x text-red"></i>
 																</a>
-																<a href="#" class="deleteRow">
-																	<i class="bi bi-trash text-red"></i>
+															</form>
+															<form action="{{ route('acceptBooking') }}" method="post" id="acceptBookingForm">
+																@csrf
+																<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
+																<a onclick="document.getElementById('acceptBookingForm').submit(); return false;" type="submit" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																	<i class="bi bi-check text-green"></i>
 																</a>
-															</div>
+															</form>
+														</div>
+														@elseif($booking->status_booking == 'accepted')
+														<div class="actions">
+															<a class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
+																<i class="bi bi-check text-green"></i>
+															</a>
+														</div>
+														@else
+														<div class="actions">
+															<a class="deleteRow">
+																<i class="bi bi-x text-red"></i>
+															</a>
+														</div>
+														@endif
 														</td>
 													</tr>
 													@endforeach

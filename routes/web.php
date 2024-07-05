@@ -81,8 +81,12 @@ Route::post('/addCart', [ShopController::class, 'addCart'])->name('addCart')->mi
 Route::post('/editCart', [ShopController::class, 'editCart'])->name('editCart')->middleware('auth');
 
 // Booking
-Route::post('/booking', [BookingController::class, 'bookingView'])->name('booking')->middleware('auth');
+Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking')->middleware('auth');
 Route::post('/addBooking', [BookingController::class, 'addBooking'])->name('addBooking')->middleware('auth');
+Route::post('/removeBooking', [BookingController::class, 'removeBooking'])->name('removeBooking')->middleware('auth');
+
+Route::post('/acceptBooking', [BookingController::class, 'acceptBooking'])->name('acceptBooking')->middleware('auth');
+Route::post('/rejectBooking', [BookingController::class, 'rejectBooking'])->name('rejectBooking')->middleware('auth');
 
 Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');
 

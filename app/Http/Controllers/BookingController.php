@@ -14,10 +14,12 @@ class BookingController extends Controller
 {
     public function bookingView(Request $request)
     {
+        $id_customer = Auth::user()->id_customer;
+        $bookings = Booking::where('id_customer', $id_customer)->get();
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
-            $carts = Keranjang::all();
+            $carts = Keranjang::where('id_customer', $id_customer)->get();
             $total = 0;
             foreach ($carts as $cart) {
                 $sparepart = Sparepart::find($cart->id_sparepart);
@@ -25,9 +27,9 @@ class BookingController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('booking', compact('carts','total'));
+            return view('booking', compact('carts','total', 'bookings'));
         } else {
-            return view('booking');
+            return view('booking', compact('bookings'));
         }        
     }
 
@@ -35,13 +37,44 @@ class BookingController extends Controller
     {
         $id_customer = Auth::user()->id_customer;
         $data = Booking::create([
-            'id_customer' => 1,
-            'id_admin' => $id_customer,
+            'id_customer' => $id_customer,
+            'id_admin' => 1,
             'no_kendaraan' => strtoupper($request->no_kendaraan),
             'deskripsi' => $request->deskripsi,
             'waktu' => $request->waktu,
+            'status_booking' => 'waiting'
         ]);
-        return view('booking');
+        return redirect()->back();
+    }
+
+    public function removeBooking(Request $request)
+    {
+        $booking = Booking::find($request->id_booking);
+
+        if ($booking) {
+            $booking->delete();
+            return redirect()->back()->with('message', 'Booking deleted succesfully');
+        } else {
+            return redirect()->back()->with('message', 'Booking not found');
+        }
+    }
+
+    public function acceptBooking(Request $request)
+    {
+        $id_customer = Auth::user()->id_customer;
+        $data = Booking::where('id_booking', $request->id_booking)->first();
+        $data->status_booking = 'accepted';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function rejectBooking(Request $request)
+    {
+        $id_customer = Auth::user()->id_customer;
+        $data = Booking::where('id_booking', $request->id_booking)->first();
+        $data->status_booking = 'rejected';
+        $data->save();
+        return redirect()->back();
     }
 
     public function bookingDashboardView()
