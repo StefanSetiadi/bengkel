@@ -1,4 +1,4 @@
-@extends('component.main')
+@extends('landingpage.component.main')
 
 @section('title', 'Cart')
 
@@ -31,6 +31,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+            @if (Session::has('success') || Session::has('failed'))
+                <style>
+                    #alertMessage {
+                        transition: opacity 0.8s ease-out;
+                    }
+                </style>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <br>
+                @if (Session::has('success'))
+                    <div id="alertMessage" class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @else
+                    <div id="alertMessage" class="alert alert-danger" role="alert">
+                        {{ Session::get('failed') }}
+                    </div>  
+                @endif
+                <script>
+                    setTimeout(() => {
+                        const alertElement = document.getElementById('alertMessage');
+                        alertElement.style.opacity = '0';
+                        setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+                    }, 5000);
+                </script>
+            @endif
                 <!-- cart table start -->
                 <div class="table-responsive">
                     <table class="table-bordered table">
@@ -51,7 +76,7 @@
                         </thead>
                         <tbody class="text-center">
                             @if ($carts->isEmpty())
-							    <td align="center" colspan="5">No spare parts have been put in the cart yet</td>
+							    <td align="center" colspan="6">No spare parts have been put in the cart yet</td>
                             @else
 							@foreach ($carts as $index => $cart)
                                 <tr>
@@ -122,7 +147,11 @@
                     <div class="cart-total">
                         <p class="total-price">Total <span class="pull-right">Rp. {{ number_format($total, 0, ',', '.') }}</span> </p>
                         <div class="shopping-button text-right">
-                            <a href="checkout.html">procced to checkout</a>
+                            <form action="{{ route('actionCheckout') }}" method="post">
+                                @csrf
+                                
+                                <button type="submit">procced to checkout</button>
+                            </form>
                         </div>
                     </div>
                     <!-- cart total end -->

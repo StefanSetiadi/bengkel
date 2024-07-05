@@ -1,6 +1,6 @@
-@extends('component.main')
+@extends('landingpage.component.main')
 
-@section('title', 'Services')
+@section('title', 'Shop')
 
 @section('content')
 <!-- page title area start -->
@@ -10,14 +10,14 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>Services</h2>
+                    <h2>Shop</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('service') }}">Services</a></li>
+                        <li><a href="{{ route('shop') }}">Shop</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- shop bar start -->
-                <form class="form-inline" id="sortForm" action="{{route('service')}}">
+                <form class="form-inline" id="sortForm" action="{{route('shop')}}">
                         <div class="shop-nav width-33 pull-left">
                             <input type="text" class="form-control" name="search" placeholder="Search" size="30" value="{{ request('search') }}">
                             <button class="btn btn-danger" type="submit">Search</button>
@@ -45,6 +45,8 @@
                             <select id="sortProducts" name="sort" onchange="document.getElementById('sortForm').submit();">
                                 <option value="nameASC" {{ request('sort') == 'nameASC' ? 'selected' : '' }}>Name (Ascending)</option>
                                 <option value="nameDESC" {{ request('sort') == 'nameDESC' ? 'selected' : '' }}>Name (Descending)</option>
+                                <option value="priceASC" {{ request('sort') == 'priceASC' ? 'selected' : '' }}>Price (Ascending)</option>
+                                <option value="priceDESC" {{ request('sort') == 'priceDESC' ? 'selected' : '' }}>Price (Descending)</option>
                             </select>
                         </div>
                         <!-- shop sort end -->
@@ -67,38 +69,57 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="gird">
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
-                        @if ($services->isEmpty())
-                        <h3 align="center">No products found matching your search criteria.</h3>
+                        @if ($spareparts->isEmpty())
+                            <h3 align="center">No products found matching your search criteria.</h3>
                         @else
-                        @foreach ($services as $index => $service)
-                            <div class="col-md-3 col-sm-6">
-                                <!-- single shop start -->
-                                <div class="single-product hover-style text-center">
-                                    <div class="product-img">
-                                        <!-- product-img -->
-                                        <a href="/spareparts{{$service->id_kategori_service}}" class="main-img">
-                                        @if(!empty($service->image) && file_exists(public_path($service->image)))
-                                            <img src="{{ $service->image }}" alt="" width="270" height="330">
-                                        @else
-                                            <img src="img/product/1.jpg" alt="" width="270" height="330">
-                                        @endif
-                                        </a>
-                                    </div>
-                                    <!-- product-info start -->
-                                    <div class="product-info text-center">
-                                        <div class="product-name">
-                                            <a href="/spareparts{{$service->id_kategori_service}}">{{ $service->nama }}</a>
-                                            <small>biaya jasa :</small>
-                                        </div>
-                                        <div class="product-price">
-                                            <p>Rp. {{ number_format($service->biaya_jasa, 0, ',', '.') }}</p>
-                                        </div>
-                                    </div>
-                                    <!-- product-info start -->
-                                </div>
-                                <!-- single shop end -->
-                            </div>
-                        @endforeach
+                        @foreach ($spareparts as $index => $sparepart)
+    @if ($index % 4 == 0)
+        <div class="row">
+    @endif
+    <div class="col-md-3 col-sm-6">
+        <!-- single shop start -->
+        <div class="single-product hover-style text-center">
+            <div class="product-img">
+                <!-- product-img -->
+                <a href="/shop-details{{$sparepart->id_sparepart}}" class="main-img">
+                    @if(!empty($sparepart->image) && file_exists(public_path($sparepart->image)))
+                        <img src="{{ $sparepart->image }}" alt="" width="270" height="330">
+                    @else
+                        <img src="img/product/1.jpg" alt="" width="270" height="330">
+                    @endif
+                </a>
+                <!-- product actions -->
+                <div class="product-action">
+                    <div class="action-btn">
+                        <form action="{{ route('addCart') }}" method="post" style="display:inline-block;">
+                            @csrf
+                            
+                            <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
+                            <input name="jumlah" value="1" hidden>
+                            <button type="submit" class="btn btn-danger"> add to cart</button>
+                        </form>
+                        <a class="btn btn-warning" href="/shop-details{{ $sparepart->id_sparepart }}"> View</a>
+                    </div>
+                </div>
+            </div>
+            <!-- product-info start -->
+            <div class="product-info text-center">
+                <div class="product-name">
+                    <a href="/shop-details{{$sparepart->id_sparepart}}">{{ $sparepart->nama }}</a>
+                </div>
+                <div class="product-price">
+                    <p>Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</p>
+                </div>
+            </div>
+            <!-- product-info start -->
+        </div>
+        <!-- single shop end -->
+    </div>
+    @if (($index + 1) % 4 == 0 || $index == count($spareparts) - 1)
+        </div>
+    @endif
+@endforeach
+
                         @endif
                     </div>
                     <!-- gird shop end -->
@@ -109,7 +130,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <!-- toolbar start -->
-                {{$services->links()}}
+                {{$spareparts->links()}}
                 <div class="toolbar-bottom">
                 </div>
                 <!-- toolbar end -->

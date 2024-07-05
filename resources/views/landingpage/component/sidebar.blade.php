@@ -13,7 +13,7 @@
         <div class="sidebarMenuScroll">
             <ul>
                 <li class="sidebar-dropdown">
-                    <a href="{{ route("index")}}">
+                    <a href="{{ route("index") }}">
                         <i class="bi bi-house"></i>
                         <span class="menu-text">Dashboard</span>
                     </a>

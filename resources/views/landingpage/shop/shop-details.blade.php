@@ -1,4 +1,4 @@
-@extends('component.main')
+@extends('landingpage.component.main')
 
 @section('title', 'Shop Details')
 

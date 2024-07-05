@@ -141,13 +141,13 @@
                                             <!-- mega-menu start -->
                                             <div class="mega-menu" style="width:40%;transform: translateX(-20%); position: absolute;">
                                                 <span>
-                                                    <a href="#">Transaction</a>
+                                                    <a href="{{ route('historyTransaction') }}">Transaction</a>
                                                 </span>
                                                 <span>
-                                                    <a href="#">Services</a>
+                                                    <a href="{{ route('historyServices') }}">Services</a>
                                                 </span>
                                                 <span>
-                                                    <a href="#">Booking</a>
+                                                    <a href="{{ route('historyBooking') }}">Booking</a>
                                                 </span>
                                             </div>
                                             <!-- mega-menu end -->

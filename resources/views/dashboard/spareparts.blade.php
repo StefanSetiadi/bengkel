@@ -7,7 +7,7 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-body">
-			@if ($message = Session::get('success'))
+			@if (Session::has('success'))
 				<style>
 					#alertMessage {
 						transition: opacity 0.8s ease-out;
@@ -16,7 +16,7 @@
 				<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 				<br>
 				<div id="alertMessage" class="alert alert-success" role="alert">
-					{{ $message }}
+					{{ Session::get('success') }}
 				</div>
 				<script>
 					setTimeout(() => {

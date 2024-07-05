@@ -8,6 +8,7 @@ use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -77,6 +78,7 @@ Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsVi
 Route::get('/view-cart', [ShopController::class, 'viewCart'])->name('view-cart')->middleware('auth');
 Route::post('/removeCart', [ShopController::class, 'removeCart'])->name('removeCart')->middleware('auth');
 
+Route::post('/actionCheckout', [ShopController::class, 'actionCheckout'])->name('actionCheckout')->middleware('auth');
 Route::post('/addCart', [ShopController::class, 'addCart'])->name('addCart')->middleware('auth');
 Route::post('/editCart', [ShopController::class, 'editCart'])->name('editCart')->middleware('auth');
 
@@ -89,6 +91,11 @@ Route::post('/acceptBooking', [BookingController::class, 'acceptBooking'])->name
 Route::post('/rejectBooking', [BookingController::class, 'rejectBooking'])->name('rejectBooking')->middleware('auth');
 
 Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');
+
+// History
+Route::get('/historyBooking', [BookingController::class, 'historyBooking'])->name('historyBooking')->middleware('auth');
+Route::get('/historyTransaction', [PaymentController::class, 'historyTransaction'])->name('historyTransaction')->middleware('auth');
+Route::get('/historyServices', [ServiceController::class, 'historyServices'])->name('historyServices')->middleware('auth');
 
 
 // Sparepart

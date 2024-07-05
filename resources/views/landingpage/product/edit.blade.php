@@ -1,6 +1,6 @@
-@extends('component.main')
+@extends('landingpage.component.main')
 
-@section('title', 'Create Product')
+@section('title', 'Edit Product')
 
 @section('content')
 <!-- page title area start -->
@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>Create Product</h2>
+                    <h2>Edit Product</h2>
                 </div>
                 <!-- page title end -->
             </div>
@@ -21,8 +21,9 @@
 <!-- checkout area start -->
 <div class="checkout-area section-padding">
     <div class="container">
-    <form action="{{route('addProduct')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('editDataProduct')}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="text" value="{{ $product->id_product }}" name="id_product" hidden>
         <div class="row">
             <div class="col-md-6">
                 <!-- total cart area start -->
@@ -33,7 +34,7 @@
                     </div>
                     <div class="form-group text-center">
                         <div class="col-md-12">
-                            <img id="previewProduct" src="img/product/1.jpg"
+                            <img id="previewProduct" src="{{ $product->image }}"
                                 class="rounded mx-auto d-block" width="270" height="330" alt="productPhoto">
                         </div><br>
                         <input type="file" id="productPhoto" name="productPhoto"
@@ -60,16 +61,16 @@
                     <!-- section title start -->
                     <!-- client address form -->
                     <div class="client-address-form">
-                            <input type="text" placeholder="Name" name="name" required>
-                            <input type="number" placeholder="Quantity" name="quantity" required>
-                            <input type="number" placeholder="price" name="price" required>
-                            <textarea cols="3" rows="5" placeholder="description" name="description"></textarea>
+                            <input type="text" placeholder="Name" name="name" value="{{ $product->name }}" required>
+                            <input type="number" placeholder="Quantity" name="quantity" value="{{ $product->quantity }}" required>
+                            <input type="number" placeholder="price" name="price" value="{{ $product->price }}" required>
+                            <textarea cols="3" rows="5" placeholder="description" name="description">{{ $product->description }}</textarea>
                         </div>
                     </div>
                     <!-- client address end -->
                     <!-- shopping button start -->
                     <div class="shopping-button">
-                        <button type="submit">Create</button>
+                        <button type="submit">Update</button>
                     </div>
                     <!-- shopping button end -->
             </div>

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Models\Sparepart;
 use App\Models\Keranjang;
+use App\Models\Transaksi;
+use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -57,9 +59,9 @@ class ShopController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('shop.shop', compact('spareparts', 'carts', 'total'));
+            return view('landingpage.shop.shop', compact('spareparts', 'carts', 'total'));
         } else {
-            return view('shop.shop', compact('spareparts'));
+            return view('landingpage.shop.shop', compact('spareparts'));
         }
         
     }
@@ -78,9 +80,9 @@ class ShopController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('shop.shop-details', compact('spareparts', 'carts', 'total'));
+            return view('landingpage.shop.shop-details', compact('spareparts', 'carts', 'total'));
         } else {
-            return view('shop.shop-details', compact('spareparts'));
+            return view('landingpage.shop.shop-details', compact('spareparts'));
         }
     }
 
@@ -127,7 +129,7 @@ class ShopController extends Controller
         $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
         
 
-        return view('shop.cart', compact('carts','total'));
+        return view('landingpage.shop.cart', compact('carts','total'));
     }
 
     public function removeCart(Request $request)
@@ -139,11 +141,36 @@ class ShopController extends Controller
         return redirect()->back();
     }
 
-    public function checkout(Request $request)
-    {
-        $deletedRows = Keranjang::where('id_customer', $request->id_customer)
-                                ->where('id_sparepart', $request->id_sparepart)
-                                ->delete();
-        return redirect()->back();
+    public function actionCheckout()
+    {   
+        $id_customer = Auth::user()->id_customer;
+        // carts
+        $carts = Keranjang::where('id_customer', $id_customer)->get();
+        if ($carts->isEmpty()) {
+            return redirect()->back()->with('failed', 'No items in the cart.');
+        } else {
+            $total_biaya = 0;
+            $transaksi = Transaksi::create([
+                'id_customer' => $id_customer,
+                'total_biaya' => $total_biaya,
+                'status_pembayaran' => 0
+            ]);
+            foreach ($carts as $cart) {
+                $sparepart = Sparepart::find($cart->id_sparepart);
+                $subtotal = $cart->jumlah * $sparepart->harga;
+                $total_biaya = $total_biaya + $subtotal;
+                $detail_transaksi = DetailTransaksi::create([
+                    'id_transaksi' => $transaksi->id_transaksi,
+                    'id_sparepart' => $cart->id_sparepart,
+                    'jumlah' => $cart->jumlah,
+                    'subtotal' => $subtotal
+                ]);
+            }
+            $transaksi->total_biaya = $total_biaya;
+            $transaksi->save();
+
+            $deletedRows = Keranjang::where('id_customer', $id_customer)->delete();
+            return redirect()->back()->with('success', 'Your transaction has been successful, please make a payment');
+        }
     }
 }

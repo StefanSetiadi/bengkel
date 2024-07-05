@@ -23,10 +23,10 @@ class ViewController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('index', compact('carts','total'));
+            return view('landingpage.index', compact('carts','total'));
 
         } else {
-            return view('index');
+            return view('landingpage.index');
         }
     }
 
@@ -43,9 +43,9 @@ class ViewController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('about-us', compact('carts','total'));
+            return view('landingpage.about-us', compact('carts','total'));
         } else {
-            return view('about-us');
+            return view('landingpage.about-us');
         }
     }
 
