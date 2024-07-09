@@ -1,5 +1,6 @@
 @extends('dashboard.component.main')
 
+@section('breadcrumb','Edit Sparepart')
 
 @section('content')
 <div class="content-wrapper">
@@ -11,7 +12,7 @@
 		<div class="col-sm-12 col-12">
 			<div class="card">
 				<div class="card-header">
-					<div class="card-title">Add Sparepart</div>
+					<div class="card-title">Edit Sparepart</div>
 				</div>
 				<div class="card-body">
 					<div class="row">

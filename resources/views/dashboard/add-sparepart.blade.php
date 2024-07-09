@@ -1,5 +1,6 @@
 @extends('dashboard.component.main')
 
+@section('breadcrumb','Add Sparepart')
 
 @section('content')
 <div class="content-wrapper">

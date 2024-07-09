@@ -1,6 +1,6 @@
 @extends('dashboard.component.main')
 
-@section('breadcrumb','Booking')
+@section('breadcrumb','Services')
 
 @section('content')
 <div class="content-wrapper">
@@ -10,7 +10,7 @@
 							<div class="col-sm-12 col-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Booking</div>
+										<div class="card-title">Services</div>
 									</div>
 									<div class="card-body">
 
@@ -43,36 +43,8 @@
 														<td width=150>{{ $date }}</td>
 														<td width=150>{{ $time }}</td>
 														<td>
-														@if ($booking->status_booking == 'waiting')
-														<div class="actions">
-															<form action="{{ route('rejectBooking') }}" method="post" id="rejectBookingForm">
-																@csrf
-																<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
-																<a href="#" onclick="document.getElementById('rejectBookingForm').submit(); return false;" type="submit" class="deleteRow">
-																	<i class="bi bi-x text-red"></i>
-																</a>
-															</form>
-															<form action="{{ route('acceptBooking') }}" method="post" id="acceptBookingForm">
-																@csrf
-																<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
-																<a onclick="document.getElementById('acceptBookingForm').submit(); return false;" type="submit" class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																	<i class="bi bi-check text-green"></i>
-																</a>
-															</form>
-														</div>
-														@elseif($booking->status_booking == 'accepted')
-														<div class="actions">
-															<a class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																<i class="bi bi-check text-green"></i>
-															</a>
-														</div>
-														@else
-														<div class="actions">
-															<a class="deleteRow">
-																<i class="bi bi-x text-red"></i>
-															</a>
-														</div>
-														@endif
+														<a href="" class="btn btn-success">Add Spareparts</a>
+														<a href="" class="btn btn-warning">Create Payment</a>
 														</td>
 													</tr>
 													@endforeach

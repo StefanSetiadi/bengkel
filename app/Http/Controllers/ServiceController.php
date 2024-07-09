@@ -72,4 +72,10 @@ class ServiceController extends Controller
         }        
     }
 
+    public function servicesDashboardView()
+    {
+        $bookings = Booking::all();
+        return view('dashboard.services', compact('bookings'));
+    }
+
 }

@@ -98,6 +98,9 @@ Route::get('/historyTransaction', [PaymentController::class, 'historyTransaction
 Route::post('/detailHistoryTransaction', [PaymentController::class, 'detailHistoryTransaction'])->name('detailHistoryTransaction')->middleware('auth');
 Route::get('/historyServices', [ServiceController::class, 'historyServices'])->name('historyServices')->middleware('auth');
 
+// Services
+Route::get('/servicesDashboard', [ServiceController::class, 'servicesDashboardView'])->name('servicesDashboard');
+
 
 // Sparepart
 Route::get('/spareparts', [SparepartController::class, 'sparepartsView'])->name('spareparts');
@@ -110,5 +113,4 @@ Route::post('/editDataSparepart', [SparepartController::class, 'editDataSparepar
 Route::post('/deleteDataSparepart', [SparepartController::class, 'deleteDataSparepart'])->name('deleteDataSparepart');
 
 // PDF
-Route::get('history/transaction/invoice/{idTransaction}', [PaymentController::class, 'viewInvoice'])->name('viewInvoice');
 Route::get('history/transaction/invoice/{idTransaction}/generate', [PaymentController::class, 'generateInvoice'])->name('generateInvoice');

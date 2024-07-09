@@ -62,16 +62,12 @@ class PaymentController extends Controller
     }
 
 
-    public function viewInvoice(int $idTransaction){
-        $transaction = Transaksi::findOrFail($idTransaction);
-        return view('landingpage.invoice.generate');
-    }
     public function generateInvoice(int $idTransaction){
         $transaction = Transaksi::findOrFail($idTransaction);
         $data = ['transaction' => $transaction];
         $pdf = Pdf::loadView('landingpage.invoice.generate', $data);
         $todayDate = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice'.$transaction->id_transaksi.'-'.$todayDate.'.pdf');
+        return $pdf->stream('invoice'.$transaction->id_transaksi.'-'.$todayDate.'.pdf');
     }
 
 

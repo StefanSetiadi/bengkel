@@ -1,5 +1,7 @@
 @extends('dashboard.component.main')
 
+@section('breadcrumb','Spareparts')
+
 @section('content')
 <div class="content-wrapper">
 	<!-- Row start -->

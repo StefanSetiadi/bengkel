@@ -91,8 +91,7 @@
                                     </td>
                                     <!-- remove icon end -->
                                      <td>
-                                         <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi) }}" target="_blank" class="btn btn-warning">View Invoice</a>
-                                         <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" class="btn btn-primary">Download Invoice</a>
+                                         <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" target="_blank" class="btn btn-primary">Download Invoice</a>
                                      </td>
                                 </tr>
                             @endforeach
