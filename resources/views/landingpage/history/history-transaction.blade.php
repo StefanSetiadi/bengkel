@@ -45,6 +45,7 @@
                                 <th class="product-name">Date</th>
                                 <!-- remove button -->
                                 <th class="remove-icon text-center">Action</th>
+                                <th class="item-img">Invoice</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -59,7 +60,7 @@
                                     <td class="cart-product-name text-left" width=200>
                                         <a>{{ $transaction->total_biaya }}</a>
                                     </td>
-                                    <td class="cart-product-name text-left" width=300>
+                                    <td class="cart-product-name text-left" width=150>
                                         @if($transaction->status_pembayaran == "1")
                                             <a>Paid</a>
                                         @else
@@ -80,7 +81,7 @@
                                         </form>
                                         <form action="{{ route('removeBooking') }}" method="post" style="display:inline-block;">
                                             @csrf 
-                                            <input name="id_booking" value="{{ $transaction->id_transaction }}" hidden>
+                                            <input name="id_booking" value="{{ $transaction->id_transaksi }}" hidden>
                                             @if($transaction->status_pembayaran == 'paid')
                                             <button type="submit" disabled> <i class="icofont icofont-close-line"></i> </button>
                                             @else
@@ -89,6 +90,10 @@
                                         </form>
                                     </td>
                                     <!-- remove icon end -->
+                                     <td>
+                                         <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi) }}" target="_blank" class="btn btn-warning">View Invoice</a>
+                                         <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" class="btn btn-primary">Download Invoice</a>
+                                     </td>
                                 </tr>
                             @endforeach
                             @endif

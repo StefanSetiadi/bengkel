@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\Booking;
 use App\Models\Keranjang;
 use App\Models\Sparepart;
@@ -10,6 +11,7 @@ use App\Models\Customers;
 use App\Models\Transaksi;
 use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PaymentController extends Controller
 {
@@ -58,4 +60,22 @@ class PaymentController extends Controller
             return view('landingpage.history.detail-history-transaction', compact('spareparts','id_transaksi'));
         }        
     }
+
+
+    public function viewInvoice(int $idTransaction){
+        $transaction = Transaksi::findOrFail($idTransaction);
+        return view('landingpage.invoice.generate');
+    }
+    public function generateInvoice(int $idTransaction){
+        $transaction = Transaksi::findOrFail($idTransaction);
+        $data = ['transaction' => $transaction];
+        $pdf = Pdf::loadView('landingpage.invoice.generate', $data);
+        $todayDate = Carbon::now()->format('d-m-Y');
+        return $pdf->download('invoice'.$transaction->id_transaksi.'-'.$todayDate.'.pdf');
+    }
+
+
+
+
+
 }

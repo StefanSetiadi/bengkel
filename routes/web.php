@@ -109,3 +109,6 @@ Route::post('/addSparepart', [SparepartController::class, 'addSparepart'])->name
 Route::post('/editDataSparepart', [SparepartController::class, 'editDataSparepart'])->name('editDataSparepart');
 Route::post('/deleteDataSparepart', [SparepartController::class, 'deleteDataSparepart'])->name('deleteDataSparepart');
 
+// PDF
+Route::get('history/transaction/invoice/{idTransaction}', [PaymentController::class, 'viewInvoice'])->name('viewInvoice');
+Route::get('history/transaction/invoice/{idTransaction}/generate', [PaymentController::class, 'generateInvoice'])->name('generateInvoice');
