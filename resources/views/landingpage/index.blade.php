@@ -1,6 +1,6 @@
 @extends('landingpage.component.main')
 
-@section('title', 'Index')
+@section('title', 'Home')
 
 @section('content')
 <!-- slider area start -->

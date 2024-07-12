@@ -61,7 +61,7 @@
                                                     <p class="price">price: <strong>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</strong></p>
                                                     <form action="{{ route('removeCart') }}" method="post">
                                                         @csrf
-                                                        
+                                                        <input name="jumlah" value="{{ $quantity_cart }}" hidden>
                                                         <input name="id_sparepart" value="{{ $cart->id_sparepart }}" hidden>
                                                         <button type="submit" class="remove"><i class="fa fa-trash-o"></i></button>
                                                     </form>

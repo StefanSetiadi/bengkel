@@ -114,7 +114,8 @@
                                                                             ->where('id_sparepart', $cart->id_sparepart)
                                                                             ->value('jumlah');
                                             @endphp
-                                            <input id="quantityInput{{ $index+1 }}" type="text" name="jumlah" value="{{ $quantity_cart }}">
+                                            <input name="before_jumlah" value="{{ $quantity_cart }}" hidden>
+                                            <input id="quantityInput{{ $index+1 }}" type="text" name="after_jumlah" value="{{ $quantity_cart }}">
                                             <button type="button" onclick="increaseQuantity({{ $index+1 }})">+</button>
                                         </div>
                                         <button type="submit"><i class="fa fa-check"></i></button>
@@ -126,6 +127,7 @@
                                         <form action="{{ route('removeCart') }}" method="post">
                                             @csrf 
                                             <input name="id_sparepart" value="{{ $cart->id_sparepart }}" hidden>
+                                            <input name="jumlah" value="{{ $quantity_cart }}" hidden>
                                             <button type="submit"> <i class="icofont icofont-close-line"></i> </button>
                                         </form>
                                     </td>

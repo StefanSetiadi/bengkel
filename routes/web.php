@@ -98,6 +98,8 @@ Route::get('/historyTransaction', [PaymentController::class, 'historyTransaction
 Route::post('/detailHistoryTransaction', [PaymentController::class, 'detailHistoryTransaction'])->name('detailHistoryTransaction')->middleware('auth');
 Route::get('/historyServices', [ServiceController::class, 'historyServices'])->name('historyServices')->middleware('auth');
 
+Route::get('/dashboardTransaction', [PaymentController::class, 'dashboardTransaction'])->name('dashboardTransaction');
+
 // Services
 Route::get('/servicesDashboard', [ServiceController::class, 'servicesDashboardView'])->name('servicesDashboard');
 

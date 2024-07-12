@@ -13,6 +13,7 @@ use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 
+
 class PaymentController extends Controller
 {
     public function historyTransaction()
@@ -59,6 +60,18 @@ class PaymentController extends Controller
         } else {
             return view('landingpage.history.detail-history-transaction', compact('spareparts','id_transaksi'));
         }        
+    }
+
+    public function dashboardTransaction()
+    {
+        $spareparts = Sparepart::select('sparepart.*', 'detail_transaksi.jumlah')
+        ->join('detail_transaksi', 'sparepart.id_sparepart', '=', 'detail_transaksi.id_sparepart')
+        ->join('transaksi', 'detail_transaksi.id_transaksi', '=', 'transaksi.id_transaksi')
+        ->where('transaksi.status_pembayaran', '!=', 0)
+        ->paginate(10);
+    
+
+        return view('dashboard.history-transaction', compact('spareparts'));      
     }
 
 

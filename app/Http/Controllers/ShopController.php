@@ -92,6 +92,10 @@ class ShopController extends Controller
         $data = Keranjang::where('id_customer', $id_customer)
                       ->where('id_sparepart', $request->id_sparepart)
                       ->first();
+        $spareparts = Sparepart::where('id_sparepart', $request->id_sparepart)->first();
+        $spareparts->jumlah = $spareparts->jumlah - $request->jumlah;
+        $spareparts->save();
+
         if ($data) {
             $data->jumlah += $request->jumlah;
             $data->save();
@@ -111,8 +115,12 @@ class ShopController extends Controller
         $data = Keranjang::where('id_customer', $id_customer)
                       ->where('id_sparepart', $request->id_sparepart)
                       ->first();
-        $data->jumlah = $request->jumlah;
+        $data->jumlah = $request->after_jumlah;
         $data->save();
+        $spareparts = Sparepart::where('id_sparepart', $request->id_sparepart)->first();
+        $jumlah = $request->after_jumlah - $request->before_jumlah;
+        $spareparts->jumlah = $spareparts->jumlah - $jumlah;
+        $spareparts->save();
         return redirect()->back();
     }
 
@@ -138,6 +146,9 @@ class ShopController extends Controller
         $deletedRows = Keranjang::where('id_customer', $id_customer)
                                 ->where('id_sparepart', $request->id_sparepart)
                                 ->delete();
+        $spareparts = Sparepart::where('id_sparepart', $request->id_sparepart)->first();
+        $spareparts->jumlah = $spareparts->jumlah + $request->jumlah;
+        $spareparts->save();
         return redirect()->back();
     }
 

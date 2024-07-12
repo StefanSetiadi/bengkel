@@ -12,10 +12,11 @@
     <meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
     <meta property="og:type" content="Website">
     <meta property="og:site_name" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="assets/images/favicon.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
 
     <!-- Title -->
-    <title>Bootstrap Admin Dashboards</title>
+    <title>Dashboard</title>
 
 
     <!-- *************
