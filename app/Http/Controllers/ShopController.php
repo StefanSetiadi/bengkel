@@ -184,4 +184,25 @@ class ShopController extends Controller
             return redirect()->back()->with('success', 'Your transaction has been successful, please make a payment');
         }
     }
+
+    public function removeTransaction(Request $request)
+    {
+        $detail_transaksi = DetailTransaksi::where('id_transaksi',$request->id_transaksi)->get();
+        $transaction = Transaksi::where('id_transaksi',$request->id_transaksi);
+
+        if ($transaction) {
+            foreach ($detail_transaksi as $detail) {
+                $spareparts = Sparepart::where('id_sparepart', $detail->id_sparepart)->first();
+                $spareparts->jumlah = $spareparts->jumlah + $detail->jumlah;
+                $spareparts->save();
+            }
+            
+            $detail_transaksi = DetailTransaksi::where('id_transaksi',$request->id_transaksi);
+            $detail_transaksi->delete();
+            $transaction->delete();
+            return redirect()->back()->with('message', 'Transaction deleted succesfully');
+        } else {
+            return redirect()->back()->with('message', 'Transaction not found');
+        }
+    }
 }

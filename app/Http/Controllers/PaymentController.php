@@ -12,6 +12,7 @@ use App\Models\Transaksi;
 use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 
 class PaymentController extends Controller
@@ -77,10 +78,22 @@ class PaymentController extends Controller
 
     public function generateInvoice(int $idTransaction){
         $transaction = Transaksi::findOrFail($idTransaction);
-        $data = ['transaction' => $transaction];
-        $pdf = Pdf::loadView('landingpage.invoice.generate', $data);
         $todayDate = Carbon::now()->format('d-m-Y');
-        return $pdf->stream('invoice'.$transaction->id_transaksi.'-'.$todayDate.'.pdf');
+
+        $spareparts = DB::table('transaksi')
+        ->join('detail_transaksi', 'transaksi.id_transaksi', '=', 'detail_transaksi.id_transaksi')
+        ->join('sparepart', 'detail_transaksi.id_sparepart', '=', 'sparepart.id_sparepart')
+        ->where('transaksi.id_transaksi', $idTransaction)
+        ->select('sparepart.*', 'detail_transaksi.jumlah', 'detail_transaksi.subtotal')
+        ->get();
+    
+
+        $data = ['transaction' => $transaction, 'spareparts' => $spareparts];
+        $pdf = Pdf::loadView('landingpage.invoice.generate', $data);
+
+        // Stream the PDF to the browser
+        return $pdf->stream('invoice' . $transaction->id_transaksi . '-' . $todayDate . '.pdf');
+    
     }
 
 

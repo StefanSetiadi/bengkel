@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>A simple, clean, and responsive HTML invoice template</title>
+		<title>Invoice</title>
 
 		<style>
 			.invoice-box {
@@ -108,15 +108,15 @@
 							<tr>
 								<td class="title">
 									<img
-										src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png"
+										src="img/logo.png"
 										style="width: 100%; max-width: 300px"
 									/>
 								</td>
 
 								<td>
-									Invoice #: 123<br />
-									Created: January 1, 2023<br />
-									Due: February 1, 2023
+									Invoice #: {{ $transaction->id_transaksi }}<br />
+									Created: {{ $transaction->created_at->format('F j, Y') }}									<br />
+									<!-- Created: January 1, 2023<br /> -->
 								</td>
 							</tr>
 						</table>
@@ -128,61 +128,42 @@
 						<table>
 							<tr>
 								<td>
-									Sparksuite, Inc.<br />
-									12345 Sunny Road<br />
-									Sunnyville, CA 12345
+								28 Green Tower, Street<br />
+								Name ABC Bandung, Indonesia<br />
 								</td>
 
 								<td>
-									Acme Corp.<br />
-									John Doe<br />
-									john@example.com
+									Tinker Corp.<br />
+									08815791515<br />
+									tinker@gmail.com
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
+			</table>
 
+			<table>
 				<tr class="heading">
-					<td>Payment Method</td>
-
-					<td>Check #</td>
-				</tr>
-
-				<tr class="details">
-					<td>Check</td>
-
-					<td>1000</td>
-				</tr>
-
-				<tr class="heading">
-					<td>Item</td>
-
+					<td width=200>Name</td>
 					<td>Price</td>
+					<td>Quantity</td>
+					<td>SubTotal</td>
 				</tr>
 
+				@foreach ($spareparts as $index => $sparepart)
 				<tr class="item">
-					<td>Website design</td>
-
-					<td>$300.00</td>
+					<td>{{ $sparepart->nama }}</td>
+					<td>{{ $sparepart->harga }}</td>
+					<td align="center">{{ $sparepart->jumlah }}</td>
+					<td>Rp. {{ number_format($sparepart->subtotal, 0, ',', '.') }}</td>
 				</tr>
-
-				<tr class="item">
-					<td>Hosting (3 months)</td>
-
-					<td>$75.00</td>
-				</tr>
-
-				<tr class="item last">
-					<td>Domain name (1 year)</td>
-
-					<td>$10.00</td>
-				</tr>
-
+				@endforeach
 				<tr class="total">
 					<td></td>
-
-					<td>Total: $385.00</td>
+					<td></td>
+					<td></td>
+					<td>Total: Rp. {{ number_format($transaction->total_biaya, 0, ',', '.') }}</td>
 				</tr>
 			</table>
 		</div>

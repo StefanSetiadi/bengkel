@@ -82,6 +82,10 @@ Route::post('/actionCheckout', [ShopController::class, 'actionCheckout'])->name(
 Route::post('/addCart', [ShopController::class, 'addCart'])->name('addCart')->middleware('auth');
 Route::post('/editCart', [ShopController::class, 'editCart'])->name('editCart')->middleware('auth');
 
+// Transaction
+Route::post('/removeTransaction', [ShopController::class, 'removeTransaction'])->name('removeTransaction')->middleware('auth');
+
+
 // Booking
 Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking')->middleware('auth');
 Route::post('/addBooking', [BookingController::class, 'addBooking'])->name('addBooking')->middleware('auth');

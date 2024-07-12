@@ -17,6 +17,7 @@
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
+                        <li><a href="{{ route('historyTransaction') }}" style="color: white;">History Transaction</a> <span> / </span></li>
                         <li><a href="{{ route('detailHistoryTransaction') }}">Detail History Transaction</a></li>
                     </ul>
                 </div>
@@ -45,8 +46,6 @@
                                 <th class="unit-price">Price</th>
                                 <!-- quantity -->
                                 <th class="quantity text-center">Quantity</th>
-                                <!-- remove button -->
-                                <th class="remove-icon text-center">remove</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -88,15 +87,6 @@
                                         </div>
                                     </td>
                                     <!-- quantity end -->
-                                    <!-- remove icon start -->
-                                    <td class="remove-icon">
-                                        <form action="{{ route('removeCart') }}" method="post">
-                                            @csrf 
-                                            <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
-                                            <button type="submit"> <i class="icofont icofont-close-line"></i> </button>
-                                        </form>
-                                    </td>
-                                    <!-- remove icon end -->
                                 </tr>
                             @endforeach
                             @endif

@@ -155,7 +155,7 @@
 
                                     @endif
                                     <!-- single menu -->
-                                    <li><a href="{{ route('about-us') }}">About us</a></li>
+                                    <li><a href="{{ route('view-cart') }}">Cart</a></li>
                                     <!-- single menu -->
                                     @if (Auth::check())
                                     <li><a href="{{ route('actionlogout') }}">Logout</a></li>
