@@ -151,13 +151,22 @@ class ServiceController extends Controller
 
      public function addDataService(Request $request){
         $sparepart = Sparepart::where('id_sparepart', $request->id_sparepart)->first();
-        $subtotal = $sparepart->harga * $request->jumlah;
-        $detailService = DetailService::create([
-            'id_service' => $request->id_service,
-            'id_sparepart' => $request->id_sparepart,
-            'jumlah' => $request->jumlah,
-            'subtotal' => $subtotal
-        ]);
+
+        $dataDetailService = DetailService::where('id_service', $request->id_service)->where('id_sparepart', $request->id_sparepart)->first();
+        if($dataDetailService){
+            $subtotal = $sparepart->harga * ($dataDetailService->jumlah + 1);
+            $dataDetailService->subtotal = $subtotal;
+            $dataDetailService->jumlah = $dataDetailService->jumlah + 1;
+            $dataDetailService->save();
+        } else{
+            $subtotal = $sparepart->harga * $request->jumlah;
+            $detailService = DetailService::create([
+                'id_service' => $request->id_service,
+                'id_sparepart' => $request->id_sparepart,
+                'jumlah' => $request->jumlah,
+                'subtotal' => $subtotal
+            ]);
+        }
 
         if ($request->has('search')) {
             $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
