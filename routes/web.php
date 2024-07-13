@@ -106,7 +106,9 @@ Route::get('/dashboardTransaction', [PaymentController::class, 'dashboardTransac
 
 // Services
 Route::get('/servicesDashboard', [ServiceController::class, 'servicesDashboardView'])->name('servicesDashboard');
-
+Route::post('/createBill', [ServiceController::class, 'createBill'])->name('createBill');
+Route::post('/setServiceFee', [ServiceController::class, 'setServiceFee'])->name('setServiceFee');
+Route::post('/addSparepartService', [ServiceController::class, 'addSparepartService'])->name('addSparepartService');
 
 // Sparepart
 Route::get('/spareparts', [SparepartController::class, 'sparepartsView'])->name('spareparts');

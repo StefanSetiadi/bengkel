@@ -73,6 +73,15 @@
 															</a>
 														</div>
 														@endif
+
+														<form action="{{ route('createBill') }}" method="post">
+															@csrf
+															<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
+															<input name="no_kendaraan" value="{{ $booking->no_kendaraan }}" hidden>
+															<button type="submit" class="btn btn-primary">
+																Create Bill
+															</button>
+														</form>
 														</td>
 													</tr>
 													@endforeach

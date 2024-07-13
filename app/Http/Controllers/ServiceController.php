@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\Keranjang;
 use App\Models\Sparepart;
 use App\Models\Customers;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
@@ -74,8 +75,74 @@ class ServiceController extends Controller
 
     public function servicesDashboardView()
     {
-        $bookings = Booking::all();
-        return view('dashboard.services', compact('bookings'));
+        $services = Service::all();
+        return view('dashboard.services', compact('services'));
     }
+
+    public function createBill(Request $request)
+    {
+        $id_customer = Auth::user()->id_customer;
+        $data = Service::create([
+            'id_customer' => $id_customer,
+            'id_admin' => 1,
+            'no_kendaraan' => strtoupper($request->no_kendaraan),
+            'biaya_jasa' => 0,
+            'total_biaya' => 0,
+            'status_pembayaran' => 0
+        ]);
+
+        $booking = Booking::where('id_booking', $request->id_booking);
+        $booking->delete();
+
+        return redirect()->back();
+    }
+
+    public function setServiceFee(Request $request){
+        $service = Service::where('id_service', $request->id_service)->first();
+        $service->biaya_jasa = $request->biaya_jasa;
+        $service->save();
+        
+        return redirect()->back();
+    }
+
+    public function addSparepartService(Request $request)
+    {
+        if ($request->has('search')) {
+            $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
+        } else {
+            $spareparts = Sparepart::query();
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            switch ($sort) {
+                case 'nameASC':
+                    $spareparts->orderBy('nama', 'asc');
+                    break;
+                case 'nameDESC':
+                    $spareparts->orderBy('nama', 'desc');
+                    break;
+                case 'priceASC':
+                    $spareparts->orderBy('harga', 'asc');
+                    break;
+                case 'priceDESC':
+                    $spareparts->orderBy('harga', 'desc');
+                    break;
+            }
+        }
+        if ($request->has('paginate')) {
+            $paginate = $request->paginate;
+            $spareparts = $spareparts->paginate($paginate);
+        } else {
+            $spareparts = $spareparts->paginate(100);        
+        }
+        $spareparts->appends([
+            'search' => $request->search,
+            'sort' => $request->sort,
+            'paginate' => $request->paginate
+        ]);
+        $no_kendaraan = $request->no_kendaraan;
+        
+        return view('dashboard.add-spareparts-service', ['spareparts' => $spareparts, 'no_kendaraan' => $no_kendaraan]);
+     }
 
 }

@@ -20,31 +20,37 @@
 													<tr>
 														<th>No</th>
 														<th>Plate Number</th>
-														<th>Description</th>
-														<th>Date</th>
-														<th>Time</th>
+														<th>Spare parts cost</th>
+														<th>Service Fee</th>
+														<th>Total</th>
 														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-													@if ($bookings->isEmpty())
+													@if ($services->isEmpty())
 													<td align="center" colspan="5">No booking data found</td>
 													@else
-													@foreach ($bookings as $index => $booking)
+													@foreach ($services as $index => $service)
 													<tr>
 														<td width=100>{{ $index + 1}}</td>
-														<td width=150>{{ $booking->no_kendaraan }}</td>
-														<td width=450>{{ $booking->deskripsi }}</td>
-														@php
-															$datetime = $booking->waktu;
-															$date = \Carbon\Carbon::parse($datetime)->format('Y-m-d');
-															$time = \Carbon\Carbon::parse($datetime)->format('H:i:s');
-														@endphp
-														<td width=150>{{ $date }}</td>
-														<td width=150>{{ $time }}</td>
+														<td width=150>{{ $service->no_kendaraan }}</td>
+														<td width=150>Cost</td>
+														<form action="{{ route('setServiceFee') }}" method="post">
+															@csrf
+															<td>
+															<input name="id_service" value="{{ $service->id_service }}" hidden>
+															<input type="text" name="biaya_jasa" value="{{ $service->biaya_jasa }}">
+															<button type="submit" class="bi bi-check-lg"></button>
+															</td>
+														</form>
+														<td width=150>{{ $service->total_biaya }}</td>
 														<td>
-														<a href="" class="btn btn-success">Add Spareparts</a>
-														<a href="" class="btn btn-warning">Create Payment</a>
+															<form action="{{ route('addSparepartService') }}" method="post" style="position:inline-block;">
+																@csrf
+																<input name="no_kendaraan" value="{{ $service->no_kendaraan }}" hidden>
+																<button type="submit" class="btn btn-success">Add Spareparts</button>
+															</form>
+														<a href="#" class="btn btn-warning">Create Bill</a>
 														</td>
 													</tr>
 													@endforeach

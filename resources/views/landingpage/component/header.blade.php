@@ -154,10 +154,10 @@
                                         </li>
 
                                     @endif
+                                    @if (Auth::check())
                                     <!-- single menu -->
                                     <li><a href="{{ route('view-cart') }}">Cart</a></li>
                                     <!-- single menu -->
-                                    @if (Auth::check())
                                     <li><a href="{{ route('actionlogout') }}">Logout</a></li>
                                     @else
                                     <li><a href="{{ route('login') }}">Login</a></li>

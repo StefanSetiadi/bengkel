@@ -77,47 +77,6 @@
             <!-- slider caption end -->
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5 col-md-offset-6">
-                <!-- discount offer start -->
-                <div class="discount-offer">
-                    <!-- section title start -->
-                    <div class="discount-title">
-                        <h2>Get <span> 30%</span> Discount !</h2>
-                    </div>
-                    <!-- section title end -->
-                    <!-- discount content start -->
-                    <div class="discount-content">
-                        <div class="input-box name">
-                            <label>Name*</label>
-                            <input type="text">
-                        </div>
-                        <div class="input-box phone">
-                            <label>Phone*</label>
-                            <input type="text">
-                        </div>
-                        <div class="input-box repair">
-                            <label>Repair*</label>
-                            <div class="select-box">
-                                <select>
-                                    <option value="wheel_alignment">-Wheel Alignment</option>
-                                    <option value="car_wash">Car wash</option>
-                                    <option value="repair_glass">Repair glass</option>
-                                    <option value="repair_seat">Repair seat</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="submit-button">
-                            <button type="submit" class="default-button">get discount</button>
-                        </div>
-                    </div>
-                    <!-- discount content end -->
-                </div>
-                <!-- discount offer end -->
-            </div>
-        </div>
-    </div>
 </div>
 <!-- slider area end -->
 <!-- about us area start -->
