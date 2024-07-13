@@ -8,6 +8,7 @@ use App\Models\Keranjang;
 use App\Models\Sparepart;
 use App\Models\Customers;
 use App\Models\Service;
+use App\Models\DetailService;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
@@ -141,8 +142,154 @@ class ServiceController extends Controller
             'paginate' => $request->paginate
         ]);
         $no_kendaraan = $request->no_kendaraan;
+        $id_service = $request->id_service;
+        $detail_service = DetailService::where('id_service', $id_service)->get();
         
-        return view('dashboard.add-spareparts-service', ['spareparts' => $spareparts, 'no_kendaraan' => $no_kendaraan]);
+        return view('dashboard.add-spareparts-service', ['spareparts' => $spareparts,
+                     'no_kendaraan' => $no_kendaraan, 'id_service' => $id_service, 'detail_service' => $detail_service]);
      }
+
+     public function addDataService(Request $request){
+        $sparepart = Sparepart::where('id_sparepart', $request->id_sparepart)->first();
+        $subtotal = $sparepart->harga * $request->jumlah;
+        $detailService = DetailService::create([
+            'id_service' => $request->id_service,
+            'id_sparepart' => $request->id_sparepart,
+            'jumlah' => $request->jumlah,
+            'subtotal' => $subtotal
+        ]);
+
+        if ($request->has('search')) {
+            $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
+        } else {
+            $spareparts = Sparepart::query();
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            switch ($sort) {
+                case 'nameASC':
+                    $spareparts->orderBy('nama', 'asc');
+                    break;
+                case 'nameDESC':
+                    $spareparts->orderBy('nama', 'desc');
+                    break;
+                case 'priceASC':
+                    $spareparts->orderBy('harga', 'asc');
+                    break;
+                case 'priceDESC':
+                    $spareparts->orderBy('harga', 'desc');
+                    break;
+            }
+        }
+        if ($request->has('paginate')) {
+            $paginate = $request->paginate;
+            $spareparts = $spareparts->paginate($paginate);
+        } else {
+            $spareparts = $spareparts->paginate(100);        
+        }
+        $spareparts->appends([
+            'search' => $request->search,
+            'sort' => $request->sort,
+            'paginate' => $request->paginate
+        ]);
+        $no_kendaraan = $request->no_kendaraan;
+        $id_service = $request->id_service;
+        $detail_service = DetailService::where('id_service', $id_service)->get();
+        
+        return view('dashboard.add-spareparts-service', ['spareparts' => $spareparts,
+                     'no_kendaraan' => $no_kendaraan, 'id_service' => $id_service, 'detail_service' => $detail_service]);
+     }
+
+     public function setQuantitySparepartService(Request $request){
+        $detailService = DetailService::where('id_detail_service', $request->id_detail_service)
+                                        ->where('id_sparepart',$request->id_sparepart)->first();
+        $detailService->jumlah = $request->jumlah;
+        $detailService->save();
+        
+        if ($request->has('search')) {
+            $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
+        } else {
+            $spareparts = Sparepart::query();
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            switch ($sort) {
+                case 'nameASC':
+                    $spareparts->orderBy('nama', 'asc');
+                    break;
+                case 'nameDESC':
+                    $spareparts->orderBy('nama', 'desc');
+                    break;
+                case 'priceASC':
+                    $spareparts->orderBy('harga', 'asc');
+                    break;
+                case 'priceDESC':
+                    $spareparts->orderBy('harga', 'desc');
+                    break;
+            }
+        }
+        if ($request->has('paginate')) {
+            $paginate = $request->paginate;
+            $spareparts = $spareparts->paginate($paginate);
+        } else {
+            $spareparts = $spareparts->paginate(100);        
+        }
+        $spareparts->appends([
+            'search' => $request->search,
+            'sort' => $request->sort,
+            'paginate' => $request->paginate
+        ]);
+        $no_kendaraan = $request->no_kendaraan;
+        $id_service = $request->id_service;
+        $detail_service = DetailService::where('id_service', $id_service)->get();
+        
+        return view('dashboard.add-spareparts-service', ['spareparts' => $spareparts,
+                     'no_kendaraan' => $no_kendaraan, 'id_service' => $id_service, 'detail_service' => $detail_service]);
+    }
+
+    public function deleteSparepartService(Request $request){
+        $detailService = DetailService::where('id_detail_service', $request->id_detail_service)->first();
+        $detailService->delete();
+        
+        if ($request->has('search')) {
+            $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
+        } else {
+            $spareparts = Sparepart::query();
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            switch ($sort) {
+                case 'nameASC':
+                    $spareparts->orderBy('nama', 'asc');
+                    break;
+                case 'nameDESC':
+                    $spareparts->orderBy('nama', 'desc');
+                    break;
+                case 'priceASC':
+                    $spareparts->orderBy('harga', 'asc');
+                    break;
+                case 'priceDESC':
+                    $spareparts->orderBy('harga', 'desc');
+                    break;
+            }
+        }
+        if ($request->has('paginate')) {
+            $paginate = $request->paginate;
+            $spareparts = $spareparts->paginate($paginate);
+        } else {
+            $spareparts = $spareparts->paginate(100);        
+        }
+        $spareparts->appends([
+            'search' => $request->search,
+            'sort' => $request->sort,
+            'paginate' => $request->paginate
+        ]);
+        $no_kendaraan = $request->no_kendaraan;
+        $id_service = $request->id_service;
+        $detail_service = DetailService::where('id_service', $id_service)->get();
+        
+        return view('dashboard.add-spareparts-service', ['spareparts' => $spareparts,
+                     'no_kendaraan' => $no_kendaraan, 'id_service' => $id_service, 'detail_service' => $detail_service]);
+    }
 
 }

@@ -109,6 +109,10 @@ Route::get('/servicesDashboard', [ServiceController::class, 'servicesDashboardVi
 Route::post('/createBill', [ServiceController::class, 'createBill'])->name('createBill');
 Route::post('/setServiceFee', [ServiceController::class, 'setServiceFee'])->name('setServiceFee');
 Route::post('/addSparepartService', [ServiceController::class, 'addSparepartService'])->name('addSparepartService');
+Route::post('/addDataService', [ServiceController::class, 'addDataService'])->name('addDataService');
+Route::post('/setQuantitySparepartService', [ServiceController::class, 'setQuantitySparepartService'])->name('setQuantitySparepartService');
+Route::post('/deleteSparepartService', [ServiceController::class, 'deleteSparepartService'])->name('deleteSparepartService');
+
 
 // Sparepart
 Route::get('/spareparts', [SparepartController::class, 'sparepartsView'])->name('spareparts');

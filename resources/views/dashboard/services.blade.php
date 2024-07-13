@@ -47,6 +47,7 @@
 														<td>
 															<form action="{{ route('addSparepartService') }}" method="post" style="position:inline-block;">
 																@csrf
+																<input name="id_service" value="{{ $service->id_service }}" hidden>
 																<input name="no_kendaraan" value="{{ $service->no_kendaraan }}" hidden>
 																<button type="submit" class="btn btn-success">Add Spareparts</button>
 															</form>

@@ -45,7 +45,6 @@
 								<th>Image</th>
 								<th>Name</th>
 								<th>Price</th>
-								<th>Stock</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -64,8 +63,13 @@
 								</td>
 								<td>{{ $sparepart->nama }}</td>
 								<td width="150">Rp. {{ number_format($sparepart->harga, 0, ',', '.') }}</td>
-								<td width="150">{{ $sparepart->jumlah }}</td>
-								<td width="180"><button onclick="location.href='/editSparepart{{ $sparepart->id_sparepart }}'" class="btn btn-success">Add</button>
+								<form action="{{ route('addDataService') }}" method="post">
+									@csrf
+									<input name="jumlah" value="1" hidden>
+									<input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
+									<input name="id_service" value="{{ $id_service}}" hidden>
+									<td><button type="submit" class="btn btn-success">Add</button>
+								</form>
 							</tr>
 							@endforeach
 							@endif
@@ -79,7 +83,58 @@
 	<div class="col-6">
 		<div class="card">
 			<div class="card-body">
-
+			<div class="table-responsive">
+					<table class="table table-bordered table-striped m-0">
+						<thead align="center">
+							<tr>
+								<th>Image</th>
+								<th>Name</th>
+								<th>Quantity</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody align="center">
+							@if ($detail_service->isEmpty())
+							<td align="center" colspan="5">Spare parts data has not been added for this vehicle service</td>
+							@else
+							@foreach ($detail_service as $index => $detail)
+							@php
+								$nama = \App\Models\Sparepart::where('id_sparepart', $detail->id_sparepart)
+															->value('nama');
+								$image = \App\Models\Sparepart::where('id_sparepart', $detail->id_sparepart)
+								->value('image');
+							@endphp
+							<tr>
+								<td width=200><div >
+										<img src="{{ $image }}" class="media-avatar" style="height: 80px; display: block; margin: 0 auto;">
+										<div class="media-box-body">
+											<div class="text-truncate"></div>
+										</div>
+									</div>
+								</td>
+								<td>{{ $nama }}</td>
+								<form action="{{ route('setQuantitySparepartService') }}" method="post">
+									@csrf
+									<td>
+									<input name="id_detail_service" value="{{ $detail->id_detail_service }}" hidden>
+									<input name="id_sparepart" value="{{ $detail->id_sparepart }}" hidden>
+									<input name="id_service" value="{{ $id_service}}" hidden>
+									<input type="text" name="jumlah" value="{{ $detail->jumlah }}">
+									<button type="submit" class="bi bi-check-lg"></button>
+									</td>
+								</form>
+								<form action="{{ route('deleteSparepartService') }}" method="post">
+									@csrf
+									<input name="id_detail_service" value="{{ $detail->id_detail_service }}" hidden>
+									<input name="id_service" value="{{ $id_service}}" hidden>
+									<td><button type="submit" class="btn btn-danger">Delete</button>
+								</form>
+							</tr>
+							@endforeach
+							@endif
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
