@@ -32,6 +32,7 @@
 			@endif
 				<form class="input-group mb-2" id="sortForm" action="{{ route('addSparepartService') }}" method="post">
 					@csrf
+					<input name="id_service" value="{{ $id_service}}" hidden>
 					<input type="text" class="form-control" name="search" placeholder="Search anything" value="{{ request('search') }}">
 					<button class="btn" type="submit">
 						<i class="bi bi-search"></i>
