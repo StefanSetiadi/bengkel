@@ -15,6 +15,7 @@ class BookingController extends Controller
     public function bookingView()
     {
         $id_customer = Auth::user()->id_customer;
+        $bookings = Booking::where('id_customer', $id_customer)->get();
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
@@ -26,7 +27,7 @@ class BookingController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('landingpage.booking', compact('carts','total'));
+            return view('landingpage.booking', compact('carts','total', 'bookings'));
         } else {
             return view('landingpage.booking');
         }        

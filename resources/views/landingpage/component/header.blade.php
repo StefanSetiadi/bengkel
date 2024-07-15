@@ -146,9 +146,6 @@
                                                 <span>
                                                     <a href="{{ route('historyServices') }}">Services</a>
                                                 </span>
-                                                <span>
-                                                    <a href="{{ route('historyBooking') }}">Booking</a>
-                                                </span>
                                             </div>
                                             <!-- mega-menu end -->
                                         </li>

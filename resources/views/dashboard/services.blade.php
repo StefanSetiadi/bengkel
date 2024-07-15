@@ -51,7 +51,6 @@
 																<input name="no_kendaraan" value="{{ $service->no_kendaraan }}" hidden>
 																<button type="submit" class="btn btn-success">Add Spareparts</button>
 															</form>
-														<a href="#" class="btn btn-warning">Create Bill</a>
 														</td>
 													</tr>
 													@endforeach

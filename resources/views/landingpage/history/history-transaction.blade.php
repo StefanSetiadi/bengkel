@@ -91,7 +91,17 @@
                                     </td>
                                     <!-- remove icon end -->
                                      <td>
-                                         <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" target="_blank" class="btn btn-primary">Download Invoice</a>
+                                        @if ($transaction->status_pembayaran == 1)
+                                        <div class="shopping-button">
+                                            <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" target="_blank">Download Invoice</a>
+                                        </div>
+                                        @else
+                                        <div class="shopping-button">
+                                            <form action="#">
+                                                <button type="submit">Pay</button>
+                                            </form>
+                                        </div>
+                                        @endif
                                      </td>
                                 </tr>
                             @endforeach

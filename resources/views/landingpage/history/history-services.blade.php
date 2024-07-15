@@ -38,61 +38,60 @@
                             <tr>
                                 <th class="item-img">No</th>
                                 <!-- product img title -->
-                                <th class="item-img">Plate Numbers</th>
+                                <th class="quantity">Plate Numbers</th>
                                 <!-- product img title -->
-                                <th class="item-img">Description</th>
+                                <th class="quantity">Date</th>
+                                <!-- product img title -->
+                                <th class="quantity">Spare parts cost</th>
                                 <!-- product name title -->
-                                <th class="product-name">Date</th>
+                                <th class="quantity">Service Fee</th>
                                 <!-- unit price title -->
-                                <th class="unit-price">Time</th>
+                                <th class="quantity">Total</th>
                                 <!-- quantity -->
-                                <th class="quantity text-center">Status</th>
-                                <!-- remove button -->
-                                <th class="remove-icon text-center">Remove</th>
+                                <th class="quantity text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @if ($bookings->isEmpty())
-							    <td align="center" colspan="7">You haven't made a booking yet</td>
+                            @if ($services->isEmpty())
+							    <td align="center" colspan="7">No service history found</td>
                             @else
-							@foreach ($bookings as $index => $booking)
+							@foreach ($services as $index => $service)
                                 <tr>
-                                    <td class="unit-price text-left" width=100>
-                                        <span>{{ $index+1 }}</span>
+                                    <td class="cart-product-name text-left" width=100>
+                                        <a>{{ $index+1 }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=200>
-                                        <a>{{ $booking->no_kendaraan }}</a>
-                                    </td>
-                                    <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $booking->deskripsi }}</span>
+                                        <a>{{ $service->no_kendaraan }}</a>
                                     </td>
                                     @php
-                                        $datetime = $booking->waktu;
+                                        $datetime = $service->created_at;
                                         $date = \Carbon\Carbon::parse($datetime)->format('Y-m-d');
-                                        $time = \Carbon\Carbon::parse($datetime)->format('H:i:s');
                                     @endphp
-                                    <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $date }}</span>
+                                    <td class="cart-product-name text-left">
+                                        <a>{{ $date }}</a>
                                     </td>
-                                    <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $time }}</span>
+                                    <td class="cart-product-name text-left">
+                                        <a>Rp. {{ number_format($service->biaya_sparepart, 0, ',', '.') }}</a>
                                     </td>
-                                    <td class="cart-product-name text-left" width=300>
-                                        <span>{{ $booking->status_booking }}</span>
+                                    <td class="cart-product-name text-left">
+                                        <a>Rp. {{ number_format($service->biaya_jasa, 0, ',', '.') }}</a>
                                     </td>
-                                    <!-- remove icon start -->
-                                    <td class="remove-icon">
-                                        <form action="{{ route('removeBooking') }}" method="post">
-                                            @csrf 
-                                            <input name="id_booking" value="{{ $booking->id_booking }}" hidden>
-                                            @if($booking->status_booking == 'accepted' || $booking->status_booking == 'rejected')
-                                            <button type="submit" disabled> <i class="icofont icofont-close-line"></i> </button>
-                                            @else
-                                            <button type="submit"> <i class="icofont icofont-close-line"></i> </button>
-                                            @endif
-                                        </form>
+                                    <td class="cart-product-name text-left">
+                                        <a>Rp. {{ number_format($service->total_biaya, 0, ',', '.') }}</a>
                                     </td>
-                                    <!-- remove icon end -->
+                                    <td class="cart-product-name text-left">
+                                        @if (($service->biaya_sparepart > 0) && ($service->status_pembayaran == 1))
+                                        <div class="shopping-button">
+                                            <button href="#" target="_blank">Invoice</button>
+                                        </div>
+                                        @elseif ($service->biaya_sparepart > 0)
+                                        <div class="shopping-button">
+                                            <form action="#">
+                                                <button type="submit">Pay</button>
+                                            </form>
+                                        </div>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             @endif

@@ -57,7 +57,7 @@ class ServiceController extends Controller
     public function historyServices()
     {
         $id_customer = Auth::user()->id_customer;
-        $bookings = Booking::where('id_customer', $id_customer)->get();
+        $services = Service::where('id_customer', $id_customer)->get();
         if(Auth::check()){
             $id_customer = Auth::user()->id_customer;
             // carts
@@ -69,9 +69,9 @@ class ServiceController extends Controller
             }
             $id_spareparts = Keranjang::where('id_customer', $id_customer)->pluck('id_sparepart');
             $carts = Sparepart::whereIn('id_sparepart', $id_spareparts)->get();
-            return view('landingpage.history.history-services', compact('carts','total', 'bookings'));
+            return view('landingpage.history.history-services', compact('carts','total', 'services'));
         } else {
-            return view('landingpage.history.history-services', compact('bookings'));
+            return view('landingpage.history.history-services', compact('services'));
         }        
     }
 
