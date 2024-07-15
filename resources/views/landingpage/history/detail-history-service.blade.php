@@ -1,6 +1,6 @@
 @extends('landingpage.component.main')
 
-@section('title', 'Detail History Transaction')
+@section('title', 'Detail History Service')
 
 @section('content')
 <!-- page title area start -->
@@ -10,15 +10,15 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>detail history transaction</h2>
+                    <h2>detail history service</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('historyTransaction') }}" style="color: white;">History Transaction</a> <span> / </span></li>
-                        <li><a href="{{ route('detailHistoryTransaction') }}">Detail History Transaction</a></li>
+                        <li><a href="{{ route('historyServices') }}" style="color: white;">History Service</a> <span> / </span></li>
+                        <li><a href="{{ route('detailHistoryService') }}">Detail History Service</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -79,7 +79,7 @@
                                         <input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
                                         <div class="quantity-wrapper">
                                             @php
-                                                $quantity_sparepart = \App\Models\DetailTransaksi::where('id_transaksi', $id_transaksi)
+                                                $quantity_sparepart = \App\Models\DetailService::where('id_service', $id_service)
                                                                             ->where('id_sparepart', $sparepart->id_sparepart)
                                                                             ->value('jumlah');
                                             @endphp

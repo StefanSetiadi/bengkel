@@ -96,8 +96,8 @@
                                     </td>
                                     <!-- product name end -->
                                     <!-- price start -->
-                                    <td class="unit-price text-left" width="250">
-                                        <span>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</span>
+                                    <td class="cart-product-name text-left" width="250">
+                                        <a>Rp. {{ number_format($cart->harga, 0, ',', '.') }}</a>
                                     </td>
                                     <!-- price end -->
                                     <!-- quantity start -->

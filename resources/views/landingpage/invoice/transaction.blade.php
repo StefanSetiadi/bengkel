@@ -162,8 +162,8 @@
 				<tr class="total">
 					<td></td>
 					<td></td>
-					<td></td>
-					<td>Total: Rp. {{ number_format($transaction->total_biaya, 0, ',', '.') }}</td>
+					<td>Total</td>
+					<td>Rp. {{ number_format($transaction->total_biaya, 0, ',', '.') }}</td>
 				</tr>
 			</table>
 		</div>

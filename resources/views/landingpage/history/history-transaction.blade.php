@@ -3,6 +3,12 @@
 @section('title', 'History Transaction')
 
 @section('content')
+<script type="text/javascript"
+		src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-OndwIWbOjxSues4X"></script>
+    
+<div id="snap-container"></div>
+
 <!-- page title area start -->
 <div class="page-title-area overlay">
     <div class="container">
@@ -93,15 +99,62 @@
                                      <td>
                                         @if ($transaction->status_pembayaran == 1)
                                         <div class="shopping-button">
-                                            <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" target="_blank">Download Invoice</a>
+                                            <a href="{{ url('history/transaction/invoice/'.$transaction->id_transaksi.'/generate') }}" target="_blank">Invoice</a>
                                         </div>
                                         @else
                                         <div class="shopping-button">
-                                            <form action="#">
-                                                <button type="submit">Pay</button>
-                                            </form>
+                                            <button id="pay-button{{ $index+1 }}">Pay</button>
                                         </div>
                                         @endif
+                                        @php
+                                            // Set your Merchant Server Key
+                                            \Midtrans\Config::$serverKey = 'SB-Mid-server-r2cx2L-n8Lb1Comkha1NpZ5D';
+                                            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+                                            \Midtrans\Config::$isProduction = false;
+                                            // Set sanitization on (default)
+                                            \Midtrans\Config::$isSanitized = true;
+                                            // Set 3DS transaction for credit card to true
+                                            \Midtrans\Config::$is3ds = true;
+
+                                            $params = array(
+                                                'transaction_details' => array(
+                                                    'order_id' => rand(),
+                                                    'gross_amount' => $transaction->total_biaya,
+                                                ),
+                                                'customer_details' => array(
+                                                    'name' => Auth::user()->nama,
+                                                    'email' => Auth::user()->email
+                                                ),
+                                            );
+
+                                            $snapToken = \Midtrans\Snap::getSnapToken($params);
+                                        @endphp
+
+                                        <script type="text/javascript">
+                                            // For example trigger on button clicked, or any time you need
+                                            var payButton = document.getElementById('pay-button{{ $index+1 }}');
+                                            payButton.addEventListener('click', function () {
+                                                // Trigger snap popup
+                                                window.snap.embed('{{ $snapToken }}', {
+                                                    embedId: 'snap-container',
+                                                    onSuccess: function (result) {
+                                                        // Send AJAX request to update transaction status
+                                                        fetch('http://127.0.0.1:8000/updateTransaction', {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json',
+                                                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                                            },
+                                                            body: JSON.stringify({
+                                                                id_transaksi: '{{ $transaction->id_transaksi }}'
+                                                            })
+                                                        })
+                                                        .catch(error => console.error('Error:', error));
+                                                        window.location.href = "http://127.0.0.1:8000/historyTransaction";
+                                                    }
+                                                });
+                                            });
+                                            </script>
                                      </td>
                                 </tr>
                             @endforeach
@@ -115,5 +168,18 @@
     </div>
 </div>
 <!-- about us area end -->
+
+ <!-- @TODO: You can add the desired ID as a reference for the embedId parameter. -->
+ <style>
+    #snap-container {
+      position: fixed; /* Stay fixed on the screen */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust to center perfectly */
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+      color: white; /* Optional: white text color */
+      z-index: 1000; /* Ensure it stays on top */
+    }
+  </style>
 
 @endsection

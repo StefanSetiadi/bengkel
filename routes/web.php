@@ -85,7 +85,6 @@ Route::post('/editCart', [ShopController::class, 'editCart'])->name('editCart')-
 // Transaction
 Route::post('/removeTransaction', [ShopController::class, 'removeTransaction'])->name('removeTransaction')->middleware('auth');
 
-
 // Booking
 Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking')->middleware('auth');
 Route::post('/addBooking', [BookingController::class, 'addBooking'])->name('addBooking')->middleware('auth');
@@ -101,6 +100,7 @@ Route::get('/historyBooking', [BookingController::class, 'historyBooking'])->nam
 Route::get('/historyTransaction', [PaymentController::class, 'historyTransaction'])->name('historyTransaction')->middleware('auth');
 Route::post('/detailHistoryTransaction', [PaymentController::class, 'detailHistoryTransaction'])->name('detailHistoryTransaction')->middleware('auth');
 Route::get('/historyServices', [ServiceController::class, 'historyServices'])->name('historyServices')->middleware('auth');
+Route::post('/detailHistoryService', [PaymentController::class, 'detailHistoryService'])->name('detailHistoryService')->middleware('auth');
 
 Route::get('/dashboardTransaction', [PaymentController::class, 'dashboardTransaction'])->name('dashboardTransaction');
 
@@ -125,4 +125,10 @@ Route::post('/editDataSparepart', [SparepartController::class, 'editDataSparepar
 Route::post('/deleteDataSparepart', [SparepartController::class, 'deleteDataSparepart'])->name('deleteDataSparepart');
 
 // PDF
-Route::get('history/transaction/invoice/{idTransaction}/generate', [PaymentController::class, 'generateInvoice'])->name('generateInvoice');
+Route::get('history/transaction/invoice/{idTransaction}/generate', [PaymentController::class, 'generateInvoiceTransaction'])->name('generateInvoiceTransaction');
+Route::get('history/service/invoice/{idService}/generate', [PaymentController::class, 'generateInvoiceService'])->name('generateInvoiceService');
+
+// Payment
+Route::get('/payment', [PaymentController::class, 'payment'])->name('payment');
+Route::post('/updateTransaction', [PaymentController::class, 'updateTransaction'])->name('updateTransaction')->middleware('auth');
+Route::post('/updateService', [PaymentController::class, 'updateService'])->name('updateService')->middleware('auth');
