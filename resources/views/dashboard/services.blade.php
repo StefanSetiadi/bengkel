@@ -34,7 +34,7 @@
 													<tr>
 														<td width=100>{{ $index + 1}}</td>
 														<td width=150>{{ $service->no_kendaraan }}</td>
-														<td width=150>Cost</td>
+														<td width=150>Rp. {{ number_format($service->biaya_sparepart, 0, ',', '.') }}</td>
 														<form action="{{ route('setServiceFee') }}" method="post">
 															@csrf
 															<td>
@@ -43,7 +43,7 @@
 															<button type="submit" class="bi bi-check-lg"></button>
 															</td>
 														</form>
-														<td width=150>{{ $service->total_biaya }}</td>
+														<td width=150>Rp. {{ number_format($service->total_biaya, 0, ',', '.') }}</td>
 														<td>
 															<form action="{{ route('addSparepartService') }}" method="post" style="position:inline-block;">
 																@csrf

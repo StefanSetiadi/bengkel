@@ -9,6 +9,7 @@ use App\Models\Sparepart;
 use App\Models\Customers;
 use App\Models\Service;
 use App\Models\DetailService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
@@ -77,6 +78,7 @@ class ServiceController extends Controller
     public function servicesDashboardView()
     {
         $services = Service::all();
+
         return view('dashboard.services', compact('services'));
     }
 
@@ -100,7 +102,9 @@ class ServiceController extends Controller
 
     public function setServiceFee(Request $request){
         $service = Service::where('id_service', $request->id_service)->first();
-        $service->biaya_jasa = $request->biaya_jasa;
+        $set = $request->biaya_jasa - $service->biaya_jasa;
+        $service->biaya_jasa = $service->biaya_jasa + $set;
+        $service->total_biaya = $service->total_biaya + $set;
         $service->save();
         
         return redirect()->back();
@@ -160,13 +164,18 @@ class ServiceController extends Controller
             $dataDetailService->save();
         } else{
             $subtotal = $sparepart->harga * $request->jumlah;
-            $detailService = DetailService::create([
+            $dataDetailService = DetailService::create([
                 'id_service' => $request->id_service,
                 'id_sparepart' => $request->id_sparepart,
                 'jumlah' => $request->jumlah,
                 'subtotal' => $subtotal
             ]);
         }
+
+        $service = Service::where('id_service', $dataDetailService->id_service)->first();
+        $service->biaya_sparepart = $service->biaya_sparepart + $subtotal;
+        $service->total_biaya = $service->biaya_sparepart + $service->biaya_jasa;
+        $service->save();
 
         if ($request->has('search')) {
             $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
@@ -212,8 +221,16 @@ class ServiceController extends Controller
      public function setQuantitySparepartService(Request $request){
         $detailService = DetailService::where('id_detail_service', $request->id_detail_service)
                                         ->where('id_sparepart',$request->id_sparepart)->first();
+        $hargaSparepart = $detailService->subtotal / $detailService->jumlah;
+        $selisih = ($hargaSparepart * $request->jumlah) - $detailService->subtotal;
+        $detailService->subtotal = $detailService->subtotal + $selisih;
         $detailService->jumlah = $request->jumlah;
         $detailService->save();
+
+        $service = Service::where('id_service', $detailService->id_service)->first();
+        $service->biaya_sparepart = $service->biaya_sparepart + $selisih;
+        $service->total_biaya = $service->biaya_sparepart + $service->biaya_jasa;
+        $service->save();
         
         if ($request->has('search')) {
             $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');
@@ -259,6 +276,10 @@ class ServiceController extends Controller
     public function deleteSparepartService(Request $request){
         $detailService = DetailService::where('id_detail_service', $request->id_detail_service)->first();
         $detailService->delete();
+
+        $service = Service::where('id_service', $detailService->id_service)->first();
+        $service->biaya_sparepart = $service->biaya_sparepart - $detailService->subtotal;
+        $service->save();
         
         if ($request->has('search')) {
             $spareparts = Sparepart::where('nama', 'LIKE', '%' . $request->search . '%');

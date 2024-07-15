@@ -58,7 +58,7 @@
                                         <a>{{ $index+1 }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=200>
-                                        <a>{{ $transaction->total_biaya }}</a>
+                                        <a>Rp. {{ number_format($transaction->total_biaya, 0, ',', '.') }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=150>
                                         @if($transaction->status_pembayaran == "1")
