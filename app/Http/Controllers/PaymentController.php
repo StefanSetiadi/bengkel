@@ -15,7 +15,7 @@ use App\Models\DetailService;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
-
+use Midtrans\Transaction;
 
 class PaymentController extends Controller
 {
@@ -144,9 +144,17 @@ class PaymentController extends Controller
     
     }
 
+    public function updateTransaction(Request $request){
+        $transaction = Transaksi::where('id_transaksi', $request->id_transaksi)->first();
+        $transaction->status_pembayaran = 1;
+        $transaction->save();
+    }
 
-
-
+    public function updateService(Request $request){
+        $service = Service::where('id_service', $request->id_service)->first();
+        $service->status_pembayaran = 1;
+        $service->save();
+    }
 
 
 }

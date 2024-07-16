@@ -178,6 +178,29 @@ class ShopController extends Controller
                 ]);
             }
             $transaksi->total_biaya = $total_biaya;
+
+             // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = 'SB-Mid-server-r2cx2L-n8Lb1Comkha1NpZ5D';
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => rand(),
+                    'gross_amount' => $total_biaya,
+                ),
+                'customer_details' => array(
+                    'name' => Auth::user()->nama,
+                    'email' => Auth::user()->email
+                ),
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $transaksi->snap_token = $snapToken;
             $transaksi->save();
 
             $deletedRows = Keranjang::where('id_customer', $id_customer)->delete();

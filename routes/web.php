@@ -130,5 +130,5 @@ Route::get('history/service/invoice/{idService}/generate', [PaymentController::c
 
 // Payment
 Route::get('/payment', [PaymentController::class, 'payment'])->name('payment');
-Route::post('/updateTransaction', [PaymentController::class, 'updateTransaction'])->name('updateTransaction')->middleware('auth');
-Route::post('/updateService', [PaymentController::class, 'updateService'])->name('updateService')->middleware('auth');
+Route::post('/updateTransaction', [PaymentController::class, 'updateTransaction'])->name('updateTransaction');
+Route::post('/updateService', [PaymentController::class, 'updateService'])->name('updateService');

@@ -106,36 +106,12 @@
                                             <button id="pay-button{{ $index+1 }}">Pay</button>
                                         </div>
                                         @endif
-                                        @php
-                                            // Set your Merchant Server Key
-                                            \Midtrans\Config::$serverKey = 'SB-Mid-server-r2cx2L-n8Lb1Comkha1NpZ5D';
-                                            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-                                            \Midtrans\Config::$isProduction = false;
-                                            // Set sanitization on (default)
-                                            \Midtrans\Config::$isSanitized = true;
-                                            // Set 3DS transaction for credit card to true
-                                            \Midtrans\Config::$is3ds = true;
-
-                                            $params = array(
-                                                'transaction_details' => array(
-                                                    'order_id' => rand(),
-                                                    'gross_amount' => $transaction->total_biaya,
-                                                ),
-                                                'customer_details' => array(
-                                                    'name' => Auth::user()->nama,
-                                                    'email' => Auth::user()->email
-                                                ),
-                                            );
-
-                                            $snapToken = \Midtrans\Snap::getSnapToken($params);
-                                        @endphp
-
                                         <script type="text/javascript">
                                             // For example trigger on button clicked, or any time you need
                                             var payButton = document.getElementById('pay-button{{ $index+1 }}');
                                             payButton.addEventListener('click', function () {
                                                 // Trigger snap popup
-                                                window.snap.embed('{{ $snapToken }}', {
+                                                window.snap.embed('{{ $transaction->snap_token }}', {
                                                     embedId: 'snap-container',
                                                     onSuccess: function (result) {
                                                         // Send AJAX request to update transaction status
@@ -155,6 +131,7 @@
                                                 });
                                             });
                                             </script>
+
                                      </td>
                                 </tr>
                             @endforeach

@@ -105,6 +105,30 @@ class ServiceController extends Controller
         $set = $request->biaya_jasa - $service->biaya_jasa;
         $service->biaya_jasa = $service->biaya_jasa + $set;
         $service->total_biaya = $service->total_biaya + $set;
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-r2cx2L-n8Lb1Comkha1NpZ5D';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $service->total_biaya,
+            ),
+            'customer_details' => array(
+                'name' => Auth::user()->nama,
+                'email' => Auth::user()->email
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $service->snap_token = $snapToken;
+
         $service->save();
         
         return redirect()->back();
