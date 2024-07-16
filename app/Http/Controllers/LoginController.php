@@ -12,7 +12,7 @@ class LoginController extends Controller
     {
         // dd(Auth::guard('customers')->check());
         if (Auth::check()) {
-            return view('dashboard.checkout');
+            return view('landingpage.index');
         } else{
             return view('dashboard.login');
         }
@@ -37,5 +37,34 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function loginAdmin()
+    {
+        if (Auth::guard('admin')->check()) {
+            return view('dashboard.index');
+        } else{
+            return view('dashboard.login-admin');
+        }
+    }
+
+    public function actionloginAdmin(Request $request)
+    {
+        $data = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return view('dashboard.index');
+        }else{
+            return redirect()->back()->with("message", "failed");
+        }
+    }
+
+    public function actionlogoutAdmin()
+    {
+        Auth::guard('admin')->logout();
+        return view('dashboard.login-admin');
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2024 at 12:41 PM
+-- Generation Time: Jul 16, 2024 at 02:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin', NULL, '', NULL, NULL);
+(1, 'admin', 'admin@gmail.com', '$2y$10$JTAYEpIBSeAvBBj/qBus2.O0iz8qEg9.gZfAAPMn7WmEpGAqe9djG', NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -85,8 +85,6 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id_customer`, `nama`, `email`, `password`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(6, 'customer', 'customer@gmail.com', '$2y$10$SDBgiVrhmGJ1f2VwMiUlce/.k0195flQX2NZtZZUqrXwlv6kENwWi', NULL, NULL, '2024-06-28 03:43:47', '2024-06-28 03:43:47'),
-(7, 'test', 'test@gmail.com', '$2y$10$HThIb4N.1JTMe.Ho/XRMlu8l3n.w9rl1fGblZ7XklEdhEz6T2qgee', NULL, NULL, '2024-06-28 03:56:15', '2024-06-28 03:56:15'),
 (8, 'stefan', 'stefan@gmail.com', '$2y$10$gCrwADJGd75NyKzjqtGAWO5YedMr2Nof2.Zg2TBNzGz88oinpGrPC', NULL, NULL, '2024-06-28 18:27:34', '2024-06-28 18:27:34'),
 (9, 'ahmad', 'ahmad@gmail.com', '$2y$10$oh1H/nCgxMtcg8e4baPaeORrpT26u3p1259N9E.Anefsx2gq/dOjC', NULL, NULL, '2024-06-28 19:30:17', '2024-06-28 19:30:17');
 
@@ -106,14 +104,6 @@ CREATE TABLE `detail_service` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `detail_service`
---
-
-INSERT INTO `detail_service` (`id_detail_service`, `id_service`, `id_sparepart`, `jumlah`, `subtotal`, `created_at`, `updated_at`) VALUES
-(22, 7, 1, 1, 210000, '2024-07-16 10:39:46', '2024-07-16 10:39:46'),
-(23, 7, 4, 5, 180000, '2024-07-16 10:39:49', '2024-07-16 10:40:03');
-
 -- --------------------------------------------------------
 
 --
@@ -129,15 +119,6 @@ CREATE TABLE `detail_transaksi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `detail_transaksi`
---
-
-INSERT INTO `detail_transaksi` (`id_detail_transaksi`, `id_transaksi`, `id_sparepart`, `jumlah`, `subtotal`, `created_at`, `updated_at`) VALUES
-(38, 24, 4, 1, 36000, '2024-07-16 10:36:37', '2024-07-16 10:36:37'),
-(39, 25, 2, 1, 68000, '2024-07-16 10:38:14', '2024-07-16 10:38:14'),
-(40, 26, 5, 1, 350000, '2024-07-16 10:38:23', '2024-07-16 10:38:23');
 
 -- --------------------------------------------------------
 
@@ -251,13 +232,6 @@ CREATE TABLE `service` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `service`
---
-
-INSERT INTO `service` (`id_service`, `id_customer`, `id_admin`, `no_kendaraan`, `biaya_sparepart`, `biaya_jasa`, `total_biaya`, `snap_token`, `status_pembayaran`, `created_at`, `updated_at`) VALUES
-(7, 8, 1, 'Z 2804 HC', 390000, 100000, 490000, '654d514a-64e2-4b68-8ba4-201231fcf3ab', 1, '2024-07-16 10:39:39', '2024-07-16 10:40:39');
-
 -- --------------------------------------------------------
 
 --
@@ -280,10 +254,10 @@ CREATE TABLE `sparepart` (
 --
 
 INSERT INTO `sparepart` (`id_sparepart`, `nama`, `harga`, `jumlah`, `deskripsi`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'OLI MOBIL SHELL HELIX HX6 10W-40 | HX6 4 LITER | BARCODE HIJAU', 210000, 49973, 'Shell Helix HX6 10W-40 dirancang untuk:\r\n- Mesin bensin, diesel, dan gas,\r\n- Cocok untuk mesin berbahan bakar biodiesel dan campuran bensin/etanol.\r\n\r\nKeunggulan:\r\n1. Active Cleansing Technology sebagai perlindungan mesin dari keausan dan lumpur yang dapat diandalkan,\r\n2. Membantu memperpanjang usia mesin dengan perlindungan terhadap keausan,\r\n3. Membantu menjaga perlindungan selama pengeringan oli.', 'img/sparepart/ZtFYAVV0cLPRt3BGkKT0nbxrwetID4nredudAdkS.jpg', '2024-06-28 01:04:31', '2024-07-16 09:40:47'),
-(2, 'Oli Transmisi MOBIL Matic IDEMITSU ATF 1 Liter', 68000, 38, 'Oli Merk IDEMITSU ATF untuk Transmisi Mobil Matic, (Automatic Transmission) , kemasan 1 liter.\r\nmerupakan oli yang diformulasikan di Jepang.\r\n\r\nKeunggulan Oli Transmisi Automatic Idemitsu Multi Purpose ATF antara lain:\r\n\r\n- Cairan transmisi matic yang tahan lama\r\n- Perlindungan maksimal gearbox dari keausan pada saat mesin dihidupkan\r\n- Perlindungan dan performa maksimal pada suhu tinggi dan beban berat\r\n- Kesesuaian dengan hampir semua model kendaraan buatan jepang, eropa, amerika dan korea', 'img/sparepart/3fVI437Lh4gtIMPYHtVzJy84Hs5kSxabS6zGJon9.jpg', '2024-06-28 01:11:50', '2024-07-16 10:38:10'),
-(3, 'Shell Rimula R4 Plus 15w40 5L Cocok buat semua mobil Diesel', 225040, 48, 'SHELL RIMULA\r\nR4X 5 L | 15W 40 5 LITER\r\nORIGINAL BARCODE ENGINE OIL | OLI MOBIL\r\nCara Cek KEASLIAN Oli :\r\n1. Scan Barcode diatas tutup botol saat barang diterima. Cara nya bisa tanya Seller / Tutorial Youtube\r\n2. Saat anda sudah Scan Barcode diatas tutup Botol Shell Helix, anda akan langsung masuk ke Web ac.shell.com, lalu bisa lanjutkan di slide / geser lalu continue.\r\n3. Setelah itu akan terlihat notifikasi Keaslian Produk & Centang Hijau\r\n4. Hati-Hati Oli Shell Palsu banyak beredar, walaupun ada barcode bisa saja bukan centang hijau tetapi silang merah. Selalu tes & scan Barcode Oli Shell Helix anda.', 'img/sparepart/xrf3EvPSiTmtgXcg4AfY2dGp0D6XkquGiHcmS9vp.jpg', '2024-06-28 01:13:24', '2024-07-16 10:36:02'),
-(4, 'Bohlam Lampu Depan Agya Ayla Calya Sigra Brio Jazz Yaris H4 60 12 V', 36000, 48, 'Bohlam Lampu Depan Philips\r\n12V 60 55 Watt\r\ncocok untuk mobil\r\nAgya\r\nAyla\r\ncalya\r\nsigra\r\njazz\r\nyaris\r\nBRIO\r\ncahaya Warna Kuning\r\nmodel H4 12 V 60 / 55 Watt\r\nORI PHILIPS', 'img/sparepart/Ud60nNZiGLh4xItG7bsxhxZC88liT9QMHJXMVRvC.jpg', '2024-06-28 01:17:36', '2024-07-16 10:36:31'),
+(1, 'OLI MOBIL SHELL HELIX HX6 10W-40 | HX6 4 LITER | BARCODE HIJAU', 210000, 49, 'Shell Helix HX6 10W-40 dirancang untuk:\r\n- Mesin bensin, diesel, dan gas,\r\n- Cocok untuk mesin berbahan bakar biodiesel dan campuran bensin/etanol.\r\n\r\nKeunggulan:\r\n1. Active Cleansing Technology sebagai perlindungan mesin dari keausan dan lumpur yang dapat diandalkan,\r\n2. Membantu memperpanjang usia mesin dengan perlindungan terhadap keausan,\r\n3. Membantu menjaga perlindungan selama pengeringan oli.', 'img/sparepart/ZtFYAVV0cLPRt3BGkKT0nbxrwetID4nredudAdkS.jpg', '2024-06-28 01:04:31', '2024-07-16 11:58:15'),
+(2, 'Oli Transmisi MOBIL Matic IDEMITSU ATF 1 Liter', 68000, 37, 'Oli Merk IDEMITSU ATF untuk Transmisi Mobil Matic, (Automatic Transmission) , kemasan 1 liter.\r\nmerupakan oli yang diformulasikan di Jepang.\r\n\r\nKeunggulan Oli Transmisi Automatic Idemitsu Multi Purpose ATF antara lain:\r\n\r\n- Cairan transmisi matic yang tahan lama\r\n- Perlindungan maksimal gearbox dari keausan pada saat mesin dihidupkan\r\n- Perlindungan dan performa maksimal pada suhu tinggi dan beban berat\r\n- Kesesuaian dengan hampir semua model kendaraan buatan jepang, eropa, amerika dan korea', 'img/sparepart/3fVI437Lh4gtIMPYHtVzJy84Hs5kSxabS6zGJon9.jpg', '2024-06-28 01:11:50', '2024-07-16 10:58:18'),
+(3, 'Shell Rimula R4 Plus 15w40 5L Cocok buat semua mobil Diesel', 225040, 47, 'SHELL RIMULA\r\nR4X 5 L | 15W 40 5 LITER\r\nORIGINAL BARCODE ENGINE OIL | OLI MOBIL\r\nCara Cek KEASLIAN Oli :\r\n1. Scan Barcode diatas tutup botol saat barang diterima. Cara nya bisa tanya Seller / Tutorial Youtube\r\n2. Saat anda sudah Scan Barcode diatas tutup Botol Shell Helix, anda akan langsung masuk ke Web ac.shell.com, lalu bisa lanjutkan di slide / geser lalu continue.\r\n3. Setelah itu akan terlihat notifikasi Keaslian Produk & Centang Hijau\r\n4. Hati-Hati Oli Shell Palsu banyak beredar, walaupun ada barcode bisa saja bukan centang hijau tetapi silang merah. Selalu tes & scan Barcode Oli Shell Helix anda.', 'img/sparepart/xrf3EvPSiTmtgXcg4AfY2dGp0D6XkquGiHcmS9vp.jpg', '2024-06-28 01:13:24', '2024-07-16 10:58:46'),
+(4, 'Bohlam Lampu Depan Agya Ayla Calya Sigra Brio Jazz Yaris H4 60 12 V', 36000, 48, 'Bohlam Lampu Depan Philips\r\n12V 60 55 Watt\r\ncocok untuk mobil\r\nAgya\r\nAyla\r\ncalya\r\nsigra\r\njazz\r\nyaris\r\nBRIO\r\ncahaya Warna Kuning\r\nmodel H4 12 V 60 / 55 Watt\r\nORI PHILIPS', 'img/sparepart/Ud60nNZiGLh4xItG7bsxhxZC88liT9QMHJXMVRvC.jpg', '2024-06-28 01:17:36', '2024-07-16 10:58:46'),
 (5, 'Shockbreaker Shock Absorber Depan Avanza, Xenia 2004-2011 Original', 350000, 49, 'Harga per piece shock breaker\r\nBarang Original Toyota\r\nBarang baru\r\n\r\nBergaransi\r\n\r\nMonggo Diorder bosku', 'img/sparepart/WTQISFhup65jbDrYp6E2o81IK3wnGBr6vHyjCdYR.jpg', '2024-06-28 01:19:19', '2024-07-16 10:38:20'),
 (6, 'Wiper Mobil Toyota New Avanza (2013-on) Sepasang Bosch Advantage', 72500, 50, 'Wiper Mobil Toyota New Avanza (2013-on) Ukuran 21\" & 14\" Sepasang (2pcs) Bosch Advantage\r\n\r\n- Cocok dengan 96% kendaraan\r\n- Bebas gangguan dengan mudah pemasangan\r\n- Performa penyadapan yang superior di daerah beriklim tropis\r\n- Struktur balok bebas korosi\r\n- Tetap seperti baru bahkan setelah 200.000 menghapus siklus\r\n- Inovatif, adaptor pre-mount klip cepat untuk instalasi mudah\r\n- Karet Alam dengan Perawatan Grafit eksklusif, potongan tepi yang presisi untuk iklim tropis\r\n- Konsisten menghapus kinerja yang diberikan oleh pegas baja\r\n- Aerodynamic Symmetrical Wind Spoiler yang menggunakan aliran udara untuk meningkatkan tekananan ke windscreen, sehingga dapat melawan angin kencang.', 'img/sparepart/8VpXVKGsE9t2fFwAbHW6JUqdNtyqi0LnYflbUclR.jpg', '2024-06-28 01:21:42', '2024-06-28 01:21:42'),
 (8, 'Kampas Rem belakang TDW akebono Avanza - Xenia Brake shoe Original', 120900, 49, 'kanvas rem belakang TDW Original 100%\r\nAFTDW04-2-11\r\n(TDW Brake dibawah Lisensi Akebono Brake Industry CO., LTD. JAPAN) \r\n*1set= untuk 2roda belakang\r\n\r\nInterchange number:\r\n- 04495-YZZQ1\r\n\r\nUntuk Kendaraan :\r\nTOYOTA \r\n- Avanza - New Avanza - All new Avanza - Grand New Avanza \r\n2004-2021\r\n\r\nDAIHATSU\r\n- Xenia - New Xenia - All new Xenia - Great/Grand new Xenia \r\n2004-2021\r\n\r\nDIPRODUKSI Oleh:\r\nPT AKEBONO BRAKE ASTRA INDONESIA\r\nMADE IN INDONESIA original 100%\r\n\r\nkanvas berdaya cengkram tinggi \r\ndan tidak menimbulkan bunyi. \r\nKampas Rem dengan 3 keunggulan :\r\n- Tidak Berdecit\r\n- Pakem &Tidak Merusak Piringan/ Cakram\r\n- Kampas Rem Non Asbestos\r\n\r\ndistributor \r\nPT ASTRA OTOPART Tbk\r\n\r\n+ Best Friction\r\n+ Best Long Losting\r\n+ Less Dust \r\n+ No Noise / tidak bunyi', 'img/sparepart/qULyY9Z2oVChmjsqbYdpHLWy6iALIqX6DyV6WMTo.jpg', '2024-06-28 01:23:05', '2024-07-16 10:10:12'),
@@ -295,8 +269,9 @@ INSERT INTO `sparepart` (`id_sparepart`, `nama`, `harga`, `jumlah`, `deskripsi`,
 (14, 'Filter Oli / Oil Filter Innova Old/Reborn Fortuner Hilux Bosch', 35000, 50, 'Filter Oli / Oil Filter Innova Old/Reborn Fortuner Hilux Bosch\r\n\r\nBosch Premium Oil Filter\r\n\r\n- Menjaga partikel-partikel berbahaya dan kotoran keluar\r\n- Mmencegah keausan dini dan kegagalan mesin\r\n- Filter oil premium tidak hanya sesuai dengan cara yang sama seperti filter OE asli, mereka memanfaatkan campuran eksklusif dari bahan-bahan alami dan sintetis di media untuk penyaringan minyak unggul dan peningkatan perlindungan mesin.\r\n- Efisiensi penyaringan hingga skala micron\r\n- Mencegah kerusakan mesin yang mahal\r\n- Memaksimalkan proteksi mesin yang maksimal\r\n- Cocok dan tetap pada kendaraan dengan cara yang sama sebagai filter asli\r\n\r\nAplikasi :\r\nToyota Innova\r\nToyota Fortuner\r\nToyota Hilux\r\nToyota Kijang 1.8\r\nSuzuki Carry\r\nSuzuki Futura', 'img/sparepart/0JZMVBfxnHh1Lo4dTrmGj7ws0UsFz55AKSiNL5IJ.jpg', '2024-06-28 01:31:30', '2024-06-28 01:31:30'),
 (15, 'Filter Oli / Oil Filter Pajero Old L200 Strada Triton Bosch', 58000, 50, 'Filter Oli / Oil Filter Pajero Old L200 Strada Triton Bosch\r\n\r\nBosch Premium Oil Filter\r\n\r\n- Menjaga partikel-partikel berbahaya dan kotoran keluar\r\n- Mmencegah keausan dini dan kegagalan mesin\r\n- Filter oil premium tidak hanya sesuai dengan cara yang sama seperti filter OE asli, mereka memanfaatkan campuran eksklusif dari bahan-bahan alami dan sintetis di media untuk penyaringan minyak unggul dan peningkatan perlindungan mesin.\r\n- Efisiensi penyaringan hingga skala micron\r\n- Mencegah kerusakan mesin yang mahal\r\n- Memaksimalkan proteksi mesin yang maksimal\r\n- Cocok dan tetap pada kendaraan dengan cara yang sama sebagai filter asli\r\n\r\nAplikasi :\r\nMitsubishi L-300\r\nMitsubishi L-200\r\nMitsubishi Strada\r\nMitsubishi Triton\r\nMitsubishi Pajero Sport\r\nMitsubishi Kuda Diesel', 'img/sparepart/qQ77YFbNqYRl7ERsKSCOZ7A5YLSVmNjKiBdtdEsI.jpg', '2024-06-28 01:32:13', '2024-06-28 01:32:13'),
 (16, 'Wiper Frameless Honda All New BRV 2022 - On Sepasang Bosch', 126000, 50, 'Wiper Frameless Honda All New BRV Sepasang Bosch Ukuran 24\" & 16\"\r\n\r\n- Cocok dengan 96% kendaraan\r\n- Bebas gangguan dengan mudah pemasangan\r\n- Performa penyadapan yang superior di daerah beriklim tropis\r\n- Struktur balok bebas korosi\r\n- Tetap seperti baru bahkan setelah 200.000 menghapus siklus\r\n- Inovatif, adaptor pre-mount klip cepat untuk instalasi mudah\r\n- Karet Alam dengan Perawatan Grafit eksklusif, potongan tepi yang presisi untuk iklim tropis\r\n- Konsisten menghapus kinerja yang diberikan oleh pegas baja\r\n- Aerodynamic Symmetrical Wind Spoiler yang menggunakan aliran udara untuk meningkatkan tekananan ke windscreen, sehingga dapat melawan angin kencang.', 'img/sparepart/ewkMBPpmvY8U9hoMjAnCPFZ00ys250dv6xYeO4ZN.jpg', '2024-06-28 01:33:18', '2024-06-28 01:33:18'),
-(17, 'Link Stabilizer Toyota Avanza Daihatsu Xenia | 555 Japan Original - 1 pcs', 50000, 20, 'Link Stabilizer Toyota Avanza Daihatsu Xenia\r\n\r\n555 Japan Original\r\n\r\nReady Stock!\r\n\r\nDipersilahkan untuk menanyakan informasi tentang produk-produk dan ketersediaan stok produk dalam toko kami, konsultasi via chat tokopedia / WA (082360777888).\r\n\r\nTerima Kasih!', 'img/sparepart/2PfEG8FNXpjvsbkj1XhALEJ7ipYdLY2aeHMTlBl2.jpg', '2024-06-28 06:57:12', '2024-06-28 06:57:12'),
-(18, 'filter kabin ac all new rush terios', 37500, 0, 'asdf', 'img/sparepart/WS7FR6fo0upJbvSf2N3h8gkfU5zilo0iPGhtTjsu.jpg', '2024-06-28 19:33:21', '2024-06-28 19:34:07');
+(17, 'Link Stabilizer Toyota Avanza Daihatsu Xenia | 555 Japan Original - 1 pcs', 50000, 19, 'Link Stabilizer Toyota Avanza Daihatsu Xenia\r\n\r\n555 Japan Original\r\n\r\nReady Stock!\r\n\r\nDipersilahkan untuk menanyakan informasi tentang produk-produk dan ketersediaan stok produk dalam toko kami, konsultasi via chat tokopedia / WA (082360777888).\r\n\r\nTerima Kasih!', 'img/sparepart/2PfEG8FNXpjvsbkj1XhALEJ7ipYdLY2aeHMTlBl2.jpg', '2024-06-28 06:57:12', '2024-07-16 11:58:27'),
+(18, 'filter kabin ac all new rush terios', 37500, 0, 'asdf', 'img/sparepart/WS7FR6fo0upJbvSf2N3h8gkfU5zilo0iPGhtTjsu.jpg', '2024-06-28 19:33:21', '2024-06-28 19:34:07'),
+(19, 'Testing', 25000, 50, 'Testing asdfasdf', 'img/sparepart/xdVc2ZLc6Cc2onoChYaESMwmP4LI1U46ACjQXAta.jfif', '2024-07-16 11:54:46', '2024-07-16 11:55:01');
 
 -- --------------------------------------------------------
 
@@ -313,15 +288,6 @@ CREATE TABLE `transaksi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `transaksi`
---
-
-INSERT INTO `transaksi` (`id_transaksi`, `id_customer`, `total_biaya`, `snap_token`, `status_pembayaran`, `created_at`, `updated_at`) VALUES
-(24, 8, 36000, '62bcd95c-ed81-4f23-ad4b-188992375ce4', 1, '2024-07-16 10:36:37', '2024-07-16 10:37:00'),
-(25, 8, 68000, '1e7735e5-bc76-4e90-8527-b8cb95c476f8', 1, '2024-07-16 10:38:14', '2024-07-16 10:38:57'),
-(26, 8, 350000, '0c2e2557-fdb4-45dd-8162-c357b1add0ad', 1, '2024-07-16 10:38:23', '2024-07-16 10:38:37');
 
 --
 -- Indexes for dumped tables
@@ -431,25 +397,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id_booking` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_booking` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id_customer` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_customer` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `detail_service`
 --
 ALTER TABLE `detail_service`
-  MODIFY `id_detail_service` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_detail_service` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail_transaksi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_detail_transaksi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -461,7 +427,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id_keranjang` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -479,19 +445,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id_service` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_service` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sparepart`
 --
 ALTER TABLE `sparepart`
-  MODIFY `id_sparepart` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_sparepart` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_transaksi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -524,13 +490,6 @@ ALTER TABLE `detail_transaksi`
 ALTER TABLE `keranjang`
   ADD CONSTRAINT `keranjang_id_customer_foreign` FOREIGN KEY (`id_customer`) REFERENCES `customers` (`id_customer`),
   ADD CONSTRAINT `keranjang_id_sparepart_foreign` FOREIGN KEY (`id_sparepart`) REFERENCES `sparepart` (`id_sparepart`);
-
---
--- Constraints for table `service`
---
-ALTER TABLE `service`
-  ADD CONSTRAINT `service_id_admin_foreign` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
-  ADD CONSTRAINT `service_id_customer_foreign` FOREIGN KEY (`id_customer`) REFERENCES `customers` (`id_customer`);
 
 --
 -- Constraints for table `transaksi`

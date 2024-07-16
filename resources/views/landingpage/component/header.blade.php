@@ -188,16 +188,8 @@
                                 <li><a href="#">Pages</a>
                                     <ul>
                                         <li><a href="{{ route('about-us') }}">about us</a></li>
-                                        <li><a href="{{ route('blog') }}">blog</a></li>
-                                        <li><a href="{{ route('blog-details') }}">blog details</a></li>
-                                        <li><a href="{{ route('our-services') }}">our services</a></li>
-                                        <li><a href="{{ route('contact') }}">contact us</a></li>
                                         <li><a href="{{ route('service') }}">services</a></li>
                                         <li><a href="/view-cart1">shopping cart</a></li>
-                                        <li><a href="{{ route('checkout') }}">checkout</a></li>
-                                        <li><a href="{{ route('wishlist') }}">wishlist</a></li>
-                                        <li><a href="{{ route('error-404') }}">eror 404</a></li>
-                                        <li><a href="{{ route('error-500') }}">eror 500</a></li>
                                     </ul>
                                 </li>
                             </ul>

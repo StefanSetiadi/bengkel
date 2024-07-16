@@ -28,9 +28,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
                     <div class="header-profile-actions">
-                        <!-- <a href="{{route('profile')}}">Profile</a>
-                        <a href="{{route('account-settings')}}">Settings</a> -->
-                        <a href="{{route('index')}}">Logout</a>
+                        <a href="{{route('actionlogoutAdmin')}}">Logout</a>
                     </div>
                 </div>
             </li>
