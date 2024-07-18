@@ -7,25 +7,14 @@
                     <!-- welcome message start -->
                     <div class="welcome-msg">
                         <ul>
-                            <li> <p> <span> Contact: </span>0088-234-567-890</p></li>
-                            <li> <p> <span> Opening Hours: </span>Mon-Fri:  8:30am-6:30pm</p></li>
+                            <li> <p> <span> Kontak: </span>089-234-567-890</p></li>
+                            <li> <p> <span> Buka: </span>Senin-Sabtu: 08:30-17.00</p></li>
                         </ul>
                     </div>
                     <!-- welcome message end -->
                 </div>
                 <div class="col-md-5">
                     <div class="header-top-menu">
-                        <!-- top social start -->
-                        <div class="top-social">
-                            <ul>
-                                <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-pinterest-p"></i> </a></li>
-                            </ul>
-                        </div>
-                        <!-- top social end -->
                         <!-- cart menu start -->
                         <div class="cart-menu">
                             <ul>
