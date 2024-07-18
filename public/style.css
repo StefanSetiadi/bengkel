@@ -875,7 +875,7 @@ p.error {
 /*========================================*/
 
 .service-area {
-    background: rgba(0, 0, 0, 0) url("img/bg/service-bg.jpg") no-repeat scroll center center;
+    background: rgba(0, 0, 0, 0) url("img/bg/features-bg.jpeg") no-repeat scroll center center;
 }
 .single-service {
     margin-top: 100px;
@@ -1080,7 +1080,7 @@ p.error {
 /*========================================*/
 
 .features-area {
-    background-image: url(img/bg/features-bg.jpg);
+    background-image: url(img/bg/features-bg.jpeg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -1179,9 +1179,10 @@ p.error {
 
 .testimonial-area {
     background-color: #fff;
-    background-image: url("img/bg/testimonial-bg.jpg");
+    background-image: url("img/bg/testimonial-bg.jpeg");
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 .single-testimonial .testimonial-img {
     float: left;
@@ -1437,7 +1438,7 @@ a.book-now-btn:hover {
 .page-title-area {
     padding: 150px 0px;
     margin-top: 170px;
-    background-image: url(img/bg/page-bg.jpg);
+    background-image: url(img/bg/features-bg.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
 }
