@@ -52,7 +52,7 @@
                         <!-- shop sort end -->
                         <!-- shop show product start -->
                         <div class="limit-product width-33 pull-left text-right">
-                            <label>Show: </label>
+                            <label>Tampilkan: </label>
                             <select name="paginate" onchange="document.getElementById('sortForm').submit();">
                                 <option value="8" {{ request('paginate') == '8' ? 'selected' : '' }}>8</option>
                                 <option value="16" {{ request('paginate') == '16' ? 'selected' : '' }}>16</option>
@@ -70,7 +70,7 @@
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
                         @if ($spareparts->isEmpty())
-                            <h3 align="center">No products found matching your search criteria.</h3>
+                            <h3 align="center">TIDAK ADA PRODUK YANG SESUAI DENGAN KRITERIA PENCARIAN ANDA.</h3>
                         @else
                         @foreach ($spareparts as $index => $sparepart)
     @if ($index % 4 == 0)
