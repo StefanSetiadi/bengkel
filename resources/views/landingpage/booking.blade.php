@@ -42,12 +42,12 @@
                     <!-- contact address start -->
                     <div class="contact-info">
                         <!-- title -->
-                        <h3 class="contact-title">Location</h3>
+                        <h3 class="contact-title">Lokasi</h3>
                         <!-- single address start -->
                         <div class="single-address">
                             <div class="icon"><i class="icofont icofont-location-pin"></i></div>
                             <div class="icon-text">
-                                <p>28 Green Tower, Street Name <br> New York City, USA</p>
+                                <p>28 Jln. Tubagus Ismail <br> Dago, Bandung</p>
                             </div>
                         </div>
                         <!-- single address end -->
@@ -55,7 +55,7 @@
                         <div class="single-address">
                             <div class="icon"><i class="icofont icofont-phone"></i></div>
                             <div class="icon-text">
-                                <p>Phone : +061012345678 <br> Fax : +0061012345678</p>
+                                <p>Kontak : 0896546778x</p>
                             </div>
                         </div>
                         <!-- single address end -->
@@ -63,7 +63,7 @@
                         <div class="single-address">
                             <div class="icon"><i class="icofont icofont-envelope"></i></div>
                             <div class="icon-text">
-                                <p>Contact@yourename.com <br> Support@yourname.com</p>
+                                <p>csbengkel@gmail.com</p>
                             </div>
                         </div>
                         <!-- single address end -->
@@ -74,7 +74,7 @@
                         <form id="contact-form" action="{{ route('addBooking') }}" method="post">
                             @csrf
                             <!-- title -->
-                            <h3 class="contact-title">Booking</h3>
+                            <h3 class="contact-title">Halaman Pemesanan</h3>
                             <!-- input plate number -->
                             <input name="no_kendaraan" type="text" placeholder="Plate Number" required oninput="this.value = this.value.toUpperCase()">
                             <!-- input datetime -->
@@ -83,7 +83,7 @@
                             <textarea name="deskripsi" cols="10" rows="5" placeholder="Your description"></textarea>
                             <!-- send button -->
                             <div class="shopping-button">
-                                <button type="submit">Booking</button>
+                                <button type="submit">Pesan</button>
                             </div>
                         </form>
                     </div>
@@ -99,24 +99,24 @@
                     <table class="table-bordered table">
                         <thead>
                             <tr>
-                                <th class="item-img">No</th>
+                                <th class="item-img text-center">No</th>
                                 <!-- product img title -->
-                                <th class="item-img">Plate Numbers</th>
+                                <th class="item-img text-center">Nomor Plat</th>
                                 <!-- product img title -->
-                                <th class="item-img">Description</th>
+                                <th class="item-img text-center">Tanggal</th>
                                 <!-- product name title -->
-                                <th class="product-name">Date</th>
+                                <th class="product-name text-center">Deskripsi</th>
                                 <!-- unit price title -->
-                                <th class="unit-price">Time</th>
+                                <th class="unit-price text-center">Jam</th>
                                 <!-- quantity -->
                                 <th class="quantity text-center">Status</th>
                                 <!-- remove button -->
-                                <th class="remove-icon text-center">Remove</th>
+                                <th class="remove-icon text-center">Hapus</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             @if ($bookings->isEmpty())
-							    <td align="center" colspan="7">You haven't made a booking yet</td>
+							    <td align="center" colspan="7">Anda belum melakukan pemesanan</td>
                             @else
 							@foreach ($bookings as $index => $booking)
                                 <tr>
@@ -126,9 +126,6 @@
                                     <td class="cart-product-name text-left" width=200>
                                         <a>{{ $booking->no_kendaraan }}</a>
                                     </td>
-                                    <td class="cart-product-name text-left" width=300>
-                                        <a>{{ $booking->deskripsi }}</a>
-                                    </td>
                                     @php
                                         $datetime = $booking->waktu;
                                         $date = \Carbon\Carbon::parse($datetime)->format('Y-m-d');
@@ -136,6 +133,9 @@
                                     @endphp
                                     <td class="cart-product-name text-left" width=300>
                                         <a>{{ $date }}</a>
+                                    </td>
+                                    <td class="cart-product-name text-left" width=300>
+                                        <a>{{ $booking->deskripsi }}</a>
                                     </td>
                                     <td class="cart-product-name text-left" width=300>
                                         <a>{{ $time }}</a>
