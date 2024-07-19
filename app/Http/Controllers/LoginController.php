@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use Illuminate\Support\Facades\DB;
+
 
 class LoginController extends Controller
 {
@@ -56,10 +58,24 @@ class LoginController extends Controller
         ];
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return view('dashboard.index');
-        }else{
-            return redirect()->back()->with("message", "failed");
-        }
+            $countBooking = DB::table('booking')->count();
+            $countTransaction = DB::table('transaksi')->count();
+            $totalTurnover = DB::table('transaksi')->sum('total_biaya');
+        
+            $monthlyTransactions = DB::table('transaksi')
+                ->select(DB::raw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as count'))
+                ->groupBy('year', 'month')
+                ->get();
+        
+            return view('dashboard.index', [
+                'countBooking' => $countBooking,
+                'countTransaction' => $countTransaction,
+                'omzet' => $totalTurnover,
+                'monthlyTransactions' => $monthlyTransactions
+            ]);
+            }else{
+                return redirect()->back()->with("message", "failed");
+            }
     }
 
     public function actionlogoutAdmin()

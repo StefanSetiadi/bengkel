@@ -93,15 +93,17 @@ Route::middleware('admin')->group(function() {
 |                                   Admin
 |--------------------------------------------------------------------------
 */
+// Login
+Route::post('actionloginAdmin', [LoginController::class, 'actionloginAdmin'])->name('actionloginAdmin');
+Route::get('actionlogoutAdmin', [LoginController::class, 'actionlogoutAdmin'])->name('actionlogoutAdmin');
 Route::get('/login-admin', [LoginController::class, 'loginAdmin'])->name('loginAdmin');
 
-Route::group(['guard' => ['admin']], function() {
+// Route::group(['guard' => ['admin']], function() {
+Route::middleware('admin')->group(function() {
+
     Route::view('/index', 'dashboard/index')->name('indexdashboard');
     Route::get('/index', [TransactionController::class, 'dataTransaction'])->name('indexdashboard');
 
-    // Login
-    Route::post('actionloginAdmin', [LoginController::class, 'actionloginAdmin'])->name('actionloginAdmin');
-    Route::get('actionlogoutAdmin', [LoginController::class, 'actionlogoutAdmin'])->name('actionlogoutAdmin');
 
     // Booking
     Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');
