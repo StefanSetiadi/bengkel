@@ -1,6 +1,6 @@
 @extends('dashboard.component.main')
 
-@section('breadcrumb','Services')
+@section('breadcrumb','Riwayat Servis')
 
 @section('content')
 <div class="content-wrapper">
@@ -10,7 +10,7 @@
 							<div class="col-sm-12 col-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Services</div>
+										<div class="card-title">Servis</div>
 									</div>
 									<div class="card-body">
 
@@ -19,16 +19,16 @@
 												<thead>
 													<tr>
 														<th>No</th>
-														<th>Plate Number</th>
-														<th>Spare parts cost</th>
-														<th>Service Fee</th>
+														<th>Plat Nomor</th>
+														<th>Harga Onderdil</th>
+														<th>Harga Servis</th>
 														<th>Total</th>
-														<th>Action</th>
+														<th>Aksi</th>
 													</tr>
 												</thead>
 												<tbody>
 													@if ($services->isEmpty())
-													<td align="center" colspan="5">No booking data found</td>
+													<td align="center" colspan="5">Tidak ada riwayat servis hingga saat ini.</td>
 													@else
 													@foreach ($services as $index => $service)
 													<tr>
@@ -49,7 +49,7 @@
 																@csrf
 																<input name="id_service" value="{{ $service->id_service }}" hidden>
 																<input name="no_kendaraan" value="{{ $service->no_kendaraan }}" hidden>
-																<button type="submit" class="btn btn-success">Add Spareparts</button>
+																<button type="submit" class="btn btn-success">Tambah Onderdil</button>
 															</form>
 														</td>
 													</tr>

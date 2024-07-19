@@ -1,6 +1,6 @@
 @extends('dashboard.component.main')
 
-@section('breadcrumb','Add Spareparts Service')
+@section('breadcrumb','Tambah Onderdil')
 
 @section('content')
 <div class="content-wrapper">

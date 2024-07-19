@@ -16,7 +16,7 @@
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
-                        <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
+                        <li><a href="{{ route('index') }}">Beranda</a> <span> / </span> </li>
                         <li><a href="{{ route('blog-details') }}">blog details</a></li>
                     </ul>
                 </div>

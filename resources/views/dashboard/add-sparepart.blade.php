@@ -11,13 +11,13 @@
 		<div class="col-sm-12 col-12">
 			<div class="card">
 				<div class="card-header">
-					<div class="card-title">Add Sparepart</div>
+					<div class="card-title">Tambah Onderdil</div>
 				</div>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-sm-6 col-12">
 							<div class="card-border">
-								<div class="card-border-title">Preview Image</div>
+								<div class="card-border-title">Pratinjau Gambar</div>
 								<div class="card-border-body">
 									<div class="row">
 										<div class="form-group">
@@ -31,7 +31,7 @@
 											<div class="input-group col-12">
 												<span class="input-group-append mx-auto">
 													<button class="file-upload-browse btn btn-primary"
-														type="button">Upload</button>
+														type="button">Unggah</button>
 												</span>
 											</div>
 										</div>
@@ -42,39 +42,39 @@
 						</div>
 						<div class="col-sm-6 col-12">
 							<div class="card-border">
-								<div class="card-border-title">Information</div>
+								<div class="card-border-title">Informasi</div>
 								<div class="card-border-body">
 									<div class="row">
 										<div class="col-sm-12 col-12">
 											<div class="mb-3">
-												<label class="form-label">Name <span class="text-red">*</span></label>
-												<input type="text" class="form-control" name="nama" placeholder="Enter the name of the spare part" required>
+												<label class="form-label">Nama <span class="text-red">*</span></label>
+												<input type="text" class="form-control" name="nama" placeholder="Masukan nama onderdil" required>
 											</div>
 										</div>
 										<div class="col-sm-6 col-12">
 											<div class="mb-3">
-												<label class="form-label">Price <span class="text-red">*</span></label>
-												<input type="number" class="form-control" name="harga" placeholder="Enter the price of spare parts" required>
+												<label class="form-label">Harga <span class="text-red">*</span></label>
+												<input type="number" class="form-control" name="harga" placeholder="Masukan harga produk" required>
 											</div>
 										</div>
 										<div class="col-sm-6 col-12">
 											<div class="mb-3">
-												<label class="form-label">Stock <span class="text-red">*</span></label>
-												<input type="number" class="form-control" name="jumlah" placeholder="Enter the number of spare parts" required>
+												<label class="form-label">Stok <span class="text-red">*</span></label>
+												<input type="number" class="form-control" name="jumlah" placeholder="Masukan stok produk" required>
 											</div>
 										</div>
 										<div class="col-sm-12 col-12">
 											<div class="mb-0">
-												<label class="form-label">Description</label>
+												<label class="form-label">Deskripsi</label>
 												<textarea rows="4" class="form-control" name="deskripsi"
-													placeholder="Enter a description of the spare part"></textarea>
+													placeholder="Masukan deskripsi produk"></textarea>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="custom-btn-group flex-end mt-5">
-									<input type="reset" class="btn btn-light" value="Cancel"></input>
-									<button type="submit" class="btn btn-success">Add Product</button>
+									<input type="reset" class="btn btn-light" value="Batal"></input>
+									<button type="submit" class="btn btn-success">Tambah Produk</button>
 								</div>
 							</div>
 						</div>

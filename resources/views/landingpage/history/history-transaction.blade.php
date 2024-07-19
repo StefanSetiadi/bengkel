@@ -16,14 +16,14 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>history transaction</h2>
+                    <h2>Riwayat Transaksi</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('historyTransaction') }}">History Transaction</a></li>
+                        <li><a href="{{ route('historyTransaction') }}">Riwayat Transaksi</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -46,17 +46,17 @@
                                 <!-- product img title -->
                                 <th class="item-img">Total</th>
                                 <!-- product img title -->
-                                <th class="item-img">Payment status</th>
+                                <th class="item-img">Status pembayaran</th>
                                 <!-- product name title -->
-                                <th class="product-name">Date</th>
+                                <th class="product-name">Tanggal</th>
                                 <!-- remove button -->
-                                <th class="remove-icon text-center">Action</th>
-                                <th class="item-img">Invoice</th>
+                                <th class="remove-icon text-center">Aksi</th>
+                                <th class="item-img">Faktur</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             @if ($transactions->isEmpty())
-							    <td align="center" colspan="7">You haven't made a transaction yet</td>
+							    <td align="center" colspan="7">Anda belum melakukan pemesanan</td>
                             @else
 							@foreach ($transactions as $index => $transaction)
                                 <tr>

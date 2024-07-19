@@ -1,6 +1,6 @@
 @extends('dashboard.component.main')
 
-@section('breadcrumb','Booking')
+@section('breadcrumb','Daftar Pemesanan')
 
 @section('content')
 <div class="content-wrapper">
@@ -10,7 +10,7 @@
 							<div class="col-sm-12 col-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Booking</div>
+										<div class="card-title">Daftar Pesanan</div>
 									</div>
 									<div class="card-body">
 
@@ -19,16 +19,16 @@
 												<thead>
 													<tr>
 														<th>No</th>
-														<th>Plate Number</th>
-														<th>Description</th>
-														<th>Date</th>
-														<th>Time</th>
-														<th>Action</th>
+														<th>Plat Nomor</th>
+														<th>Deskripsi</th>
+														<th>Tanggal</th>
+														<th>Jam</th>
+														<th>Aksi</th>
 													</tr>
 												</thead>
 												<tbody>
 													@if ($bookings->isEmpty())
-													<td align="center" colspan="5">No booking data found</td>
+													<td align="center" colspan="5">Belum ada pesanan hingga saat ini.</td>
 													@else
 													@foreach ($bookings as $index => $booking)
 													<tr>
@@ -79,7 +79,7 @@
 															<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
 															<input name="no_kendaraan" value="{{ $booking->no_kendaraan }}" hidden>
 															<button type="submit" class="btn btn-primary">
-																Create Bill
+																Buat Tagihan
 															</button>
 														</form>
 														</td>

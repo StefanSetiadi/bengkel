@@ -55,7 +55,7 @@
                         <div class="single-address">
                             <div class="icon"><i class="icofont icofont-phone"></i></div>
                             <div class="icon-text">
-                                <p>Kontak : 0896546778x</p>
+                                <p>Kontak : 089654677xx <br>whatsaap : 0896546483xx</p>
                             </div>
                         </div>
                         <!-- single address end -->
@@ -63,7 +63,7 @@
                         <div class="single-address">
                             <div class="icon"><i class="icofont icofont-envelope"></i></div>
                             <div class="icon-text">
-                                <p>csbengkel@gmail.com</p>
+                                <p>csbengkel@gmail.com <br>bengkel@gmail.com</p>
                             </div>
                         </div>
                         <!-- single address end -->

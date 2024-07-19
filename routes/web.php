@@ -9,8 +9,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\PaymentController;
-
-
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +49,7 @@ Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsVi
 |--------------------------------------------------------------------------
 */
 
-Route::group(['middleware' => ['customer']], function() {
+Route::middleware('admin')->group(function() {
     // Logout
     Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
 
@@ -94,18 +93,18 @@ Route::group(['middleware' => ['customer']], function() {
 |                                   Admin
 |--------------------------------------------------------------------------
 */
+Route::get('/login-admin', [LoginController::class, 'loginAdmin'])->name('loginAdmin');
 
 Route::group(['guard' => ['admin']], function() {
     Route::view('/index', 'dashboard/index')->name('indexdashboard');
+    Route::get('/index', [TransactionController::class, 'dataTransaction'])->name('indexdashboard');
 
     // Login
-    Route::get('/login-admin', [LoginController::class, 'loginAdmin'])->name('loginAdmin');
     Route::post('actionloginAdmin', [LoginController::class, 'actionloginAdmin'])->name('actionloginAdmin');
     Route::get('actionlogoutAdmin', [LoginController::class, 'actionlogoutAdmin'])->name('actionlogoutAdmin');
 
     // Booking
     Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');
-
     // Transaction
     Route::get('/dashboardTransaction', [PaymentController::class, 'dashboardTransaction'])->name('dashboardTransaction');
 

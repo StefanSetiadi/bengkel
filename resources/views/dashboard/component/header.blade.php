@@ -7,7 +7,7 @@
     <ol class="breadcrumb d-md-flex d-none">
         <li class="breadcrumb-item">
             <i class="bi bi-house"></i>
-            <a href="{{route('indexdashboard')}}">Home</a>
+            <a href="{{route('indexdashboard')}}">Beranda</a>
         </li>
         <li class="breadcrumb-item breadcrumb-active" aria-current="page">@yield('breadcrumb')</li>
     </ol>

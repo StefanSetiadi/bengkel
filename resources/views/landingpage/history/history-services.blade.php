@@ -16,14 +16,14 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>history services</h2>
+                    <h2>riwayat servis</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
-                        <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('historyServices') }}">History Services</a></li>
+                        <li><a href="{{ route('index') }}">Beranda</a> <span> / </span> </li>
+                        <li><a href="{{ route('historyServices') }}">Riwayat Servis</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -44,24 +44,24 @@
                             <tr>
                                 <th class="item-img">No</th>
                                 <!-- product img title -->
-                                <th class="quantity">Plate Numbers</th>
+                                <th class="quantity">Plat Nomor</th>
                                 <!-- product img title -->
-                                <th class="quantity">Date</th>
+                                <th class="quantity">Tanggal</th>
                                 <!-- product img title -->
-                                <th class="quantity">Spare parts cost</th>
+                                <th class="quantity">Harga Sparepart</th>
                                 <!-- product name title -->
-                                <th class="quantity">Service Fee</th>
+                                <th class="quantity">Harga Servis</th>
                                 <!-- unit price title -->
                                 <th class="quantity">Total</th>
                                 <!-- quantity -->
                                 <th class="quantity text-center">Detail</th>
                                 <!-- quantity -->
-                                <th class="quantity text-center">Action</th>
+                                <th class="quantity text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             @if ($services->isEmpty())
-							    <td align="center" colspan="7">No service history found</td>
+							    <td align="center" colspan="7">Belum ada riwayat servis</td>
                             @else
 							@foreach ($services as $index => $service)
                             @if ($service->biaya_jasa > 0)

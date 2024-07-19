@@ -10,8 +10,8 @@
 					<i class="bi bi-pie-chart"></i>
 				</div>
 				<div class="sale-details">
-					<h3 class="text-red">250k</h3>
-					<p>Sales</p>
+					<h3 class="text-red">{{ $countBooking }}</h3>
+					<p>Jumlah Pesanan Servis</p>
 				</div>
 			</div>
 		</div>
@@ -22,12 +22,12 @@
 					<i class="bi bi-emoji-smile"></i>
 				</div>
 				<div class="sale-details">
-					<h3 class="text-blue">24m</h3>
-					<p>Customers</p>
+					<h3 class="text-blue">{{ $countTransaction }}</h3>
+					<p>Jumlah Total Transaksi</p>
 				</div>
 			</div>
 		</div>
-		<div class="col-xxl-3 col-sm-6 col-12">
+		{{-- <div class="col-xxl-3 col-sm-6 col-12">
 			<div class="stats-tile">
 				<div class="sale-icon shade-yellow">
 					<i class="bi bi-box-seam"></i>
@@ -37,15 +37,15 @@
 					<p>Products</p>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 		<div class="col-xxl-3 col-sm-6 col-12">
 			<div class="stats-tile">
 				<div class="sale-icon shade-green">
 					<i class="bi bi-handbag"></i>
 				</div>
 				<div class="sale-details">
-					<h3 class="text-green">180m</h3>
-					<p>Revenue</p>
+					<h3 class="text-green">Rp. {{$omzet}}</h3>
+					<p>Total Pendapatan</p>
 				</div>
 			</div>
 		</div>
@@ -58,7 +58,6 @@
 
 			<div class="card">
 				<div class="card-body">
-
 					<!-- Row start -->
 					<div class="row">
 						<div class="col-xxl-3 col-sm-4 col-12">
@@ -99,10 +98,7 @@
 								<div class="col-12">
 									<div class="graph-day-selection mt-2" role="group">
 										<button type="button" class="btn active">Today</button>
-										<button type="button" class="btn">Yesterday</button>
 										<button type="button" class="btn">7 days</button>
-										<button type="button" class="btn">15 days</button>
-										<button type="button" class="btn">30 days</button>
 									</div>
 								</div>
 								<div class="col-12">
@@ -117,25 +113,8 @@
 			</div>
 
 		</div>
-		<div class="col-xxl-3  col-sm-12 col-12">
-
-			<div class="card">
-				<div class="card-header">
-					<div class="card-title">Sales</div>
-				</div>
-				<div class="card-body">
-					<div id="salesGraph" class="auto-align-graph"></div>
-					<div class="num-stats">
-						<h2>2100</h2>
-						<h6 class="text-truncate">12% higher than last month.</h6>
-					</div>
-				</div>
-			</div>
-
-		</div>
 	</div>
 	<!-- Row end -->
->>>>>>> 9174c7e2b4dbd26feca16277d35d070555befa90
 
 	<!-- Row start -->
 	<div class="row">
@@ -251,249 +230,9 @@
 	</div>
 	<!-- Row end -->
 
-	<!-- Row start -->
-	<div class="row">
-		<div class="col-sm-6 col-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="card-title">Transactions</div>
-				</div>
-				<div class="card-body">
-					<div class="scroll370">
-						<div class="transactions-container">
-							<div class="transaction-block">
-								<div class="transaction-icon shade-blue">
-									<i class="bi bi-credit-card"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Visa Card</h4>
-									<p class="text-truncate">Laptop Ordered</p>
-								</div>
-								<div class="transaction-amount text-blue">$1590</div>
-							</div>
-							<div class="transaction-block">
-								<div class="transaction-icon shade-green">
-									<i class="bi bi-paypal"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Paypal</h4>
-									<p class="text-truncate">Payment Received</p>
-								</div>
-								<div class="transaction-amount text-green">$310</div>
-							</div>
-							<div class="transaction-block">
-								<div class="transaction-icon shade-blue">
-									<i class="bi bi-pin-map"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Travel</h4>
-									<p class="text-truncate">Yosemite Trip</p>
-								</div>
-								<div class="transaction-amount text-blue">$4900</div>
-							</div>
-							<div class="transaction-block">
-								<div class="transaction-icon shade-blue">
-									<i class="bi bi-bag-check"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Shopping</h4>
-									<p class="text-truncate">Bill Paid</p>
-								</div>
-								<div class="transaction-amount text-blue">$285</div>
-							</div>
-							<div class="transaction-block">
-								<div class="transaction-icon shade-green">
-									<i class="bi bi-boxes"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Bank</h4>
-									<p class="text-truncate">Investment</p>
-								</div>
-								<div class="transaction-amount text-green">$150</div>
-							</div>
-							<div class="transaction-block">
-								<div class="transaction-icon shade-green">
-									<i class="bi bi-paypal"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Paypal</h4>
-									<p class="text-truncate">Amount Received</p>
-								</div>
-								<div class="transaction-amount text-green">$790</div>
-							</div>
-							<div class="transaction-block">
-								<div class="transaction-icon shade-blue">
-									<i class="bi bi-credit-card-2-front"></i>
-								</div>
-								<div class="transaction-details">
-									<h4>Credit Card</h4>
-									<p class="text-truncate">Online Shopping</p>
-								</div>
-								<div class="transaction-amount text-red">$280</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="card-title">Tasks</div>
-				</div>
-				<div class="card-body">
-					<div id="taskGraph"></div>
-					<ul class="task-list-container">
-						<li class="task-list-item">
-							<div class="task-icon shade-blue">
-								<i class="bi bi-clipboard-plus"></i>
-							</div>
-							<div class="task-info">
-								<h5 class="task-title">New</h5>
-								<p class="amount-spend">12</p>
-							</div>
-						</li>
-						<li class="task-list-item">
-							<div class="task-icon shade-green">
-								<i class="bi bi-clipboard-check"></i>
-							</div>
-							<div class="task-info">
-								<h5 class="task-title">Done</h5>
-								<p class="amount-spend">15</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="card-title">Notifications</div>
-				</div>
-				<div class="card-body">
-					<div class="scroll370">
-						<ul class="user-messages">
-							<li>
-								<div class="customer shade-blue">MK</div>
-								<div class="delivery-details">
-									<span class="badge shade-blue">Sales</span>
-									<h5>Marie Kieffer</h5>
-									<p>Thanks for choosing Apple product, further if you have any questions please contact sales
-										team.</p>
-								</div>
-							</li>
-							<li>
-								<div class="customer shade-blue">ES</div>
-								<div class="delivery-details">
-									<span class="badge shade-blue">Marketing</span>
-									<h5>Ewelina Sikora</h5>
-									<p>Boost your sales by 50% with the easiest and proven marketing tool for customer enggement
-										&amp; motivation.</p>
-								</div>
-							</li>
-							<li>
-								<div class="customer shade-blue">TN</div>
-								<div class="delivery-details">
-									<span class="badge shade-blue">Business</span>
-									<h5>Teboho Ncube</h5>
-									<p>Use an exclusive promo code HKYMM50 and get 50% off on your first order in the new year.
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="customer shade-blue">CJ</div>
-								<div class="delivery-details">
-									<span class="badge shade-blue">Admin</span>
-									<h5>Carla Jackson</h5>
-									<p>Befor inviting the administrator, you must create a role that can be assigned to them.
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="customer shade-red">JK</div>
-								<div class="delivery-details">
-									<span class="badge shade-red">Security</span>
-									<h5>Julie Kemp</h5>
-									<p>Your security subscription has expired. Please renew the subscription.</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="card-title">Activity</div>
-				</div>
-				<div class="card-body">
-
-					<div class="scroll370">
-						<div class="activity-container">
-							<div class="activity-block">
-								<div class="activity-user">
-									<img src="assets/images/user.png" alt="Activity User">
-								</div>
-								<div class="activity-details">
-									<h4>Lilly Desmet</h4>
-									<h5>3 hours ago</h5>
-									<p>Sent invoice ref. #23457</p>
-									<span class="badge shade-green">Sent</span>
-								</div>
-							</div>
-							<div class="activity-block">
-								<div class="activity-user">
-									<img src="assets/images/user3.png" alt="Activity User">
-								</div>
-								<div class="activity-details">
-									<h4>Jennifer Wilson</h4>
-									<h5>7 hours ago</h5>
-									<p>Paid invoice ref. #23459</p>
-									<span class="badge shade-red">Payments</span>
-								</div>
-							</div>
-							<div class="activity-block">
-								<div class="activity-user">
-									<img src="assets/images/user4.png" alt="Activity User">
-								</div>
-								<div class="activity-details">
-									<h4>Elliott Hermans</h4>
-									<h5>1 day ago</h5>
-									<p>Paid invoice ref. #23473</p>
-									<span class="badge shade-green">Paid</span>
-								</div>
-							</div>
-							<div class="activity-block">
-								<div class="activity-user">
-									<img src="assets/images/user5.png" alt="Activity User">
-								</div>
-								<div class="activity-details">
-									<h4>Sophie Michiels</h4>
-									<h5>3 day ago</h5>
-									<p>Paid invoice ref. #26788</p>
-									<span class="badge shade-green">Sent</span>
-								</div>
-							</div>
-							<div class="activity-block">
-								<div class="activity-user">
-									<img src="assets/images/user2.png" alt="Activity User">
-								</div>
-								<div class="activity-details">
-									<h4>Ilyana Maes</h4>
-									<h5>One week ago</h5>
-									<p>Paid invoice ref. #34546</p>
-									<span class="badge shade-red">Invoice</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Row end -->
+	<script>
+        window.monthlyTransactions = @json($monthlyTransactions);
+    </script>
+    <script src="C:\Users\ahmad\bengkel\public\assets\vendor\apex\custom\sales\revenueGraph.js"></script>
 </div>
 @endsection

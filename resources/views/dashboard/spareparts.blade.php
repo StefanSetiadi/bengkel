@@ -1,6 +1,6 @@
 @extends('dashboard.component.main')
 
-@section('breadcrumb','Spareparts')
+@section('breadcrumb','Daftar Onderdil')
 
 @section('content')
 <div class="content-wrapper">
@@ -24,33 +24,33 @@
 					setTimeout(() => {
 						const alertElement = document.getElementById('alertMessage');
 						alertElement.style.opacity = '0';
-						setTimeout(() => alertElement.style.display = 'none', 500); // Menunggu transisi selesai
+						setTimeout(() => alertElement.style.display = 'none', 500); 
 					}, 5000);
 				</script>
 			@endif
 				<form class="input-group mb-2" id="sortForm" action="{{ route('spareparts') }}">
-					<input type="text" class="form-control" name="search" placeholder="Search anything" value="{{ request('search') }}">
+					<input type="text" class="form-control" name="search" placeholder="Cari" value="{{ request('search') }}">
 					<button class="btn" type="submit">
 						<i class="bi bi-search"></i>
 					</button>
 				</form>
-				<a type="button" class="btn btn-info mb-2" href="{{ route('add-sparepart') }}"><i class="bi bi-plus-square"></i> Add</a>
+				<a type="button" class="btn btn-info mb-2" href="{{ route('add-sparepart') }}"><i class="bi bi-plus-square"></i> Tambah Onderdil</a>
 				<br>
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped m-0">
 						<thead align="center">
 							<tr>
-								<th>Image</th>
-								<th>Name</th>
-								<th>Price</th>
-								<th>Stock</th>
-								<th>Description</th>
-								<th>Action</th>
+								<th>Gambar</th>
+								<th>Nama Barang</th>
+								<th>Harga</th>
+								<th>Stok</th>
+								<th>Deskripsi</th>
+								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody align="center">
 							@if ($spareparts->isEmpty())
-							<td align="center" colspan="5">No spareparts found matching your search criteria.</td>
+							<td align="center" colspan="5">Belum ada suku cadang hingga saat ini.</td>
 							@else
 							@foreach ($spareparts as $index => $sparepart)
 							<tr>
@@ -71,7 +71,8 @@
 									<form action="{{ route('deleteDataSparepart') }}" method="post" style="display:inline-block;">
 										@csrf 
 										<input name="id_sparepart" value="{{ $sparepart->id_sparepart }}" hidden>
-										<input type="submit"  class="btn btn-danger" value="Delete"></input></td>
+										<br>
+										<input type="submit"  class="btn btn-danger" value="Hapus"></input></td>
 									</form>
 							</tr>
 							@endforeach

@@ -113,27 +113,27 @@
                             <nav>
                                 <ul>
                                     <!-- single menu -->
-                                    <li class="has-sub"><a href="{{ route('index') }}">Home</a></li>
+                                    <li class="has-sub"><a href="{{ route('index') }}">Beranda</a></li>
                                     <!-- single menu -->
-                                    <li><a href="{{ route('shop') }}">Shop</a></li>
+                                    <li><a href="{{ route('shop') }}">Belanja</a></li>
                                     @if (Auth::check())
                                         <!-- single menu -->
                                         <form action="{{ route('booking') }}" style="display:inline-block;" id="bookingForm" method="get">
                                             @csrf
                                             
-                                            <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Booking</a></li>
+                                            <li><a href="#" onclick="document.getElementById('bookingForm').submit(); return false;" type="submit">Pesan</a></li>
                                         </form>
                                         <!-- single menu
                                         <li><a href="{{ route('service') }}">Services</a></li> -->
                                         <!-- single menu with dropdown -->
-                                        <li class="has-mega"><a href="#">History<i class="icofont icofont-simple-down"></i></a>
+                                        <li class="has-mega"><a href="#">Riwayat<i class="icofont icofont-simple-down"></i></a>
                                             <!-- mega-menu start -->
                                             <div class="mega-menu" style="width:40%;transform: translateX(-20%); position: absolute;">
                                                 <span>
-                                                    <a href="{{ route('historyTransaction') }}">Transaction</a>
+                                                    <a href="{{ route('historyTransaction') }}">Transaksi</a>
                                                 </span>
                                                 <span>
-                                                    <a href="{{ route('historyServices') }}">Services</a>
+                                                    <a href="{{ route('historyServices') }}">Servis</a>
                                                 </span>
                                             </div>
                                             <!-- mega-menu end -->
@@ -142,7 +142,7 @@
                                     @endif
                                     @if (Auth::check())
                                     <!-- single menu -->
-                                    <li><a href="{{ route('view-cart') }}">Cart</a></li>
+                                    <li><a href="{{ route('view-cart') }}">Keranjang</a></li>
                                     <!-- single menu -->
                                     <li><a href="{{ route('actionlogout') }}">Logout</a></li>
                                     @else

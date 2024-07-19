@@ -1,6 +1,6 @@
 @extends('dashboard.component.main')
 
-@section('breadcrumb','History Transaction')
+@section('breadcrumb','Riwayat Transaksi')
 
 @section('content')
 <div class="content-wrapper">
@@ -10,7 +10,7 @@
 		<div class="col-sm-12 col-12">
 			<div class="card">
 				<div class="card-header">
-					<div class="card-title">History Transaction</div>
+					<div class="card-title">Riwayat Transaksi</div>
 				</div>
 				<div class="card-body">
 
@@ -19,15 +19,15 @@
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>Image</th>
-									<th>Name</th>
-									<th>Quantity Sold</th>
+									<th>Gambar</th>
+									<th>Nama</th>
+									<th>Jumlah Terjual</th>
 									<th>Date</th>
 								</tr>
 							</thead>
 							<tbody>
 								@if ($spareparts->isEmpty())
-								<td align="center" colspan="5">No transaction data found</td>
+								<td align="center" colspan="5">Tidak ada transaksi hingga saat ini.</td>
 								@else
 								@foreach ($spareparts as $index => $sparepart)
 								<tr>

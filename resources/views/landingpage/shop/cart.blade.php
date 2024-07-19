@@ -10,14 +10,14 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>cart</h2>
+                    <h2>Keranjang</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
                         <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="/view-cart1">cart</a></li>
+                        <li><a href="/view-cart1">Keranjang</a></li>
                     </ul>
                 </div>
                 <!-- page title menu end -->
@@ -63,20 +63,20 @@
                             <tr>
                                 <th class="item-img">No</th>
                                 <!-- product img title -->
-                                <th class="item-img">Image</th>
+                                <th class="item-img">Gambar</th>
                                 <!-- product name title -->
-                                <th class="product-name">Spareparts</th>
+                                <th class="product-name">Suku Cadang</th>
                                 <!-- unit price title -->
-                                <th class="unit-price">Price</th>
+                                <th class="unit-price">Harga</th>
                                 <!-- quantity -->
-                                <th class="quantity text-center">Quantity</th>
+                                <th class="quantity text-center">Kuantitas</th>
                                 <!-- remove button -->
-                                <th class="remove-icon text-center">remove</th>
+                                <th class="remove-icon text-center">Hapus</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             @if ($carts->isEmpty())
-							    <td align="center" colspan="6">No spare parts have been put in the cart yet</td>
+							    <td align="center" colspan="6">Belum ada suku cadang yang dimasukkan ke dalam kerangjang</td>
                             @else
 							@foreach ($carts as $index => $cart)
                                 <tr>
@@ -152,7 +152,7 @@
                             <form action="{{ route('actionCheckout') }}" method="post">
                                 @csrf
                                 
-                                <button type="submit">procced to checkout</button>
+                                <button type="submit">Beli</button>
                             </form>
                         </div>
                     </div>

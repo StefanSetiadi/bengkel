@@ -1,6 +1,6 @@
 @extends('landingpage.component.main')
 
-@section('title', 'Sparepart')
+@section('title', 'Daftar Orderdil')
 
 @section('content')
 <!-- page title area start -->
@@ -10,14 +10,14 @@
             <div class="col-md-12">
                 <!-- page title start -->
                 <div class="page-title">
-                    <h2>Sparepart</h2>
+                    <h2>Onderdil</h2>
                 </div>
                 <!-- page title end -->
                 <!-- page title menu start -->
                 <div class="page-title-menu">
                     <ul>
-                        <li><a href="{{ route('index') }}">Home</a> <span> / </span> </li>
-                        <li><a href="{{ route('service') }}" style="color: white;">Services</a> <span> / </span> </li>
+                        <li><a href="{{ route('index') }}">Beranda</a> <span> / </span> </li>
+                        <li><a href="{{ route('service') }}" style="color: white;">Servis</a> <span> / </span> </li>
                         <li><a href="{{ route('spareparts') }}">Spareparts</a></li>
                     </ul>
                 </div>
@@ -39,7 +39,7 @@
                     <!-- gird shop start -->
                     <div class="gird-shop" id="productList">
                         @if ($spareparts->isEmpty())
-                        <h3 align="center">Spare parts are not yet available</h3>
+                        <h3 align="center">Suku cadangnya belum tersedia</h3>
                         @else
                         @foreach ($spareparts as $index => $sparepart)
                             <div class="col-md-3 col-sm-6">
