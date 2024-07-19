@@ -49,7 +49,7 @@ Route::get('/shop-details{id_sparepart}', [ShopController::class, 'shopDetailsVi
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('admin')->group(function() {
+Route::middleware('customer')->group(function() {
     // Logout
     Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
 
