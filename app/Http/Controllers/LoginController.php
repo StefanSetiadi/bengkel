@@ -14,7 +14,7 @@ class LoginController extends Controller
     {
         // dd(Auth::guard('customers')->check());
         if (Auth::check()) {
-            return view('landingpage.index');
+            return redirect('/');
         } else{
             return view('dashboard.login');
         }
@@ -44,7 +44,7 @@ class LoginController extends Controller
     public function loginAdmin()
     {
         if (Auth::guard('admin')->check()) {
-            return view('dashboard.index');
+            return redirect('/index');
         } else{
             return view('dashboard.login-admin');
         }
@@ -58,21 +58,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            $countBooking = DB::table('booking')->count();
-            $countTransaction = DB::table('transaksi')->count();
-            $totalTurnover = DB::table('transaksi')->sum('total_biaya');
-        
-            $monthlyTransactions = DB::table('transaksi')
-                ->select(DB::raw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as count'))
-                ->groupBy('year', 'month')
-                ->get();
-        
-            return view('dashboard.index', [
-                'countBooking' => $countBooking,
-                'countTransaction' => $countTransaction,
-                'omzet' => $totalTurnover,
-                'monthlyTransactions' => $monthlyTransactions
-            ]);
+            return redirect('/index');
             }else{
                 return redirect()->back()->with("message", "failed");
             }
