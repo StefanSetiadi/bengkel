@@ -61,19 +61,6 @@
 															</form>
 														</div>
 														@elseif($booking->status_booking == 'accepted')
-														<div class="actions">
-															<a class="viewRow" data-bs-toggle="modal" data-bs-target="#viewRow">
-																<i class="bi bi-check text-green"></i>
-															</a>
-														</div>
-														@else
-														<div class="actions">
-															<a class="deleteRow">
-																<i class="bi bi-x text-red"></i>
-															</a>
-														</div>
-														@endif
-
 														<form action="{{ route('createBill') }}" method="post">
 															@csrf
 															<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
@@ -82,6 +69,13 @@
 																Buat Tagihan
 															</button>
 														</form>
+														@else
+														<div class="actions">
+															<a class="deleteRow">
+																<i class="bi bi-x text-red"></i>
+															</a>
+														</div>
+														@endif														
 														</td>
 													</tr>
 													@endforeach
