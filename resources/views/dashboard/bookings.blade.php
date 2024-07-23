@@ -63,6 +63,7 @@
 														@elseif($booking->status_booking == 'accepted')
 														<form action="{{ route('createBill') }}" method="post">
 															@csrf
+															<input name="id_customer" value="{{ $booking->id_customer }}" hidden>
 															<input name="id_booking" value="{{ $booking->id_booking }}" hidden>
 															<input name="no_kendaraan" value="{{ $booking->no_kendaraan }}" hidden>
 															<button type="submit" class="btn btn-primary">

@@ -84,9 +84,8 @@ class ServiceController extends Controller
 
     public function createBill(Request $request)
     {
-        $id_customer = Auth::user()->id_customer;
         $data = Service::create([
-            'id_customer' => $id_customer,
+            'id_customer' => $request->id_customer,
             'id_admin' => 1,
             'no_kendaraan' => strtoupper($request->no_kendaraan),
             'biaya_jasa' => 0,
@@ -115,14 +114,16 @@ class ServiceController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
+        $customer = Customers::where('id_customer',$request->id_customer)->first();
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
                 'gross_amount' => $service->total_biaya,
             ),
             'customer_details' => array(
-                'name' => Auth::user()->nama,
-                'email' => Auth::user()->email
+                'name' => $customer->nama,
+                'email' => $customer->email
             ),
         );
 

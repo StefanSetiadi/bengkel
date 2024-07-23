@@ -71,8 +71,6 @@ Route::middleware('customer')->group(function() {
     Route::get('/booking', [BookingController::class, 'bookingView'])->name('booking');
     Route::post('/addBooking', [BookingController::class, 'addBooking'])->name('addBooking');
     Route::post('/removeBooking', [BookingController::class, 'removeBooking'])->name('removeBooking');
-    Route::post('/acceptBooking', [BookingController::class, 'acceptBooking'])->name('acceptBooking');
-    Route::post('/rejectBooking', [BookingController::class, 'rejectBooking'])->name('rejectBooking');
 
     // History
     Route::get('/historyBooking', [BookingController::class, 'historyBooking'])->name('historyBooking');
@@ -107,6 +105,9 @@ Route::middleware('admin')->group(function() {
 
     // Booking
     Route::get('/bookingDashboard', [BookingController::class, 'bookingDashboardView'])->name('bookingDashboard');
+    Route::post('/acceptBooking', [BookingController::class, 'acceptBooking'])->name('acceptBooking');
+    Route::post('/rejectBooking', [BookingController::class, 'rejectBooking'])->name('rejectBooking');
+    
     // Transaction
     Route::get('/dashboardTransaction', [PaymentController::class, 'dashboardTransaction'])->name('dashboardTransaction');
 

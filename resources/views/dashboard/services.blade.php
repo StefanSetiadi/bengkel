@@ -39,6 +39,7 @@
 															@csrf
 															<td>
 															<input name="id_service" value="{{ $service->id_service }}" hidden>
+															<input name="id_customer" value="{{ $service->id_customer }}" hidden>
 															<input type="text" name="biaya_jasa" value="{{ $service->biaya_jasa }}">
 															<button type="submit" class="bi bi-check-lg"></button>
 															</td>

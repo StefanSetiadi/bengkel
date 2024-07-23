@@ -82,7 +82,6 @@ class BookingController extends Controller
 
     public function acceptBooking(Request $request)
     {
-        $id_customer = Auth::user()->id_customer;
         $data = Booking::where('id_booking', $request->id_booking)->first();
         $data->status_booking = 'accepted';
         $data->save();
@@ -91,7 +90,6 @@ class BookingController extends Controller
 
     public function rejectBooking(Request $request)
     {
-        $id_customer = Auth::user()->id_customer;
         $data = Booking::where('id_booking', $request->id_booking)->first();
         $data->status_booking = 'rejected';
         $data->save();
