@@ -133,9 +133,9 @@
 								</td>
 
 								<td>
-									Tinker Corp.<br />
+									Artemis Corp.<br />
 									08815791515<br />
-									tinker@gmail.com
+									Artemis@gmail.com
 								</td>
 							</tr>
 						</table>

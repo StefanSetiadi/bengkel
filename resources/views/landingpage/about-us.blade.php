@@ -33,7 +33,7 @@
             <div class="col-md-6">
                 <!-- section title start -->
                 <div class="section-heading">
-                    <h2>About <span> Tinker</span></h2>
+                    <h2>About <span> Artemis</span></h2>
                 </div>
                 <!-- section title end -->
                 <!-- about content start -->
@@ -114,7 +114,7 @@
             <div class="col-md-12">
                 <!-- section title start -->
                 <div class="section-heading text-center">
-                    <h2>Tinker Team <span> Members</span></h2>
+                    <h2>Artemis Team <span> Members</span></h2>
                 </div>
                 <!-- section title end -->
             </div>

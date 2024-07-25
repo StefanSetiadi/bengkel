@@ -33,7 +33,7 @@
             <div class="col-md-12">
                 <!-- section title start -->
                 <div class="section-heading text-center no-margin">
-                    <h2>Tinker Best <span> Services</span></h2>
+                    <h2>Artemis Best <span> Services</span></h2>
                 </div>
                 <!-- section title end -->
             </div>

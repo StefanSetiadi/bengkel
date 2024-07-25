@@ -18,7 +18,7 @@
                         <!-- contact info start -->
                         <div class="footer-contact-info">
                             <p> <span> Telephone:</span> 08815791515 </p>
-                            <p> <span> Email:</span> tinker@gmail.com </p>
+                            <p> <span> Email:</span> Artemis@gmail.com </p>
                         </div>
                         <!-- contact info end -->
                     </div>
