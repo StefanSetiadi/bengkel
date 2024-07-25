@@ -4,7 +4,7 @@
     <!-- Sidebar brand starts -->
     <div class="sidebar-brand">
         <a href="{{route('indexdashboard')}}" class="logo">
-            <img src="assets/images/logo.svg" alt="Admin Dashboards" />
+            <img src="img/logo.png" alt="Admin Dashboards" />
         </a>
     </div>
     <!-- Sidebar brand starts -->

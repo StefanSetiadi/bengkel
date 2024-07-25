@@ -44,8 +44,8 @@
 			@csrf
 			<div class="login-box">
 				<div class="login-form">
-					<a href="index.html" class="login-logo">
-						<img src="assets/images/logo.svg" alt="Vico Admin" />
+					<a href="{{ route('index') }}">
+						<img src="img/logo.png" alt="Vico Admin" />
 					</a>
 					<div class="login-welcome">
 						Welcome back, <br />Please login to your account.
