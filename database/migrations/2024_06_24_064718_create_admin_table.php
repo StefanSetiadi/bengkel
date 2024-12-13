@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email');
             $table->string('password');
-            $table->string('avatar')->nullable();
-            $table->string('remember_token')->nullabe();
+            $table->string('avatar')->nullable(true);
+            $table->string('remember_token')->nullable(true);
             $table->timestamps();
         });
     }
